@@ -7,17 +7,2406 @@ import random
 practice_bp = Blueprint('practice', __name__)
 
 verbs = [
-    {"english": "go", "telugu": "వెళ్ళు"},
-    {"english": "eat", "telugu": "తిను"},
-    {"english": "run", "telugu": "పరిగెత్తు"},
-    {"english": "come", "telugu": "రా"},
-    {"english": "read", "telugu": "చదువు"},
-    {"english": "write", "telugu": "రాయు"},
-    {"english": "speak", "telugu": "మాట్లాడు"},
-    {"english": "drink", "telugu": "తాగు"},
-    {"english": "sleep", "telugu": "నిద్రపొ"},
-    {"english": "sit", "telugu": "కూర్చో"},
-    # Add more verbs as needed
+  {
+    "english": "go",
+    "telugu": "వెళ్ళు"
+  },
+  {
+    "english": "eat",
+    "telugu": "తిను"
+  },
+  {
+    "english": "run",
+    "telugu": "పరిగెత్తు"
+  },
+  {
+    "english": "come",
+    "telugu": "రా"
+  },
+  {
+    "english": "read",
+    "telugu": "చదువు"
+  },
+  {
+    "english": "write",
+    "telugu": "రాయు"
+  },
+  {
+    "english": "speak",
+    "telugu": "మాట్లాడు"
+  },
+  {
+    "english": "drink",
+    "telugu": "తాగు"
+  },
+  {
+    "english": "sleep",
+    "telugu": "నిద్రపొ"
+  },
+  {
+    "english": "sit",
+    "telugu": "కూర్చో"
+  },
+  {
+    "english": "stand",
+    "telugu": "నిలు"
+  },
+  {
+    "english": "walk",
+    "telugu": "నడుచు"
+  },
+  {
+    "english": "see",
+    "telugu": "చూడు"
+  },
+  {
+    "english": "hear",
+    "telugu": "విను"
+  },
+  {
+    "english": "smile",
+    "telugu": "నవ్వు"
+  },
+  {
+    "english": "cry",
+    "telugu": "ఎడువు"
+  },
+  {
+    "english": "buy",
+    "telugu": "కొను"
+  },
+  {
+    "english": "sell",
+    "telugu": "అమ్ము"
+  },
+  {
+    "english": "open",
+    "telugu": "తెరువు"
+  },
+  {
+    "english": "close",
+    "telugu": "మూసి వేయు"
+  },
+  {
+    "english": "wash",
+    "telugu": "కడుగు"
+  },
+  {
+    "english": "cook",
+    "telugu": "వండు"
+  },
+  {
+    "english": "drive",
+    "telugu": "డ్రైవ్ చెయ్"
+  },
+  {
+    "english": "fly",
+    "telugu": "ఎగురు"
+  },
+  {
+    "english": "swim",
+    "telugu": "ఈదు"
+  },
+  {
+    "english": "jump",
+    "telugu": "దూడు"
+  },
+  {
+    "english": "help",
+    "telugu": "సహాయం చెయ్"
+  },
+  {
+    "english": "love",
+    "telugu": "ప్రేమించు"
+  },
+  {
+    "english": "hate",
+    "telugu": "ద్వేషించు"
+  },
+  {
+    "english": "work",
+    "telugu": "పని చెయ్"
+  },
+  {
+    "english": "go",
+    "telugu": "వెళ్ళు"
+  },
+  {
+    "english": "eat",
+    "telugu": "తిను"
+  },
+  {
+    "english": "run",
+    "telugu": "పరిగెత్తు"
+  },
+  {
+    "english": "come",
+    "telugu": "రా"
+  },
+  {
+    "english": "read",
+    "telugu": "చదువు"
+  },
+  {
+    "english": "write",
+    "telugu": "రాయు"
+  },
+  {
+    "english": "speak",
+    "telugu": "మాట్లాడు"
+  },
+  {
+    "english": "drink",
+    "telugu": "తాగు"
+  },
+  {
+    "english": "sleep",
+    "telugu": "నిద్రపొ"
+  },
+  {
+    "english": "sit",
+    "telugu": "కూర్చో"
+  },
+  {
+    "english": "stand",
+    "telugu": "నిలు"
+  },
+  {
+    "english": "walk",
+    "telugu": "నడుచు"
+  },
+  {
+    "english": "see",
+    "telugu": "చూడు"
+  },
+  {
+    "english": "hear",
+    "telugu": "విను"
+  },
+  {
+    "english": "smile",
+    "telugu": "నవ్వు"
+  },
+  {
+    "english": "cry",
+    "telugu": "ఎడువు"
+  },
+  {
+    "english": "buy",
+    "telugu": "కొను"
+  },
+  {
+    "english": "sell",
+    "telugu": "అమ్ము"
+  },
+  {
+    "english": "open",
+    "telugu": "తెరువు"
+  },
+  {
+    "english": "close",
+    "telugu": "మూసి వేయు"
+  },
+  {
+    "english": "wash",
+    "telugu": "కడుగు"
+  },
+  {
+    "english": "cook",
+    "telugu": "వండు"
+  },
+  {
+    "english": "drive",
+    "telugu": "డ్రైవ్ చెయ్"
+  },
+  {
+    "english": "fly",
+    "telugu": "ఎగురు"
+  },
+  {
+    "english": "swim",
+    "telugu": "ఈదు"
+  },
+  {
+    "english": "jump",
+    "telugu": "దూడు"
+  },
+  {
+    "english": "help",
+    "telugu": "సహాయం చెయ్"
+  },
+  {
+    "english": "love",
+    "telugu": "ప్రేమించు"
+  },
+  {
+    "english": "hate",
+    "telugu": "ద్వేషించు"
+  },
+  {
+    "english": "work",
+    "telugu": "పని చెయ్"
+  },
+  {
+    "english": "go",
+    "telugu": "వెళ్ళు"
+  },
+  {
+    "english": "eat",
+    "telugu": "తిను"
+  },
+  {
+    "english": "run",
+    "telugu": "పరిగెత్తు"
+  },
+  {
+    "english": "come",
+    "telugu": "రా"
+  },
+  {
+    "english": "read",
+    "telugu": "చదువు"
+  },
+  {
+    "english": "write",
+    "telugu": "రాయు"
+  },
+  {
+    "english": "speak",
+    "telugu": "మాట్లాడు"
+  },
+  {
+    "english": "drink",
+    "telugu": "తాగు"
+  },
+  {
+    "english": "sleep",
+    "telugu": "నిద్రపొ"
+  },
+  {
+    "english": "sit",
+    "telugu": "కూర్చో"
+  },
+  {
+    "english": "stand",
+    "telugu": "నిలు"
+  },
+  {
+    "english": "walk",
+    "telugu": "నడుచు"
+  },
+  {
+    "english": "see",
+    "telugu": "చూడు"
+  },
+  {
+    "english": "hear",
+    "telugu": "విను"
+  },
+  {
+    "english": "smile",
+    "telugu": "నవ్వు"
+  },
+  {
+    "english": "cry",
+    "telugu": "ఎడువు"
+  },
+  {
+    "english": "buy",
+    "telugu": "కొను"
+  },
+  {
+    "english": "sell",
+    "telugu": "అమ్ము"
+  },
+  {
+    "english": "open",
+    "telugu": "తెరువు"
+  },
+  {
+    "english": "close",
+    "telugu": "మూసి వేయు"
+  },
+  {
+    "english": "wash",
+    "telugu": "కడుగు"
+  },
+  {
+    "english": "cook",
+    "telugu": "వండు"
+  },
+  {
+    "english": "drive",
+    "telugu": "డ్రైవ్ చెయ్"
+  },
+  {
+    "english": "fly",
+    "telugu": "ఎగురు"
+  },
+  {
+    "english": "swim",
+    "telugu": "ఈదు"
+  },
+  {
+    "english": "jump",
+    "telugu": "దూడు"
+  },
+  {
+    "english": "help",
+    "telugu": "సహాయం చెయ్"
+  },
+  {
+    "english": "love",
+    "telugu": "ప్రేమించు"
+  },
+  {
+    "english": "hate",
+    "telugu": "ద్వేషించు"
+  },
+  {
+    "english": "work",
+    "telugu": "పని చెయ్"
+  },
+  {
+    "english": "go",
+    "telugu": "వెళ్ళు"
+  },
+  {
+    "english": "eat",
+    "telugu": "తిను"
+  },
+  {
+    "english": "run",
+    "telugu": "పరిగెత్తు"
+  },
+  {
+    "english": "come",
+    "telugu": "రా"
+  },
+  {
+    "english": "read",
+    "telugu": "చదువు"
+  },
+  {
+    "english": "write",
+    "telugu": "రాయు"
+  },
+  {
+    "english": "speak",
+    "telugu": "మాట్లాడు"
+  },
+  {
+    "english": "drink",
+    "telugu": "తాగు"
+  },
+  {
+    "english": "sleep",
+    "telugu": "నిద్రపొ"
+  },
+  {
+    "english": "sit",
+    "telugu": "కూర్చో"
+  },
+  {
+    "english": "stand",
+    "telugu": "నిలు"
+  },
+  {
+    "english": "walk",
+    "telugu": "నడుచు"
+  },
+  {
+    "english": "see",
+    "telugu": "చూడు"
+  },
+  {
+    "english": "hear",
+    "telugu": "విను"
+  },
+  {
+    "english": "smile",
+    "telugu": "నవ్వు"
+  },
+  {
+    "english": "cry",
+    "telugu": "ఎడువు"
+  },
+  {
+    "english": "buy",
+    "telugu": "కొను"
+  },
+  {
+    "english": "sell",
+    "telugu": "అమ్ము"
+  },
+  {
+    "english": "open",
+    "telugu": "తెరువు"
+  },
+  {
+    "english": "close",
+    "telugu": "మూసి వేయు"
+  },
+  {
+    "english": "wash",
+    "telugu": "కడుగు"
+  },
+  {
+    "english": "cook",
+    "telugu": "వండు"
+  },
+  {
+    "english": "drive",
+    "telugu": "డ్రైవ్ చెయ్"
+  },
+  {
+    "english": "fly",
+    "telugu": "ఎగురు"
+  },
+  {
+    "english": "swim",
+    "telugu": "ఈదు"
+  },
+  {
+    "english": "jump",
+    "telugu": "దూడు"
+  },
+  {
+    "english": "help",
+    "telugu": "సహాయం చెయ్"
+  },
+  {
+    "english": "love",
+    "telugu": "ప్రేమించు"
+  },
+  {
+    "english": "hate",
+    "telugu": "ద్వేషించు"
+  },
+  {
+    "english": "work",
+    "telugu": "పని చెయ్"
+  },
+  {
+    "english": "go",
+    "telugu": "వెళ్ళు"
+  },
+  {
+    "english": "eat",
+    "telugu": "తిను"
+  },
+  {
+    "english": "run",
+    "telugu": "పరిగెత్తు"
+  },
+  {
+    "english": "come",
+    "telugu": "రా"
+  },
+  {
+    "english": "read",
+    "telugu": "చదువు"
+  },
+  {
+    "english": "write",
+    "telugu": "రాయు"
+  },
+  {
+    "english": "speak",
+    "telugu": "మాట్లాడు"
+  },
+  {
+    "english": "drink",
+    "telugu": "తాగు"
+  },
+  {
+    "english": "sleep",
+    "telugu": "నిద్రపొ"
+  },
+  {
+    "english": "sit",
+    "telugu": "కూర్చో"
+  },
+  {
+    "english": "stand",
+    "telugu": "నిలు"
+  },
+  {
+    "english": "walk",
+    "telugu": "నడుచు"
+  },
+  {
+    "english": "see",
+    "telugu": "చూడు"
+  },
+  {
+    "english": "hear",
+    "telugu": "విను"
+  },
+  {
+    "english": "smile",
+    "telugu": "నవ్వు"
+  },
+  {
+    "english": "cry",
+    "telugu": "ఎడువు"
+  },
+  {
+    "english": "buy",
+    "telugu": "కొను"
+  },
+  {
+    "english": "sell",
+    "telugu": "అమ్ము"
+  },
+  {
+    "english": "open",
+    "telugu": "తెరువు"
+  },
+  {
+    "english": "close",
+    "telugu": "మూసి వేయు"
+  },
+  {
+    "english": "wash",
+    "telugu": "కడుగు"
+  },
+  {
+    "english": "cook",
+    "telugu": "వండు"
+  },
+  {
+    "english": "drive",
+    "telugu": "డ్రైవ్ చెయ్"
+  },
+  {
+    "english": "fly",
+    "telugu": "ఎగురు"
+  },
+  {
+    "english": "swim",
+    "telugu": "ఈదు"
+  },
+  {
+    "english": "jump",
+    "telugu": "దూడు"
+  },
+  {
+    "english": "help",
+    "telugu": "సహాయం చెయ్"
+  },
+  {
+    "english": "love",
+    "telugu": "ప్రేమించు"
+  },
+  {
+    "english": "hate",
+    "telugu": "ద్వేషించు"
+  },
+  {
+    "english": "work",
+    "telugu": "పని చెయ్"
+  },
+  {
+    "english": "go",
+    "telugu": "వెళ్ళు"
+  },
+  {
+    "english": "eat",
+    "telugu": "తిను"
+  },
+  {
+    "english": "run",
+    "telugu": "పరిగెత్తు"
+  },
+  {
+    "english": "come",
+    "telugu": "రా"
+  },
+  {
+    "english": "read",
+    "telugu": "చదువు"
+  },
+  {
+    "english": "write",
+    "telugu": "రాయు"
+  },
+  {
+    "english": "speak",
+    "telugu": "మాట్లాడు"
+  },
+  {
+    "english": "drink",
+    "telugu": "తాగు"
+  },
+  {
+    "english": "sleep",
+    "telugu": "నిద్రపొ"
+  },
+  {
+    "english": "sit",
+    "telugu": "కూర్చో"
+  },
+  {
+    "english": "stand",
+    "telugu": "నిలు"
+  },
+  {
+    "english": "walk",
+    "telugu": "నడుచు"
+  },
+  {
+    "english": "see",
+    "telugu": "చూడు"
+  },
+  {
+    "english": "hear",
+    "telugu": "విను"
+  },
+  {
+    "english": "smile",
+    "telugu": "నవ్వు"
+  },
+  {
+    "english": "cry",
+    "telugu": "ఎడువు"
+  },
+  {
+    "english": "buy",
+    "telugu": "కొను"
+  },
+  {
+    "english": "sell",
+    "telugu": "అమ్ము"
+  },
+  {
+    "english": "open",
+    "telugu": "తెరువు"
+  },
+  {
+    "english": "close",
+    "telugu": "మూసి వేయు"
+  },
+  {
+    "english": "wash",
+    "telugu": "కడుగు"
+  },
+  {
+    "english": "cook",
+    "telugu": "వండు"
+  },
+  {
+    "english": "drive",
+    "telugu": "డ్రైవ్ చెయ్"
+  },
+  {
+    "english": "fly",
+    "telugu": "ఎగురు"
+  },
+  {
+    "english": "swim",
+    "telugu": "ఈదు"
+  },
+  {
+    "english": "jump",
+    "telugu": "దూడు"
+  },
+  {
+    "english": "help",
+    "telugu": "సహాయం చెయ్"
+  },
+  {
+    "english": "love",
+    "telugu": "ప్రేమించు"
+  },
+  {
+    "english": "hate",
+    "telugu": "ద్వేషించు"
+  },
+  {
+    "english": "work",
+    "telugu": "పని చెయ్"
+  },
+  {
+    "english": "go",
+    "telugu": "వెళ్ళు"
+  },
+  {
+    "english": "eat",
+    "telugu": "తిను"
+  },
+  {
+    "english": "run",
+    "telugu": "పరిగెత్తు"
+  },
+  {
+    "english": "come",
+    "telugu": "రా"
+  },
+  {
+    "english": "read",
+    "telugu": "చదువు"
+  },
+  {
+    "english": "write",
+    "telugu": "రాయు"
+  },
+  {
+    "english": "speak",
+    "telugu": "మాట్లాడు"
+  },
+  {
+    "english": "drink",
+    "telugu": "తాగు"
+  },
+  {
+    "english": "sleep",
+    "telugu": "నిద్రపొ"
+  },
+  {
+    "english": "sit",
+    "telugu": "కూర్చో"
+  },
+  {
+    "english": "stand",
+    "telugu": "నిలు"
+  },
+  {
+    "english": "walk",
+    "telugu": "నడుచు"
+  },
+  {
+    "english": "see",
+    "telugu": "చూడు"
+  },
+  {
+    "english": "hear",
+    "telugu": "విను"
+  },
+  {
+    "english": "smile",
+    "telugu": "నవ్వు"
+  },
+  {
+    "english": "cry",
+    "telugu": "ఎడువు"
+  },
+  {
+    "english": "buy",
+    "telugu": "కొను"
+  },
+  {
+    "english": "sell",
+    "telugu": "అమ్ము"
+  },
+  {
+    "english": "open",
+    "telugu": "తెరువు"
+  },
+  {
+    "english": "close",
+    "telugu": "మూసి వేయు"
+  },
+  {
+    "english": "wash",
+    "telugu": "కడుగు"
+  },
+  {
+    "english": "cook",
+    "telugu": "వండు"
+  },
+  {
+    "english": "drive",
+    "telugu": "డ్రైవ్ చెయ్"
+  },
+  {
+    "english": "fly",
+    "telugu": "ఎగురు"
+  },
+  {
+    "english": "swim",
+    "telugu": "ఈదు"
+  },
+  {
+    "english": "jump",
+    "telugu": "దూడు"
+  },
+  {
+    "english": "help",
+    "telugu": "సహాయం చెయ్"
+  },
+  {
+    "english": "love",
+    "telugu": "ప్రేమించు"
+  },
+  {
+    "english": "hate",
+    "telugu": "ద్వేషించు"
+  },
+  {
+    "english": "work",
+    "telugu": "పని చెయ్"
+  },
+  {
+    "english": "go",
+    "telugu": "వెళ్ళు"
+  },
+  {
+    "english": "eat",
+    "telugu": "తిను"
+  },
+  {
+    "english": "run",
+    "telugu": "పరిగెత్తు"
+  },
+  {
+    "english": "come",
+    "telugu": "రా"
+  },
+  {
+    "english": "read",
+    "telugu": "చదువు"
+  },
+  {
+    "english": "write",
+    "telugu": "రాయు"
+  },
+  {
+    "english": "speak",
+    "telugu": "మాట్లాడు"
+  },
+  {
+    "english": "drink",
+    "telugu": "తాగు"
+  },
+  {
+    "english": "sleep",
+    "telugu": "నిద్రపొ"
+  },
+  {
+    "english": "sit",
+    "telugu": "కూర్చో"
+  },
+  {
+    "english": "stand",
+    "telugu": "నిలు"
+  },
+  {
+    "english": "walk",
+    "telugu": "నడుచు"
+  },
+  {
+    "english": "see",
+    "telugu": "చూడు"
+  },
+  {
+    "english": "hear",
+    "telugu": "విను"
+  },
+  {
+    "english": "smile",
+    "telugu": "నవ్వు"
+  },
+  {
+    "english": "cry",
+    "telugu": "ఎడువు"
+  },
+  {
+    "english": "buy",
+    "telugu": "కొను"
+  },
+  {
+    "english": "sell",
+    "telugu": "అమ్ము"
+  },
+  {
+    "english": "open",
+    "telugu": "తెరువు"
+  },
+  {
+    "english": "close",
+    "telugu": "మూసి వేయు"
+  },
+  {
+    "english": "wash",
+    "telugu": "కడుగు"
+  },
+  {
+    "english": "cook",
+    "telugu": "వండు"
+  },
+  {
+    "english": "drive",
+    "telugu": "డ్రైవ్ చెయ్"
+  },
+  {
+    "english": "fly",
+    "telugu": "ఎగురు"
+  },
+  {
+    "english": "swim",
+    "telugu": "ఈదు"
+  },
+  {
+    "english": "jump",
+    "telugu": "దూడు"
+  },
+  {
+    "english": "help",
+    "telugu": "సహాయం చెయ్"
+  },
+  {
+    "english": "love",
+    "telugu": "ప్రేమించు"
+  },
+  {
+    "english": "hate",
+    "telugu": "ద్వేషించు"
+  },
+  {
+    "english": "work",
+    "telugu": "పని చెయ్"
+  },
+  {
+    "english": "go",
+    "telugu": "వెళ్ళు"
+  },
+  {
+    "english": "eat",
+    "telugu": "తిను"
+  },
+  {
+    "english": "run",
+    "telugu": "పరిగెత్తు"
+  },
+  {
+    "english": "come",
+    "telugu": "రా"
+  },
+  {
+    "english": "read",
+    "telugu": "చదువు"
+  },
+  {
+    "english": "write",
+    "telugu": "రాయు"
+  },
+  {
+    "english": "speak",
+    "telugu": "మాట్లాడు"
+  },
+  {
+    "english": "drink",
+    "telugu": "తాగు"
+  },
+  {
+    "english": "sleep",
+    "telugu": "నిద్రపొ"
+  },
+  {
+    "english": "sit",
+    "telugu": "కూర్చో"
+  },
+  {
+    "english": "stand",
+    "telugu": "నిలు"
+  },
+  {
+    "english": "walk",
+    "telugu": "నడుచు"
+  },
+  {
+    "english": "see",
+    "telugu": "చూడు"
+  },
+  {
+    "english": "hear",
+    "telugu": "విను"
+  },
+  {
+    "english": "smile",
+    "telugu": "నవ్వు"
+  },
+  {
+    "english": "cry",
+    "telugu": "ఎడువు"
+  },
+  {
+    "english": "buy",
+    "telugu": "కొను"
+  },
+  {
+    "english": "sell",
+    "telugu": "అమ్ము"
+  },
+  {
+    "english": "open",
+    "telugu": "తెరువు"
+  },
+  {
+    "english": "close",
+    "telugu": "మూసి వేయు"
+  },
+  {
+    "english": "wash",
+    "telugu": "కడుగు"
+  },
+  {
+    "english": "cook",
+    "telugu": "వండు"
+  },
+  {
+    "english": "drive",
+    "telugu": "డ్రైవ్ చెయ్"
+  },
+  {
+    "english": "fly",
+    "telugu": "ఎగురు"
+  },
+  {
+    "english": "swim",
+    "telugu": "ఈదు"
+  },
+  {
+    "english": "jump",
+    "telugu": "దూడు"
+  },
+  {
+    "english": "help",
+    "telugu": "సహాయం చెయ్"
+  },
+  {
+    "english": "love",
+    "telugu": "ప్రేమించు"
+  },
+  {
+    "english": "hate",
+    "telugu": "ద్వేషించు"
+  },
+  {
+    "english": "work",
+    "telugu": "పని చెయ్"
+  },
+  {
+    "english": "go",
+    "telugu": "వెళ్ళు"
+  },
+  {
+    "english": "eat",
+    "telugu": "తిను"
+  },
+  {
+    "english": "run",
+    "telugu": "పరిగెత్తు"
+  },
+  {
+    "english": "come",
+    "telugu": "రా"
+  },
+  {
+    "english": "read",
+    "telugu": "చదువు"
+  },
+  {
+    "english": "write",
+    "telugu": "రాయు"
+  },
+  {
+    "english": "speak",
+    "telugu": "మాట్లాడు"
+  },
+  {
+    "english": "drink",
+    "telugu": "తాగు"
+  },
+  {
+    "english": "sleep",
+    "telugu": "నిద్రపొ"
+  },
+  {
+    "english": "sit",
+    "telugu": "కూర్చో"
+  },
+  {
+    "english": "stand",
+    "telugu": "నిలు"
+  },
+  {
+    "english": "walk",
+    "telugu": "నడుచు"
+  },
+  {
+    "english": "see",
+    "telugu": "చూడు"
+  },
+  {
+    "english": "hear",
+    "telugu": "విను"
+  },
+  {
+    "english": "smile",
+    "telugu": "నవ్వు"
+  },
+  {
+    "english": "cry",
+    "telugu": "ఎడువు"
+  },
+  {
+    "english": "buy",
+    "telugu": "కొను"
+  },
+  {
+    "english": "sell",
+    "telugu": "అమ్ము"
+  },
+  {
+    "english": "open",
+    "telugu": "తెరువు"
+  },
+  {
+    "english": "close",
+    "telugu": "మూసి వేయు"
+  },
+  {
+    "english": "wash",
+    "telugu": "కడుగు"
+  },
+  {
+    "english": "cook",
+    "telugu": "వండు"
+  },
+  {
+    "english": "drive",
+    "telugu": "డ్రైవ్ చెయ్"
+  },
+  {
+    "english": "fly",
+    "telugu": "ఎగురు"
+  },
+  {
+    "english": "swim",
+    "telugu": "ఈదు"
+  },
+  {
+    "english": "jump",
+    "telugu": "దూడు"
+  },
+  {
+    "english": "help",
+    "telugu": "సహాయం చెయ్"
+  },
+  {
+    "english": "love",
+    "telugu": "ప్రేమించు"
+  },
+  {
+    "english": "hate",
+    "telugu": "ద్వేషించు"
+  },
+  {
+    "english": "work",
+    "telugu": "పని చెయ్"
+  },
+  {
+    "english": "go",
+    "telugu": "వెళ్ళు"
+  },
+  {
+    "english": "eat",
+    "telugu": "తిను"
+  },
+  {
+    "english": "run",
+    "telugu": "పరిగెత్తు"
+  },
+  {
+    "english": "come",
+    "telugu": "రా"
+  },
+  {
+    "english": "read",
+    "telugu": "చదువు"
+  },
+  {
+    "english": "write",
+    "telugu": "రాయు"
+  },
+  {
+    "english": "speak",
+    "telugu": "మాట్లాడు"
+  },
+  {
+    "english": "drink",
+    "telugu": "తాగు"
+  },
+  {
+    "english": "sleep",
+    "telugu": "నిద్రపొ"
+  },
+  {
+    "english": "sit",
+    "telugu": "కూర్చో"
+  },
+  {
+    "english": "stand",
+    "telugu": "నిలు"
+  },
+  {
+    "english": "walk",
+    "telugu": "నడుచు"
+  },
+  {
+    "english": "see",
+    "telugu": "చూడు"
+  },
+  {
+    "english": "hear",
+    "telugu": "విను"
+  },
+  {
+    "english": "smile",
+    "telugu": "నవ్వు"
+  },
+  {
+    "english": "cry",
+    "telugu": "ఎడువు"
+  },
+  {
+    "english": "buy",
+    "telugu": "కొను"
+  },
+  {
+    "english": "sell",
+    "telugu": "అమ్ము"
+  },
+  {
+    "english": "open",
+    "telugu": "తెరువు"
+  },
+  {
+    "english": "close",
+    "telugu": "మూసి వేయు"
+  },
+  {
+    "english": "wash",
+    "telugu": "కడుగు"
+  },
+  {
+    "english": "cook",
+    "telugu": "వండు"
+  },
+  {
+    "english": "drive",
+    "telugu": "డ్రైవ్ చెయ్"
+  },
+  {
+    "english": "fly",
+    "telugu": "ఎగురు"
+  },
+  {
+    "english": "swim",
+    "telugu": "ఈదు"
+  },
+  {
+    "english": "jump",
+    "telugu": "దూడు"
+  },
+  {
+    "english": "help",
+    "telugu": "సహాయం చెయ్"
+  },
+  {
+    "english": "love",
+    "telugu": "ప్రేమించు"
+  },
+  {
+    "english": "hate",
+    "telugu": "ద్వేషించు"
+  },
+  {
+    "english": "work",
+    "telugu": "పని చెయ్"
+  },
+  {
+    "english": "go",
+    "telugu": "వెళ్ళు"
+  },
+  {
+    "english": "eat",
+    "telugu": "తిను"
+  },
+  {
+    "english": "run",
+    "telugu": "పరిగెత్తు"
+  },
+  {
+    "english": "come",
+    "telugu": "రా"
+  },
+  {
+    "english": "read",
+    "telugu": "చదువు"
+  },
+  {
+    "english": "write",
+    "telugu": "రాయు"
+  },
+  {
+    "english": "speak",
+    "telugu": "మాట్లాడు"
+  },
+  {
+    "english": "drink",
+    "telugu": "తాగు"
+  },
+  {
+    "english": "sleep",
+    "telugu": "నిద్రపొ"
+  },
+  {
+    "english": "sit",
+    "telugu": "కూర్చో"
+  },
+  {
+    "english": "stand",
+    "telugu": "నిలు"
+  },
+  {
+    "english": "walk",
+    "telugu": "నడుచు"
+  },
+  {
+    "english": "see",
+    "telugu": "చూడు"
+  },
+  {
+    "english": "hear",
+    "telugu": "విను"
+  },
+  {
+    "english": "smile",
+    "telugu": "నవ్వు"
+  },
+  {
+    "english": "cry",
+    "telugu": "ఎడువు"
+  },
+  {
+    "english": "buy",
+    "telugu": "కొను"
+  },
+  {
+    "english": "sell",
+    "telugu": "అమ్ము"
+  },
+  {
+    "english": "open",
+    "telugu": "తెరువు"
+  },
+  {
+    "english": "close",
+    "telugu": "మూసి వేయు"
+  },
+  {
+    "english": "wash",
+    "telugu": "కడుగు"
+  },
+  {
+    "english": "cook",
+    "telugu": "వండు"
+  },
+  {
+    "english": "drive",
+    "telugu": "డ్రైవ్ చెయ్"
+  },
+  {
+    "english": "fly",
+    "telugu": "ఎగురు"
+  },
+  {
+    "english": "swim",
+    "telugu": "ఈదు"
+  },
+  {
+    "english": "jump",
+    "telugu": "దూడు"
+  },
+  {
+    "english": "help",
+    "telugu": "సహాయం చెయ్"
+  },
+  {
+    "english": "love",
+    "telugu": "ప్రేమించు"
+  },
+  {
+    "english": "hate",
+    "telugu": "ద్వేషించు"
+  },
+  {
+    "english": "work",
+    "telugu": "పని చెయ్"
+  },
+  {
+    "english": "go",
+    "telugu": "వెళ్ళు"
+  },
+  {
+    "english": "eat",
+    "telugu": "తిను"
+  },
+  {
+    "english": "run",
+    "telugu": "పరిగెత్తు"
+  },
+  {
+    "english": "come",
+    "telugu": "రా"
+  },
+  {
+    "english": "read",
+    "telugu": "చదువు"
+  },
+  {
+    "english": "write",
+    "telugu": "రాయు"
+  },
+  {
+    "english": "speak",
+    "telugu": "మాట్లాడు"
+  },
+  {
+    "english": "drink",
+    "telugu": "తాగు"
+  },
+  {
+    "english": "sleep",
+    "telugu": "నిద్రపొ"
+  },
+  {
+    "english": "sit",
+    "telugu": "కూర్చో"
+  },
+  {
+    "english": "stand",
+    "telugu": "నిలు"
+  },
+  {
+    "english": "walk",
+    "telugu": "నడుచు"
+  },
+  {
+    "english": "see",
+    "telugu": "చూడు"
+  },
+  {
+    "english": "hear",
+    "telugu": "విను"
+  },
+  {
+    "english": "smile",
+    "telugu": "నవ్వు"
+  },
+  {
+    "english": "cry",
+    "telugu": "ఎడువు"
+  },
+  {
+    "english": "buy",
+    "telugu": "కొను"
+  },
+  {
+    "english": "sell",
+    "telugu": "అమ్ము"
+  },
+  {
+    "english": "open",
+    "telugu": "తెరువు"
+  },
+  {
+    "english": "close",
+    "telugu": "మూసి వేయు"
+  },
+  {
+    "english": "wash",
+    "telugu": "కడుగు"
+  },
+  {
+    "english": "cook",
+    "telugu": "వండు"
+  },
+  {
+    "english": "drive",
+    "telugu": "డ్రైవ్ చెయ్"
+  },
+  {
+    "english": "fly",
+    "telugu": "ఎగురు"
+  },
+  {
+    "english": "swim",
+    "telugu": "ఈదు"
+  },
+  {
+    "english": "jump",
+    "telugu": "దూడు"
+  },
+  {
+    "english": "help",
+    "telugu": "సహాయం చెయ్"
+  },
+  {
+    "english": "love",
+    "telugu": "ప్రేమించు"
+  },
+  {
+    "english": "hate",
+    "telugu": "ద్వేషించు"
+  },
+  {
+    "english": "work",
+    "telugu": "పని చెయ్"
+  },
+  {
+    "english": "go",
+    "telugu": "వెళ్ళు"
+  },
+  {
+    "english": "eat",
+    "telugu": "తిను"
+  },
+  {
+    "english": "run",
+    "telugu": "పరిగెత్తు"
+  },
+  {
+    "english": "come",
+    "telugu": "రా"
+  },
+  {
+    "english": "read",
+    "telugu": "చదువు"
+  },
+  {
+    "english": "write",
+    "telugu": "రాయు"
+  },
+  {
+    "english": "speak",
+    "telugu": "మాట్లాడు"
+  },
+  {
+    "english": "drink",
+    "telugu": "తాగు"
+  },
+  {
+    "english": "sleep",
+    "telugu": "నిద్రపొ"
+  },
+  {
+    "english": "sit",
+    "telugu": "కూర్చో"
+  },
+  {
+    "english": "stand",
+    "telugu": "నిలు"
+  },
+  {
+    "english": "walk",
+    "telugu": "నడుచు"
+  },
+  {
+    "english": "see",
+    "telugu": "చూడు"
+  },
+  {
+    "english": "hear",
+    "telugu": "విను"
+  },
+  {
+    "english": "smile",
+    "telugu": "నవ్వు"
+  },
+  {
+    "english": "cry",
+    "telugu": "ఎడువు"
+  },
+  {
+    "english": "buy",
+    "telugu": "కొను"
+  },
+  {
+    "english": "sell",
+    "telugu": "అమ్ము"
+  },
+  {
+    "english": "open",
+    "telugu": "తెరువు"
+  },
+  {
+    "english": "close",
+    "telugu": "మూసి వేయు"
+  },
+  {
+    "english": "wash",
+    "telugu": "కడుగు"
+  },
+  {
+    "english": "cook",
+    "telugu": "వండు"
+  },
+  {
+    "english": "drive",
+    "telugu": "డ్రైవ్ చెయ్"
+  },
+  {
+    "english": "fly",
+    "telugu": "ఎగురు"
+  },
+  {
+    "english": "swim",
+    "telugu": "ఈదు"
+  },
+  {
+    "english": "jump",
+    "telugu": "దూడు"
+  },
+  {
+    "english": "help",
+    "telugu": "సహాయం చెయ్"
+  },
+  {
+    "english": "love",
+    "telugu": "ప్రేమించు"
+  },
+  {
+    "english": "hate",
+    "telugu": "ద్వేషించు"
+  },
+  {
+    "english": "work",
+    "telugu": "పని చెయ్"
+  },
+  {
+    "english": "go",
+    "telugu": "వెళ్ళు"
+  },
+  {
+    "english": "eat",
+    "telugu": "తిను"
+  },
+  {
+    "english": "run",
+    "telugu": "పరిగెత్తు"
+  },
+  {
+    "english": "come",
+    "telugu": "రా"
+  },
+  {
+    "english": "read",
+    "telugu": "చదువు"
+  },
+  {
+    "english": "write",
+    "telugu": "రాయు"
+  },
+  {
+    "english": "speak",
+    "telugu": "మాట్లాడు"
+  },
+  {
+    "english": "drink",
+    "telugu": "తాగు"
+  },
+  {
+    "english": "sleep",
+    "telugu": "నిద్రపొ"
+  },
+  {
+    "english": "sit",
+    "telugu": "కూర్చో"
+  },
+  {
+    "english": "stand",
+    "telugu": "నిలు"
+  },
+  {
+    "english": "walk",
+    "telugu": "నడుచు"
+  },
+  {
+    "english": "see",
+    "telugu": "చూడు"
+  },
+  {
+    "english": "hear",
+    "telugu": "విను"
+  },
+  {
+    "english": "smile",
+    "telugu": "నవ్వు"
+  },
+  {
+    "english": "cry",
+    "telugu": "ఎడువు"
+  },
+  {
+    "english": "buy",
+    "telugu": "కొను"
+  },
+  {
+    "english": "sell",
+    "telugu": "అమ్ము"
+  },
+  {
+    "english": "open",
+    "telugu": "తెరువు"
+  },
+  {
+    "english": "close",
+    "telugu": "మూసి వేయు"
+  },
+  {
+    "english": "wash",
+    "telugu": "కడుగు"
+  },
+  {
+    "english": "cook",
+    "telugu": "వండు"
+  },
+  {
+    "english": "drive",
+    "telugu": "డ్రైవ్ చెయ్"
+  },
+  {
+    "english": "fly",
+    "telugu": "ఎగురు"
+  },
+  {
+    "english": "swim",
+    "telugu": "ఈదు"
+  },
+  {
+    "english": "jump",
+    "telugu": "దూడు"
+  },
+  {
+    "english": "help",
+    "telugu": "సహాయం చెయ్"
+  },
+  {
+    "english": "love",
+    "telugu": "ప్రేమించు"
+  },
+  {
+    "english": "hate",
+    "telugu": "ద్వేషించు"
+  },
+  {
+    "english": "work",
+    "telugu": "పని చెయ్"
+  },
+  {
+    "english": "go",
+    "telugu": "వెళ్ళు"
+  },
+  {
+    "english": "eat",
+    "telugu": "తిను"
+  },
+  {
+    "english": "run",
+    "telugu": "పరిగెత్తు"
+  },
+  {
+    "english": "come",
+    "telugu": "రా"
+  },
+  {
+    "english": "read",
+    "telugu": "చదువు"
+  },
+  {
+    "english": "write",
+    "telugu": "రాయు"
+  },
+  {
+    "english": "speak",
+    "telugu": "మాట్లాడు"
+  },
+  {
+    "english": "drink",
+    "telugu": "తాగు"
+  },
+  {
+    "english": "sleep",
+    "telugu": "నిద్రపొ"
+  },
+  {
+    "english": "sit",
+    "telugu": "కూర్చో"
+  },
+  {
+    "english": "stand",
+    "telugu": "నిలు"
+  },
+  {
+    "english": "walk",
+    "telugu": "నడుచు"
+  },
+  {
+    "english": "see",
+    "telugu": "చూడు"
+  },
+  {
+    "english": "hear",
+    "telugu": "విను"
+  },
+  {
+    "english": "smile",
+    "telugu": "నవ్వు"
+  },
+  {
+    "english": "cry",
+    "telugu": "ఎడువు"
+  },
+  {
+    "english": "buy",
+    "telugu": "కొను"
+  },
+  {
+    "english": "sell",
+    "telugu": "అమ్ము"
+  },
+  {
+    "english": "open",
+    "telugu": "తెరువు"
+  },
+  {
+    "english": "close",
+    "telugu": "మూసి వేయు"
+  },
+  {
+    "english": "wash",
+    "telugu": "కడుగు"
+  },
+  {
+    "english": "cook",
+    "telugu": "వండు"
+  },
+  {
+    "english": "drive",
+    "telugu": "డ్రైవ్ చెయ్"
+  },
+  {
+    "english": "fly",
+    "telugu": "ఎగురు"
+  },
+  {
+    "english": "swim",
+    "telugu": "ఈదు"
+  },
+  {
+    "english": "jump",
+    "telugu": "దూడు"
+  },
+  {
+    "english": "help",
+    "telugu": "సహాయం చెయ్"
+  },
+  {
+    "english": "love",
+    "telugu": "ప్రేమించు"
+  },
+  {
+    "english": "hate",
+    "telugu": "ద్వేషించు"
+  },
+  {
+    "english": "work",
+    "telugu": "పని చెయ్"
+  },
+  {
+    "english": "go",
+    "telugu": "వెళ్ళు"
+  },
+  {
+    "english": "eat",
+    "telugu": "తిను"
+  },
+  {
+    "english": "run",
+    "telugu": "పరిగెత్తు"
+  },
+  {
+    "english": "come",
+    "telugu": "రా"
+  },
+  {
+    "english": "read",
+    "telugu": "చదువు"
+  },
+  {
+    "english": "write",
+    "telugu": "రాయు"
+  },
+  {
+    "english": "speak",
+    "telugu": "మాట్లాడు"
+  },
+  {
+    "english": "drink",
+    "telugu": "తాగు"
+  },
+  {
+    "english": "sleep",
+    "telugu": "నిద్రపొ"
+  },
+  {
+    "english": "sit",
+    "telugu": "కూర్చో"
+  },
+  {
+    "english": "stand",
+    "telugu": "నిలు"
+  },
+  {
+    "english": "walk",
+    "telugu": "నడుచు"
+  },
+  {
+    "english": "see",
+    "telugu": "చూడు"
+  },
+  {
+    "english": "hear",
+    "telugu": "విను"
+  },
+  {
+    "english": "smile",
+    "telugu": "నవ్వు"
+  },
+  {
+    "english": "cry",
+    "telugu": "ఎడువు"
+  },
+  {
+    "english": "buy",
+    "telugu": "కొను"
+  },
+  {
+    "english": "sell",
+    "telugu": "అమ్ము"
+  },
+  {
+    "english": "open",
+    "telugu": "తెరువు"
+  },
+  {
+    "english": "close",
+    "telugu": "మూసి వేయు"
+  },
+  {
+    "english": "wash",
+    "telugu": "కడుగు"
+  },
+  {
+    "english": "cook",
+    "telugu": "వండు"
+  },
+  {
+    "english": "drive",
+    "telugu": "డ్రైవ్ చెయ్"
+  },
+  {
+    "english": "fly",
+    "telugu": "ఎగురు"
+  },
+  {
+    "english": "swim",
+    "telugu": "ఈదు"
+  },
+  {
+    "english": "jump",
+    "telugu": "దూడు"
+  },
+  {
+    "english": "help",
+    "telugu": "సహాయం చెయ్"
+  },
+  {
+    "english": "love",
+    "telugu": "ప్రేమించు"
+  },
+  {
+    "english": "hate",
+    "telugu": "ద్వేషించు"
+  },
+  {
+    "english": "work",
+    "telugu": "పని చెయ్"
+  },
+  {
+    "english": "go",
+    "telugu": "వెళ్ళు"
+  },
+  {
+    "english": "eat",
+    "telugu": "తిను"
+  },
+  {
+    "english": "run",
+    "telugu": "పరిగెత్తు"
+  },
+  {
+    "english": "come",
+    "telugu": "రా"
+  },
+  {
+    "english": "read",
+    "telugu": "చదువు"
+  },
+  {
+    "english": "write",
+    "telugu": "రాయు"
+  },
+  {
+    "english": "speak",
+    "telugu": "మాట్లాడు"
+  },
+  {
+    "english": "drink",
+    "telugu": "తాగు"
+  },
+  {
+    "english": "sleep",
+    "telugu": "నిద్రపొ"
+  },
+  {
+    "english": "sit",
+    "telugu": "కూర్చో"
+  },
+  {
+    "english": "stand",
+    "telugu": "నిలు"
+  },
+  {
+    "english": "walk",
+    "telugu": "నడుచు"
+  },
+  {
+    "english": "see",
+    "telugu": "చూడు"
+  },
+  {
+    "english": "hear",
+    "telugu": "విను"
+  },
+  {
+    "english": "smile",
+    "telugu": "నవ్వు"
+  },
+  {
+    "english": "cry",
+    "telugu": "ఎడువు"
+  },
+  {
+    "english": "buy",
+    "telugu": "కొను"
+  },
+  {
+    "english": "sell",
+    "telugu": "అమ్ము"
+  },
+  {
+    "english": "open",
+    "telugu": "తెరువు"
+  },
+  {
+    "english": "close",
+    "telugu": "మూసి వేయు"
+  },
+  {
+    "english": "wash",
+    "telugu": "కడుగు"
+  },
+  {
+    "english": "cook",
+    "telugu": "వండు"
+  },
+  {
+    "english": "drive",
+    "telugu": "డ్రైవ్ చెయ్"
+  },
+  {
+    "english": "fly",
+    "telugu": "ఎగురు"
+  },
+  {
+    "english": "swim",
+    "telugu": "ఈదు"
+  },
+  {
+    "english": "jump",
+    "telugu": "దూడు"
+  },
+  {
+    "english": "help",
+    "telugu": "సహాయం చెయ్"
+  },
+  {
+    "english": "love",
+    "telugu": "ప్రేమించు"
+  },
+  {
+    "english": "hate",
+    "telugu": "ద్వేషించు"
+  },
+  {
+    "english": "work",
+    "telugu": "పని చెయ్"
+  },
+  {
+    "english": "go",
+    "telugu": "వెళ్ళు"
+  },
+  {
+    "english": "eat",
+    "telugu": "తిను"
+  },
+  {
+    "english": "run",
+    "telugu": "పరిగెత్తు"
+  },
+  {
+    "english": "come",
+    "telugu": "రా"
+  },
+  {
+    "english": "read",
+    "telugu": "చదువు"
+  },
+  {
+    "english": "write",
+    "telugu": "రాయు"
+  },
+  {
+    "english": "speak",
+    "telugu": "మాట్లాడు"
+  },
+  {
+    "english": "drink",
+    "telugu": "తాగు"
+  },
+  {
+    "english": "sleep",
+    "telugu": "నిద్రపొ"
+  },
+  {
+    "english": "sit",
+    "telugu": "కూర్చో"
+  },
+  {
+    "english": "stand",
+    "telugu": "నిలు"
+  },
+  {
+    "english": "walk",
+    "telugu": "నడుచు"
+  },
+  {
+    "english": "see",
+    "telugu": "చూడు"
+  },
+  {
+    "english": "hear",
+    "telugu": "విను"
+  },
+  {
+    "english": "smile",
+    "telugu": "నవ్వు"
+  },
+  {
+    "english": "cry",
+    "telugu": "ఎడువు"
+  },
+  {
+    "english": "buy",
+    "telugu": "కొను"
+  },
+  {
+    "english": "sell",
+    "telugu": "అమ్ము"
+  },
+  {
+    "english": "open",
+    "telugu": "తెరువు"
+  },
+  {
+    "english": "close",
+    "telugu": "మూసి వేయు"
+  },
+  {
+    "english": "wash",
+    "telugu": "కడుగు"
+  },
+  {
+    "english": "cook",
+    "telugu": "వండు"
+  },
+  {
+    "english": "drive",
+    "telugu": "డ్రైవ్ చెయ్"
+  },
+  {
+    "english": "fly",
+    "telugu": "ఎగురు"
+  },
+  {
+    "english": "swim",
+    "telugu": "ఈదు"
+  },
+  {
+    "english": "jump",
+    "telugu": "దూడు"
+  },
+  {
+    "english": "help",
+    "telugu": "సహాయం చెయ్"
+  },
+  {
+    "english": "love",
+    "telugu": "ప్రేమించు"
+  },
+  {
+    "english": "hate",
+    "telugu": "ద్వేషించు"
+  },
+  {
+    "english": "work",
+    "telugu": "పని చెయ్"
+  },
+  {
+    "english": "go",
+    "telugu": "వెళ్ళు"
+  },
+  {
+    "english": "eat",
+    "telugu": "తిను"
+  },
+  {
+    "english": "run",
+    "telugu": "పరిగెత్తు"
+  },
+  {
+    "english": "come",
+    "telugu": "రా"
+  },
+  {
+    "english": "read",
+    "telugu": "చదువు"
+  },
+  {
+    "english": "write",
+    "telugu": "రాయు"
+  },
+  {
+    "english": "speak",
+    "telugu": "మాట్లాడు"
+  },
+  {
+    "english": "drink",
+    "telugu": "తాగు"
+  },
+  {
+    "english": "sleep",
+    "telugu": "నిద్రపొ"
+  },
+  {
+    "english": "sit",
+    "telugu": "కూర్చో"
+  },
+  {
+    "english": "stand",
+    "telugu": "నిలు"
+  },
+  {
+    "english": "walk",
+    "telugu": "నడుచు"
+  },
+  {
+    "english": "see",
+    "telugu": "చూడు"
+  },
+  {
+    "english": "hear",
+    "telugu": "విను"
+  },
+  {
+    "english": "smile",
+    "telugu": "నవ్వు"
+  },
+  {
+    "english": "cry",
+    "telugu": "ఎడువు"
+  },
+  {
+    "english": "buy",
+    "telugu": "కొను"
+  },
+  {
+    "english": "sell",
+    "telugu": "అమ్ము"
+  },
+  {
+    "english": "open",
+    "telugu": "తెరువు"
+  },
+  {
+    "english": "close",
+    "telugu": "మూసి వేయు"
+  },
+  {
+    "english": "wash",
+    "telugu": "కడుగు"
+  },
+  {
+    "english": "cook",
+    "telugu": "వండు"
+  },
+  {
+    "english": "drive",
+    "telugu": "డ్రైవ్ చెయ్"
+  },
+  {
+    "english": "fly",
+    "telugu": "ఎగురు"
+  },
+  {
+    "english": "swim",
+    "telugu": "ఈదు"
+  },
+  {
+    "english": "jump",
+    "telugu": "దూడు"
+  },
+  {
+    "english": "help",
+    "telugu": "సహాయం చెయ్"
+  },
+  {
+    "english": "love",
+    "telugu": "ప్రేమించు"
+  },
+  {
+    "english": "hate",
+    "telugu": "ద్వేషించు"
+  },
+  {
+    "english": "work",
+    "telugu": "పని చెయ్"
+  }
 ]
 
 @practice_bp.route('/verb', methods=['GET'])
