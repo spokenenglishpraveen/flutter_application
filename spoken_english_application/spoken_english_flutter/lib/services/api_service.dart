@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class ApiService {
-  static const String baseUrl = 'http://127.0.0.1:5000'; // Update if needed
+  static const String baseUrl = 'https://flutter-application-2.onrender.com'; // Update if needed
 
   // GET a random Telugu verb from backend
   static Future<Map<String, String>> getVerb() async {
