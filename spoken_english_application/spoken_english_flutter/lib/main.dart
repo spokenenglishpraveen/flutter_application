@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'screens/home_screen.dart';
+import 'screens/main_screen.dart';
+import 'screens/practice_verbs_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,7 +16,11 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: HomeScreen(), // Removed const here
+      home: const MainScreen(),
+      routes: {
+        '/practice_verbs': (context) => const PracticeVerbsScreen(),
+      },
+      debugShowCheckedModeBanner: false,
     );
   }
 }
