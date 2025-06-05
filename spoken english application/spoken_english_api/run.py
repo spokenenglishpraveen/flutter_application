@@ -1,6 +1,8 @@
 from flask import Flask, jsonify, request, Blueprint
 from flask_cors import CORS
 import random
+from app.main import app  # or wherever your FastAPI or Flask app is
+
 
 practice_bp = Blueprint('practice', __name__)
 
