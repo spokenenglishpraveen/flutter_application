@@ -8,2404 +8,804 @@ practice_bp = Blueprint('practice', __name__)
 
 verbs = [
   {
-    "english": "go",
-    "telugu": "వెళ్ళు"
+    "english": "analyze",
+    "telugu": "విశ్లేషించు"
   },
   {
-    "english": "eat",
-    "telugu": "తిను"
+    "english": "appreciate",
+    "telugu": "అభినందించు"
   },
   {
-    "english": "run",
-    "telugu": "పరిగెత్తు"
+    "english": "negotiate",
+    "telugu": "చర్చించు"
   },
   {
-    "english": "come",
-    "telugu": "రా"
+    "english": "implement",
+    "telugu": "అమలు చేయు"
   },
   {
-    "english": "read",
-    "telugu": "చదువు"
+    "english": "recommend",
+    "telugu": "సూచించు"
   },
   {
-    "english": "write",
-    "telugu": "రాయు"
+    "english": "postpone",
+    "telugu": "వాయిదా వేయు"
   },
   {
-    "english": "speak",
-    "telugu": "మాట్లాడు"
+    "english": "identify",
+    "telugu": "గుర్తించు"
   },
   {
-    "english": "drink",
-    "telugu": "తాగు"
+    "english": "influence",
+    "telugu": "ప్రభావితం చేయు"
   },
   {
-    "english": "sleep",
-    "telugu": "నిద్రపొ"
+    "english": "interrupt",
+    "telugu": "అవరోధించు"
   },
   {
-    "english": "sit",
-    "telugu": "కూర్చో"
+    "english": "contribute",
+    "telugu": "కొందించు"
   },
   {
-    "english": "stand",
-    "telugu": "నిలు"
+    "english": "persuade",
+    "telugu": "ఊహింపజేయు"
   },
   {
-    "english": "walk",
-    "telugu": "నడుచు"
+    "english": "coordinate",
+    "telugu": "సంయోజించు"
   },
   {
-    "english": "see",
-    "telugu": "చూడు"
+    "english": "facilitate",
+    "telugu": "సులభతరం చేయు"
   },
   {
-    "english": "hear",
-    "telugu": "విను"
+    "english": "monitor",
+    "telugu": "పర్యవేక్షించు"
   },
   {
-    "english": "smile",
-    "telugu": "నవ్వు"
+    "english": "evaluate",
+    "telugu": "ఆకలించు"
   },
   {
-    "english": "cry",
-    "telugu": "ఎడువు"
+    "english": "participate",
+    "telugu": "పాల్గొను"
   },
   {
-    "english": "buy",
-    "telugu": "కొను"
+    "english": "communicate",
+    "telugu": "సంప్రేషించు"
   },
   {
-    "english": "sell",
-    "telugu": "అమ్ము"
+    "english": "navigate",
+    "telugu": "దారి చూపు"
   },
   {
-    "english": "open",
-    "telugu": "తెరువు"
+    "english": "collaborate",
+    "telugu": "ఒకటిగా పనిచేయు"
   },
   {
-    "english": "close",
-    "telugu": "మూసి వేయు"
+    "english": "anticipate",
+    "telugu": "అంచనా వేయు"
   },
   {
-    "english": "wash",
-    "telugu": "కడుగు"
+    "english": "analyze",
+    "telugu": "విశ్లేషించు"
   },
   {
-    "english": "cook",
-    "telugu": "వండు"
+    "english": "appreciate",
+    "telugu": "అభినందించు"
   },
   {
-    "english": "drive",
-    "telugu": "డ్రైవ్ చెయ్"
+    "english": "negotiate",
+    "telugu": "చర్చించు"
   },
   {
-    "english": "fly",
-    "telugu": "ఎగురు"
+    "english": "implement",
+    "telugu": "అమలు చేయు"
   },
   {
-    "english": "swim",
-    "telugu": "ఈదు"
+    "english": "recommend",
+    "telugu": "సూచించు"
   },
   {
-    "english": "jump",
-    "telugu": "దూడు"
+    "english": "postpone",
+    "telugu": "వాయిదా వేయు"
   },
   {
-    "english": "help",
-    "telugu": "సహాయం చెయ్"
+    "english": "identify",
+    "telugu": "గుర్తించు"
   },
   {
-    "english": "love",
-    "telugu": "ప్రేమించు"
+    "english": "influence",
+    "telugu": "ప్రభావితం చేయు"
   },
   {
-    "english": "hate",
-    "telugu": "ద్వేషించు"
+    "english": "interrupt",
+    "telugu": "అవరోధించు"
   },
   {
-    "english": "work",
-    "telugu": "పని చెయ్"
+    "english": "contribute",
+    "telugu": "కొందించు"
   },
   {
-    "english": "go",
-    "telugu": "వెళ్ళు"
+    "english": "persuade",
+    "telugu": "ఊహింపజేయు"
   },
   {
-    "english": "eat",
-    "telugu": "తిను"
+    "english": "coordinate",
+    "telugu": "సంయోజించు"
   },
   {
-    "english": "run",
-    "telugu": "పరిగెత్తు"
+    "english": "facilitate",
+    "telugu": "సులభతరం చేయు"
   },
   {
-    "english": "come",
-    "telugu": "రా"
+    "english": "monitor",
+    "telugu": "పర్యవేక్షించు"
   },
   {
-    "english": "read",
-    "telugu": "చదువు"
+    "english": "evaluate",
+    "telugu": "ఆకలించు"
   },
   {
-    "english": "write",
-    "telugu": "రాయు"
+    "english": "participate",
+    "telugu": "పాల్గొను"
   },
   {
-    "english": "speak",
-    "telugu": "మాట్లాడు"
+    "english": "communicate",
+    "telugu": "సంప్రేషించు"
   },
   {
-    "english": "drink",
-    "telugu": "తాగు"
+    "english": "navigate",
+    "telugu": "దారి చూపు"
   },
   {
-    "english": "sleep",
-    "telugu": "నిద్రపొ"
+    "english": "collaborate",
+    "telugu": "ఒకటిగా పనిచేయు"
   },
   {
-    "english": "sit",
-    "telugu": "కూర్చో"
+    "english": "anticipate",
+    "telugu": "అంచనా వేయు"
   },
   {
-    "english": "stand",
-    "telugu": "నిలు"
+    "english": "analyze",
+    "telugu": "విశ్లేషించు"
   },
   {
-    "english": "walk",
-    "telugu": "నడుచు"
+    "english": "appreciate",
+    "telugu": "అభినందించు"
   },
   {
-    "english": "see",
-    "telugu": "చూడు"
+    "english": "negotiate",
+    "telugu": "చర్చించు"
   },
   {
-    "english": "hear",
-    "telugu": "విను"
+    "english": "implement",
+    "telugu": "అమలు చేయు"
   },
   {
-    "english": "smile",
-    "telugu": "నవ్వు"
+    "english": "recommend",
+    "telugu": "సూచించు"
   },
   {
-    "english": "cry",
-    "telugu": "ఎడువు"
+    "english": "postpone",
+    "telugu": "వాయిదా వేయు"
   },
   {
-    "english": "buy",
-    "telugu": "కొను"
+    "english": "identify",
+    "telugu": "గుర్తించు"
   },
   {
-    "english": "sell",
-    "telugu": "అమ్ము"
+    "english": "influence",
+    "telugu": "ప్రభావితం చేయు"
   },
   {
-    "english": "open",
-    "telugu": "తెరువు"
+    "english": "interrupt",
+    "telugu": "అవరోధించు"
   },
   {
-    "english": "close",
-    "telugu": "మూసి వేయు"
+    "english": "contribute",
+    "telugu": "కొందించు"
   },
   {
-    "english": "wash",
-    "telugu": "కడుగు"
+    "english": "persuade",
+    "telugu": "ఊహింపజేయు"
   },
   {
-    "english": "cook",
-    "telugu": "వండు"
+    "english": "coordinate",
+    "telugu": "సంయోజించు"
   },
   {
-    "english": "drive",
-    "telugu": "డ్రైవ్ చెయ్"
+    "english": "facilitate",
+    "telugu": "సులభతరం చేయు"
   },
   {
-    "english": "fly",
-    "telugu": "ఎగురు"
+    "english": "monitor",
+    "telugu": "పర్యవేక్షించు"
   },
   {
-    "english": "swim",
-    "telugu": "ఈదు"
+    "english": "evaluate",
+    "telugu": "ఆకలించు"
   },
   {
-    "english": "jump",
-    "telugu": "దూడు"
+    "english": "participate",
+    "telugu": "పాల్గొను"
   },
   {
-    "english": "help",
-    "telugu": "సహాయం చెయ్"
+    "english": "communicate",
+    "telugu": "సంప్రేషించు"
   },
   {
-    "english": "love",
-    "telugu": "ప్రేమించు"
+    "english": "navigate",
+    "telugu": "దారి చూపు"
   },
   {
-    "english": "hate",
-    "telugu": "ద్వేషించు"
+    "english": "collaborate",
+    "telugu": "ఒకటిగా పనిచేయు"
   },
   {
-    "english": "work",
-    "telugu": "పని చెయ్"
+    "english": "anticipate",
+    "telugu": "అంచనా వేయు"
   },
   {
-    "english": "go",
-    "telugu": "వెళ్ళు"
+    "english": "analyze",
+    "telugu": "విశ్లేషించు"
   },
   {
-    "english": "eat",
-    "telugu": "తిను"
+    "english": "appreciate",
+    "telugu": "అభినందించు"
   },
   {
-    "english": "run",
-    "telugu": "పరిగెత్తు"
+    "english": "negotiate",
+    "telugu": "చర్చించు"
   },
   {
-    "english": "come",
-    "telugu": "రా"
+    "english": "implement",
+    "telugu": "అమలు చేయు"
   },
   {
-    "english": "read",
-    "telugu": "చదువు"
+    "english": "recommend",
+    "telugu": "సూచించు"
   },
   {
-    "english": "write",
-    "telugu": "రాయు"
+    "english": "postpone",
+    "telugu": "వాయిదా వేయు"
   },
   {
-    "english": "speak",
-    "telugu": "మాట్లాడు"
+    "english": "identify",
+    "telugu": "గుర్తించు"
   },
   {
-    "english": "drink",
-    "telugu": "తాగు"
+    "english": "influence",
+    "telugu": "ప్రభావితం చేయు"
   },
   {
-    "english": "sleep",
-    "telugu": "నిద్రపొ"
+    "english": "interrupt",
+    "telugu": "అవరోధించు"
   },
   {
-    "english": "sit",
-    "telugu": "కూర్చో"
+    "english": "contribute",
+    "telugu": "కొందించు"
   },
   {
-    "english": "stand",
-    "telugu": "నిలు"
+    "english": "persuade",
+    "telugu": "ఊహింపజేయు"
   },
   {
-    "english": "walk",
-    "telugu": "నడుచు"
+    "english": "coordinate",
+    "telugu": "సంయోజించు"
   },
   {
-    "english": "see",
-    "telugu": "చూడు"
+    "english": "facilitate",
+    "telugu": "సులభతరం చేయు"
   },
   {
-    "english": "hear",
-    "telugu": "విను"
+    "english": "monitor",
+    "telugu": "పర్యవేక్షించు"
   },
   {
-    "english": "smile",
-    "telugu": "నవ్వు"
+    "english": "evaluate",
+    "telugu": "ఆకలించు"
   },
   {
-    "english": "cry",
-    "telugu": "ఎడువు"
+    "english": "participate",
+    "telugu": "పాల్గొను"
   },
   {
-    "english": "buy",
-    "telugu": "కొను"
+    "english": "communicate",
+    "telugu": "సంప్రేషించు"
   },
   {
-    "english": "sell",
-    "telugu": "అమ్ము"
+    "english": "navigate",
+    "telugu": "దారి చూపు"
   },
   {
-    "english": "open",
-    "telugu": "తెరువు"
+    "english": "collaborate",
+    "telugu": "ఒకటిగా పనిచేయు"
   },
   {
-    "english": "close",
-    "telugu": "మూసి వేయు"
+    "english": "anticipate",
+    "telugu": "అంచనా వేయు"
   },
   {
-    "english": "wash",
-    "telugu": "కడుగు"
+    "english": "analyze",
+    "telugu": "విశ్లేషించు"
   },
   {
-    "english": "cook",
-    "telugu": "వండు"
+    "english": "appreciate",
+    "telugu": "అభినందించు"
   },
   {
-    "english": "drive",
-    "telugu": "డ్రైవ్ చెయ్"
+    "english": "negotiate",
+    "telugu": "చర్చించు"
   },
   {
-    "english": "fly",
-    "telugu": "ఎగురు"
+    "english": "implement",
+    "telugu": "అమలు చేయు"
   },
   {
-    "english": "swim",
-    "telugu": "ఈదు"
+    "english": "recommend",
+    "telugu": "సూచించు"
   },
   {
-    "english": "jump",
-    "telugu": "దూడు"
+    "english": "postpone",
+    "telugu": "వాయిదా వేయు"
   },
   {
-    "english": "help",
-    "telugu": "సహాయం చెయ్"
+    "english": "identify",
+    "telugu": "గుర్తించు"
   },
   {
-    "english": "love",
-    "telugu": "ప్రేమించు"
+    "english": "influence",
+    "telugu": "ప్రభావితం చేయు"
   },
   {
-    "english": "hate",
-    "telugu": "ద్వేషించు"
+    "english": "interrupt",
+    "telugu": "అవరోధించు"
   },
   {
-    "english": "work",
-    "telugu": "పని చెయ్"
+    "english": "contribute",
+    "telugu": "కొందించు"
   },
   {
-    "english": "go",
-    "telugu": "వెళ్ళు"
+    "english": "persuade",
+    "telugu": "ఊహింపజేయు"
   },
   {
-    "english": "eat",
-    "telugu": "తిను"
+    "english": "coordinate",
+    "telugu": "సంయోజించు"
   },
   {
-    "english": "run",
-    "telugu": "పరిగెత్తు"
+    "english": "facilitate",
+    "telugu": "సులభతరం చేయు"
   },
   {
-    "english": "come",
-    "telugu": "రా"
+    "english": "monitor",
+    "telugu": "పర్యవేక్షించు"
   },
   {
-    "english": "read",
-    "telugu": "చదువు"
+    "english": "evaluate",
+    "telugu": "ఆకలించు"
   },
   {
-    "english": "write",
-    "telugu": "రాయు"
+    "english": "participate",
+    "telugu": "పాల్గొను"
   },
   {
-    "english": "speak",
-    "telugu": "మాట్లాడు"
+    "english": "communicate",
+    "telugu": "సంప్రేషించు"
   },
   {
-    "english": "drink",
-    "telugu": "తాగు"
+    "english": "navigate",
+    "telugu": "దారి చూపు"
   },
   {
-    "english": "sleep",
-    "telugu": "నిద్రపొ"
+    "english": "collaborate",
+    "telugu": "ఒకటిగా పనిచేయు"
   },
   {
-    "english": "sit",
-    "telugu": "కూర్చో"
+    "english": "anticipate",
+    "telugu": "అంచనా వేయు"
   },
   {
-    "english": "stand",
-    "telugu": "నిలు"
+    "english": "analyze",
+    "telugu": "విశ్లేషించు"
   },
   {
-    "english": "walk",
-    "telugu": "నడుచు"
+    "english": "appreciate",
+    "telugu": "అభినందించు"
   },
   {
-    "english": "see",
-    "telugu": "చూడు"
+    "english": "negotiate",
+    "telugu": "చర్చించు"
   },
   {
-    "english": "hear",
-    "telugu": "విను"
+    "english": "implement",
+    "telugu": "అమలు చేయు"
   },
   {
-    "english": "smile",
-    "telugu": "నవ్వు"
+    "english": "recommend",
+    "telugu": "సూచించు"
   },
   {
-    "english": "cry",
-    "telugu": "ఎడువు"
+    "english": "postpone",
+    "telugu": "వాయిదా వేయు"
   },
   {
-    "english": "buy",
-    "telugu": "కొను"
+    "english": "identify",
+    "telugu": "గుర్తించు"
   },
   {
-    "english": "sell",
-    "telugu": "అమ్ము"
+    "english": "influence",
+    "telugu": "ప్రభావితం చేయు"
   },
   {
-    "english": "open",
-    "telugu": "తెరువు"
+    "english": "interrupt",
+    "telugu": "అవరోధించు"
   },
   {
-    "english": "close",
-    "telugu": "మూసి వేయు"
+    "english": "contribute",
+    "telugu": "కొందించు"
   },
   {
-    "english": "wash",
-    "telugu": "కడుగు"
+    "english": "persuade",
+    "telugu": "ఊహింపజేయు"
   },
   {
-    "english": "cook",
-    "telugu": "వండు"
+    "english": "coordinate",
+    "telugu": "సంయోజించు"
   },
   {
-    "english": "drive",
-    "telugu": "డ్రైవ్ చెయ్"
+    "english": "facilitate",
+    "telugu": "సులభతరం చేయు"
   },
   {
-    "english": "fly",
-    "telugu": "ఎగురు"
+    "english": "monitor",
+    "telugu": "పర్యవేక్షించు"
   },
   {
-    "english": "swim",
-    "telugu": "ఈదు"
+    "english": "evaluate",
+    "telugu": "ఆకలించు"
   },
   {
-    "english": "jump",
-    "telugu": "దూడు"
+    "english": "participate",
+    "telugu": "పాల్గొను"
   },
   {
-    "english": "help",
-    "telugu": "సహాయం చెయ్"
+    "english": "communicate",
+    "telugu": "సంప్రేషించు"
   },
   {
-    "english": "love",
-    "telugu": "ప్రేమించు"
+    "english": "navigate",
+    "telugu": "దారి చూపు"
   },
   {
-    "english": "hate",
-    "telugu": "ద్వేషించు"
+    "english": "collaborate",
+    "telugu": "ఒకటిగా పనిచేయు"
   },
   {
-    "english": "work",
-    "telugu": "పని చెయ్"
+    "english": "anticipate",
+    "telugu": "అంచనా వేయు"
   },
   {
-    "english": "go",
-    "telugu": "వెళ్ళు"
+    "english": "analyze",
+    "telugu": "విశ్లేషించు"
   },
   {
-    "english": "eat",
-    "telugu": "తిను"
+    "english": "appreciate",
+    "telugu": "అభినందించు"
   },
   {
-    "english": "run",
-    "telugu": "పరిగెత్తు"
+    "english": "negotiate",
+    "telugu": "చర్చించు"
   },
   {
-    "english": "come",
-    "telugu": "రా"
+    "english": "implement",
+    "telugu": "అమలు చేయు"
   },
   {
-    "english": "read",
-    "telugu": "చదువు"
+    "english": "recommend",
+    "telugu": "సూచించు"
   },
   {
-    "english": "write",
-    "telugu": "రాయు"
+    "english": "postpone",
+    "telugu": "వాయిదా వేయు"
   },
   {
-    "english": "speak",
-    "telugu": "మాట్లాడు"
+    "english": "identify",
+    "telugu": "గుర్తించు"
   },
   {
-    "english": "drink",
-    "telugu": "తాగు"
+    "english": "influence",
+    "telugu": "ప్రభావితం చేయు"
   },
   {
-    "english": "sleep",
-    "telugu": "నిద్రపొ"
+    "english": "interrupt",
+    "telugu": "అవరోధించు"
   },
   {
-    "english": "sit",
-    "telugu": "కూర్చో"
+    "english": "contribute",
+    "telugu": "కొందించు"
   },
   {
-    "english": "stand",
-    "telugu": "నిలు"
+    "english": "persuade",
+    "telugu": "ఊహింపజేయు"
   },
   {
-    "english": "walk",
-    "telugu": "నడుచు"
+    "english": "coordinate",
+    "telugu": "సంయోజించు"
   },
   {
-    "english": "see",
-    "telugu": "చూడు"
+    "english": "facilitate",
+    "telugu": "సులభతరం చేయు"
   },
   {
-    "english": "hear",
-    "telugu": "విను"
+    "english": "monitor",
+    "telugu": "పర్యవేక్షించు"
   },
   {
-    "english": "smile",
-    "telugu": "నవ్వు"
+    "english": "evaluate",
+    "telugu": "ఆకలించు"
   },
   {
-    "english": "cry",
-    "telugu": "ఎడువు"
+    "english": "participate",
+    "telugu": "పాల్గొను"
   },
   {
-    "english": "buy",
-    "telugu": "కొను"
+    "english": "communicate",
+    "telugu": "సంప్రేషించు"
   },
   {
-    "english": "sell",
-    "telugu": "అమ్ము"
+    "english": "navigate",
+    "telugu": "దారి చూపు"
   },
   {
-    "english": "open",
-    "telugu": "తెరువు"
+    "english": "collaborate",
+    "telugu": "ఒకటిగా పనిచేయు"
   },
   {
-    "english": "close",
-    "telugu": "మూసి వేయు"
+    "english": "anticipate",
+    "telugu": "అంచనా వేయు"
   },
   {
-    "english": "wash",
-    "telugu": "కడుగు"
+    "english": "analyze",
+    "telugu": "విశ్లేషించు"
   },
   {
-    "english": "cook",
-    "telugu": "వండు"
+    "english": "appreciate",
+    "telugu": "అభినందించు"
   },
   {
-    "english": "drive",
-    "telugu": "డ్రైవ్ చెయ్"
+    "english": "negotiate",
+    "telugu": "చర్చించు"
   },
   {
-    "english": "fly",
-    "telugu": "ఎగురు"
+    "english": "implement",
+    "telugu": "అమలు చేయు"
   },
   {
-    "english": "swim",
-    "telugu": "ఈదు"
+    "english": "recommend",
+    "telugu": "సూచించు"
   },
   {
-    "english": "jump",
-    "telugu": "దూడు"
+    "english": "postpone",
+    "telugu": "వాయిదా వేయు"
   },
   {
-    "english": "help",
-    "telugu": "సహాయం చెయ్"
+    "english": "identify",
+    "telugu": "గుర్తించు"
   },
   {
-    "english": "love",
-    "telugu": "ప్రేమించు"
+    "english": "influence",
+    "telugu": "ప్రభావితం చేయు"
   },
   {
-    "english": "hate",
-    "telugu": "ద్వేషించు"
+    "english": "interrupt",
+    "telugu": "అవరోధించు"
   },
   {
-    "english": "work",
-    "telugu": "పని చెయ్"
+    "english": "contribute",
+    "telugu": "కొందించు"
   },
   {
-    "english": "go",
-    "telugu": "వెళ్ళు"
+    "english": "persuade",
+    "telugu": "ఊహింపజేయు"
   },
   {
-    "english": "eat",
-    "telugu": "తిను"
+    "english": "coordinate",
+    "telugu": "సంయోజించు"
   },
   {
-    "english": "run",
-    "telugu": "పరిగెత్తు"
+    "english": "facilitate",
+    "telugu": "సులభతరం చేయు"
   },
   {
-    "english": "come",
-    "telugu": "రా"
+    "english": "monitor",
+    "telugu": "పర్యవేక్షించు"
   },
   {
-    "english": "read",
-    "telugu": "చదువు"
+    "english": "evaluate",
+    "telugu": "ఆకలించు"
   },
   {
-    "english": "write",
-    "telugu": "రాయు"
+    "english": "participate",
+    "telugu": "పాల్గొను"
   },
   {
-    "english": "speak",
-    "telugu": "మాట్లాడు"
+    "english": "communicate",
+    "telugu": "సంప్రేషించు"
   },
   {
-    "english": "drink",
-    "telugu": "తాగు"
+    "english": "navigate",
+    "telugu": "దారి చూపు"
   },
   {
-    "english": "sleep",
-    "telugu": "నిద్రపొ"
+    "english": "collaborate",
+    "telugu": "ఒకటిగా పనిచేయు"
   },
   {
-    "english": "sit",
-    "telugu": "కూర్చో"
+    "english": "anticipate",
+    "telugu": "అంచనా వేయు"
   },
   {
-    "english": "stand",
-    "telugu": "నిలు"
+    "english": "analyze",
+    "telugu": "విశ్లేషించు"
   },
   {
-    "english": "walk",
-    "telugu": "నడుచు"
+    "english": "appreciate",
+    "telugu": "అభినందించు"
   },
   {
-    "english": "see",
-    "telugu": "చూడు"
+    "english": "negotiate",
+    "telugu": "చర్చించు"
   },
   {
-    "english": "hear",
-    "telugu": "విను"
+    "english": "implement",
+    "telugu": "అమలు చేయు"
   },
   {
-    "english": "smile",
-    "telugu": "నవ్వు"
+    "english": "recommend",
+    "telugu": "సూచించు"
   },
   {
-    "english": "cry",
-    "telugu": "ఎడువు"
+    "english": "postpone",
+    "telugu": "వాయిదా వేయు"
   },
   {
-    "english": "buy",
-    "telugu": "కొను"
+    "english": "identify",
+    "telugu": "గుర్తించు"
   },
   {
-    "english": "sell",
-    "telugu": "అమ్ము"
+    "english": "influence",
+    "telugu": "ప్రభావితం చేయు"
   },
   {
-    "english": "open",
-    "telugu": "తెరువు"
+    "english": "interrupt",
+    "telugu": "అవరోధించు"
   },
   {
-    "english": "close",
-    "telugu": "మూసి వేయు"
+    "english": "contribute",
+    "telugu": "కొందించు"
   },
   {
-    "english": "wash",
-    "telugu": "కడుగు"
+    "english": "persuade",
+    "telugu": "ఊహింపజేయు"
   },
   {
-    "english": "cook",
-    "telugu": "వండు"
+    "english": "coordinate",
+    "telugu": "సంయోజించు"
   },
   {
-    "english": "drive",
-    "telugu": "డ్రైవ్ చెయ్"
+    "english": "facilitate",
+    "telugu": "సులభతరం చేయు"
   },
   {
-    "english": "fly",
-    "telugu": "ఎగురు"
+    "english": "monitor",
+    "telugu": "పర్యవేక్షించు"
   },
   {
-    "english": "swim",
-    "telugu": "ఈదు"
+    "english": "evaluate",
+    "telugu": "ఆకలించు"
   },
   {
-    "english": "jump",
-    "telugu": "దూడు"
+    "english": "participate",
+    "telugu": "పాల్గొను"
   },
   {
-    "english": "help",
-    "telugu": "సహాయం చెయ్"
+    "english": "communicate",
+    "telugu": "సంప్రేషించు"
   },
   {
-    "english": "love",
-    "telugu": "ప్రేమించు"
+    "english": "navigate",
+    "telugu": "దారి చూపు"
   },
   {
-    "english": "hate",
-    "telugu": "ద్వేషించు"
+    "english": "collaborate",
+    "telugu": "ఒకటిగా పనిచేయు"
   },
   {
-    "english": "work",
-    "telugu": "పని చెయ్"
+    "english": "anticipate",
+    "telugu": "అంచనా వేయు"
   },
   {
-    "english": "go",
-    "telugu": "వెళ్ళు"
+    "english": "analyze",
+    "telugu": "విశ్లేషించు"
   },
   {
-    "english": "eat",
-    "telugu": "తిను"
+    "english": "appreciate",
+    "telugu": "అభినందించు"
   },
   {
-    "english": "run",
-    "telugu": "పరిగెత్తు"
+    "english": "negotiate",
+    "telugu": "చర్చించు"
   },
   {
-    "english": "come",
-    "telugu": "రా"
+    "english": "implement",
+    "telugu": "అమలు చేయు"
   },
   {
-    "english": "read",
-    "telugu": "చదువు"
+    "english": "recommend",
+    "telugu": "సూచించు"
   },
   {
-    "english": "write",
-    "telugu": "రాయు"
+    "english": "postpone",
+    "telugu": "వాయిదా వేయు"
   },
   {
-    "english": "speak",
-    "telugu": "మాట్లాడు"
+    "english": "identify",
+    "telugu": "గుర్తించు"
   },
   {
-    "english": "drink",
-    "telugu": "తాగు"
+    "english": "influence",
+    "telugu": "ప్రభావితం చేయు"
   },
   {
-    "english": "sleep",
-    "telugu": "నిద్రపొ"
+    "english": "interrupt",
+    "telugu": "అవరోధించు"
   },
   {
-    "english": "sit",
-    "telugu": "కూర్చో"
+    "english": "contribute",
+    "telugu": "కొందించు"
   },
   {
-    "english": "stand",
-    "telugu": "నిలు"
+    "english": "persuade",
+    "telugu": "ఊహింపజేయు"
   },
   {
-    "english": "walk",
-    "telugu": "నడుచు"
+    "english": "coordinate",
+    "telugu": "సంయోజించు"
   },
   {
-    "english": "see",
-    "telugu": "చూడు"
+    "english": "facilitate",
+    "telugu": "సులభతరం చేయు"
   },
   {
-    "english": "hear",
-    "telugu": "విను"
+    "english": "monitor",
+    "telugu": "పర్యవేక్షించు"
   },
   {
-    "english": "smile",
-    "telugu": "నవ్వు"
+    "english": "evaluate",
+    "telugu": "ఆకలించు"
   },
   {
-    "english": "cry",
-    "telugu": "ఎడువు"
+    "english": "participate",
+    "telugu": "పాల్గొను"
   },
   {
-    "english": "buy",
-    "telugu": "కొను"
+    "english": "communicate",
+    "telugu": "సంప్రేషించు"
   },
   {
-    "english": "sell",
-    "telugu": "అమ్ము"
+    "english": "navigate",
+    "telugu": "దారి చూపు"
   },
   {
-    "english": "open",
-    "telugu": "తెరువు"
+    "english": "collaborate",
+    "telugu": "ఒకటిగా పనిచేయు"
   },
   {
-    "english": "close",
-    "telugu": "మూసి వేయు"
-  },
-  {
-    "english": "wash",
-    "telugu": "కడుగు"
-  },
-  {
-    "english": "cook",
-    "telugu": "వండు"
-  },
-  {
-    "english": "drive",
-    "telugu": "డ్రైవ్ చెయ్"
-  },
-  {
-    "english": "fly",
-    "telugu": "ఎగురు"
-  },
-  {
-    "english": "swim",
-    "telugu": "ఈదు"
-  },
-  {
-    "english": "jump",
-    "telugu": "దూడు"
-  },
-  {
-    "english": "help",
-    "telugu": "సహాయం చెయ్"
-  },
-  {
-    "english": "love",
-    "telugu": "ప్రేమించు"
-  },
-  {
-    "english": "hate",
-    "telugu": "ద్వేషించు"
-  },
-  {
-    "english": "work",
-    "telugu": "పని చెయ్"
-  },
-  {
-    "english": "go",
-    "telugu": "వెళ్ళు"
-  },
-  {
-    "english": "eat",
-    "telugu": "తిను"
-  },
-  {
-    "english": "run",
-    "telugu": "పరిగెత్తు"
-  },
-  {
-    "english": "come",
-    "telugu": "రా"
-  },
-  {
-    "english": "read",
-    "telugu": "చదువు"
-  },
-  {
-    "english": "write",
-    "telugu": "రాయు"
-  },
-  {
-    "english": "speak",
-    "telugu": "మాట్లాడు"
-  },
-  {
-    "english": "drink",
-    "telugu": "తాగు"
-  },
-  {
-    "english": "sleep",
-    "telugu": "నిద్రపొ"
-  },
-  {
-    "english": "sit",
-    "telugu": "కూర్చో"
-  },
-  {
-    "english": "stand",
-    "telugu": "నిలు"
-  },
-  {
-    "english": "walk",
-    "telugu": "నడుచు"
-  },
-  {
-    "english": "see",
-    "telugu": "చూడు"
-  },
-  {
-    "english": "hear",
-    "telugu": "విను"
-  },
-  {
-    "english": "smile",
-    "telugu": "నవ్వు"
-  },
-  {
-    "english": "cry",
-    "telugu": "ఎడువు"
-  },
-  {
-    "english": "buy",
-    "telugu": "కొను"
-  },
-  {
-    "english": "sell",
-    "telugu": "అమ్ము"
-  },
-  {
-    "english": "open",
-    "telugu": "తెరువు"
-  },
-  {
-    "english": "close",
-    "telugu": "మూసి వేయు"
-  },
-  {
-    "english": "wash",
-    "telugu": "కడుగు"
-  },
-  {
-    "english": "cook",
-    "telugu": "వండు"
-  },
-  {
-    "english": "drive",
-    "telugu": "డ్రైవ్ చెయ్"
-  },
-  {
-    "english": "fly",
-    "telugu": "ఎగురు"
-  },
-  {
-    "english": "swim",
-    "telugu": "ఈదు"
-  },
-  {
-    "english": "jump",
-    "telugu": "దూడు"
-  },
-  {
-    "english": "help",
-    "telugu": "సహాయం చెయ్"
-  },
-  {
-    "english": "love",
-    "telugu": "ప్రేమించు"
-  },
-  {
-    "english": "hate",
-    "telugu": "ద్వేషించు"
-  },
-  {
-    "english": "work",
-    "telugu": "పని చెయ్"
-  },
-  {
-    "english": "go",
-    "telugu": "వెళ్ళు"
-  },
-  {
-    "english": "eat",
-    "telugu": "తిను"
-  },
-  {
-    "english": "run",
-    "telugu": "పరిగెత్తు"
-  },
-  {
-    "english": "come",
-    "telugu": "రా"
-  },
-  {
-    "english": "read",
-    "telugu": "చదువు"
-  },
-  {
-    "english": "write",
-    "telugu": "రాయు"
-  },
-  {
-    "english": "speak",
-    "telugu": "మాట్లాడు"
-  },
-  {
-    "english": "drink",
-    "telugu": "తాగు"
-  },
-  {
-    "english": "sleep",
-    "telugu": "నిద్రపొ"
-  },
-  {
-    "english": "sit",
-    "telugu": "కూర్చో"
-  },
-  {
-    "english": "stand",
-    "telugu": "నిలు"
-  },
-  {
-    "english": "walk",
-    "telugu": "నడుచు"
-  },
-  {
-    "english": "see",
-    "telugu": "చూడు"
-  },
-  {
-    "english": "hear",
-    "telugu": "విను"
-  },
-  {
-    "english": "smile",
-    "telugu": "నవ్వు"
-  },
-  {
-    "english": "cry",
-    "telugu": "ఎడువు"
-  },
-  {
-    "english": "buy",
-    "telugu": "కొను"
-  },
-  {
-    "english": "sell",
-    "telugu": "అమ్ము"
-  },
-  {
-    "english": "open",
-    "telugu": "తెరువు"
-  },
-  {
-    "english": "close",
-    "telugu": "మూసి వేయు"
-  },
-  {
-    "english": "wash",
-    "telugu": "కడుగు"
-  },
-  {
-    "english": "cook",
-    "telugu": "వండు"
-  },
-  {
-    "english": "drive",
-    "telugu": "డ్రైవ్ చెయ్"
-  },
-  {
-    "english": "fly",
-    "telugu": "ఎగురు"
-  },
-  {
-    "english": "swim",
-    "telugu": "ఈదు"
-  },
-  {
-    "english": "jump",
-    "telugu": "దూడు"
-  },
-  {
-    "english": "help",
-    "telugu": "సహాయం చెయ్"
-  },
-  {
-    "english": "love",
-    "telugu": "ప్రేమించు"
-  },
-  {
-    "english": "hate",
-    "telugu": "ద్వేషించు"
-  },
-  {
-    "english": "work",
-    "telugu": "పని చెయ్"
-  },
-  {
-    "english": "go",
-    "telugu": "వెళ్ళు"
-  },
-  {
-    "english": "eat",
-    "telugu": "తిను"
-  },
-  {
-    "english": "run",
-    "telugu": "పరిగెత్తు"
-  },
-  {
-    "english": "come",
-    "telugu": "రా"
-  },
-  {
-    "english": "read",
-    "telugu": "చదువు"
-  },
-  {
-    "english": "write",
-    "telugu": "రాయు"
-  },
-  {
-    "english": "speak",
-    "telugu": "మాట్లాడు"
-  },
-  {
-    "english": "drink",
-    "telugu": "తాగు"
-  },
-  {
-    "english": "sleep",
-    "telugu": "నిద్రపొ"
-  },
-  {
-    "english": "sit",
-    "telugu": "కూర్చో"
-  },
-  {
-    "english": "stand",
-    "telugu": "నిలు"
-  },
-  {
-    "english": "walk",
-    "telugu": "నడుచు"
-  },
-  {
-    "english": "see",
-    "telugu": "చూడు"
-  },
-  {
-    "english": "hear",
-    "telugu": "విను"
-  },
-  {
-    "english": "smile",
-    "telugu": "నవ్వు"
-  },
-  {
-    "english": "cry",
-    "telugu": "ఎడువు"
-  },
-  {
-    "english": "buy",
-    "telugu": "కొను"
-  },
-  {
-    "english": "sell",
-    "telugu": "అమ్ము"
-  },
-  {
-    "english": "open",
-    "telugu": "తెరువు"
-  },
-  {
-    "english": "close",
-    "telugu": "మూసి వేయు"
-  },
-  {
-    "english": "wash",
-    "telugu": "కడుగు"
-  },
-  {
-    "english": "cook",
-    "telugu": "వండు"
-  },
-  {
-    "english": "drive",
-    "telugu": "డ్రైవ్ చెయ్"
-  },
-  {
-    "english": "fly",
-    "telugu": "ఎగురు"
-  },
-  {
-    "english": "swim",
-    "telugu": "ఈదు"
-  },
-  {
-    "english": "jump",
-    "telugu": "దూడు"
-  },
-  {
-    "english": "help",
-    "telugu": "సహాయం చెయ్"
-  },
-  {
-    "english": "love",
-    "telugu": "ప్రేమించు"
-  },
-  {
-    "english": "hate",
-    "telugu": "ద్వేషించు"
-  },
-  {
-    "english": "work",
-    "telugu": "పని చెయ్"
-  },
-  {
-    "english": "go",
-    "telugu": "వెళ్ళు"
-  },
-  {
-    "english": "eat",
-    "telugu": "తిను"
-  },
-  {
-    "english": "run",
-    "telugu": "పరిగెత్తు"
-  },
-  {
-    "english": "come",
-    "telugu": "రా"
-  },
-  {
-    "english": "read",
-    "telugu": "చదువు"
-  },
-  {
-    "english": "write",
-    "telugu": "రాయు"
-  },
-  {
-    "english": "speak",
-    "telugu": "మాట్లాడు"
-  },
-  {
-    "english": "drink",
-    "telugu": "తాగు"
-  },
-  {
-    "english": "sleep",
-    "telugu": "నిద్రపొ"
-  },
-  {
-    "english": "sit",
-    "telugu": "కూర్చో"
-  },
-  {
-    "english": "stand",
-    "telugu": "నిలు"
-  },
-  {
-    "english": "walk",
-    "telugu": "నడుచు"
-  },
-  {
-    "english": "see",
-    "telugu": "చూడు"
-  },
-  {
-    "english": "hear",
-    "telugu": "విను"
-  },
-  {
-    "english": "smile",
-    "telugu": "నవ్వు"
-  },
-  {
-    "english": "cry",
-    "telugu": "ఎడువు"
-  },
-  {
-    "english": "buy",
-    "telugu": "కొను"
-  },
-  {
-    "english": "sell",
-    "telugu": "అమ్ము"
-  },
-  {
-    "english": "open",
-    "telugu": "తెరువు"
-  },
-  {
-    "english": "close",
-    "telugu": "మూసి వేయు"
-  },
-  {
-    "english": "wash",
-    "telugu": "కడుగు"
-  },
-  {
-    "english": "cook",
-    "telugu": "వండు"
-  },
-  {
-    "english": "drive",
-    "telugu": "డ్రైవ్ చెయ్"
-  },
-  {
-    "english": "fly",
-    "telugu": "ఎగురు"
-  },
-  {
-    "english": "swim",
-    "telugu": "ఈదు"
-  },
-  {
-    "english": "jump",
-    "telugu": "దూడు"
-  },
-  {
-    "english": "help",
-    "telugu": "సహాయం చెయ్"
-  },
-  {
-    "english": "love",
-    "telugu": "ప్రేమించు"
-  },
-  {
-    "english": "hate",
-    "telugu": "ద్వేషించు"
-  },
-  {
-    "english": "work",
-    "telugu": "పని చెయ్"
-  },
-  {
-    "english": "go",
-    "telugu": "వెళ్ళు"
-  },
-  {
-    "english": "eat",
-    "telugu": "తిను"
-  },
-  {
-    "english": "run",
-    "telugu": "పరిగెత్తు"
-  },
-  {
-    "english": "come",
-    "telugu": "రా"
-  },
-  {
-    "english": "read",
-    "telugu": "చదువు"
-  },
-  {
-    "english": "write",
-    "telugu": "రాయు"
-  },
-  {
-    "english": "speak",
-    "telugu": "మాట్లాడు"
-  },
-  {
-    "english": "drink",
-    "telugu": "తాగు"
-  },
-  {
-    "english": "sleep",
-    "telugu": "నిద్రపొ"
-  },
-  {
-    "english": "sit",
-    "telugu": "కూర్చో"
-  },
-  {
-    "english": "stand",
-    "telugu": "నిలు"
-  },
-  {
-    "english": "walk",
-    "telugu": "నడుచు"
-  },
-  {
-    "english": "see",
-    "telugu": "చూడు"
-  },
-  {
-    "english": "hear",
-    "telugu": "విను"
-  },
-  {
-    "english": "smile",
-    "telugu": "నవ్వు"
-  },
-  {
-    "english": "cry",
-    "telugu": "ఎడువు"
-  },
-  {
-    "english": "buy",
-    "telugu": "కొను"
-  },
-  {
-    "english": "sell",
-    "telugu": "అమ్ము"
-  },
-  {
-    "english": "open",
-    "telugu": "తెరువు"
-  },
-  {
-    "english": "close",
-    "telugu": "మూసి వేయు"
-  },
-  {
-    "english": "wash",
-    "telugu": "కడుగు"
-  },
-  {
-    "english": "cook",
-    "telugu": "వండు"
-  },
-  {
-    "english": "drive",
-    "telugu": "డ్రైవ్ చెయ్"
-  },
-  {
-    "english": "fly",
-    "telugu": "ఎగురు"
-  },
-  {
-    "english": "swim",
-    "telugu": "ఈదు"
-  },
-  {
-    "english": "jump",
-    "telugu": "దూడు"
-  },
-  {
-    "english": "help",
-    "telugu": "సహాయం చెయ్"
-  },
-  {
-    "english": "love",
-    "telugu": "ప్రేమించు"
-  },
-  {
-    "english": "hate",
-    "telugu": "ద్వేషించు"
-  },
-  {
-    "english": "work",
-    "telugu": "పని చెయ్"
-  },
-  {
-    "english": "go",
-    "telugu": "వెళ్ళు"
-  },
-  {
-    "english": "eat",
-    "telugu": "తిను"
-  },
-  {
-    "english": "run",
-    "telugu": "పరిగెత్తు"
-  },
-  {
-    "english": "come",
-    "telugu": "రా"
-  },
-  {
-    "english": "read",
-    "telugu": "చదువు"
-  },
-  {
-    "english": "write",
-    "telugu": "రాయు"
-  },
-  {
-    "english": "speak",
-    "telugu": "మాట్లాడు"
-  },
-  {
-    "english": "drink",
-    "telugu": "తాగు"
-  },
-  {
-    "english": "sleep",
-    "telugu": "నిద్రపొ"
-  },
-  {
-    "english": "sit",
-    "telugu": "కూర్చో"
-  },
-  {
-    "english": "stand",
-    "telugu": "నిలు"
-  },
-  {
-    "english": "walk",
-    "telugu": "నడుచు"
-  },
-  {
-    "english": "see",
-    "telugu": "చూడు"
-  },
-  {
-    "english": "hear",
-    "telugu": "విను"
-  },
-  {
-    "english": "smile",
-    "telugu": "నవ్వు"
-  },
-  {
-    "english": "cry",
-    "telugu": "ఎడువు"
-  },
-  {
-    "english": "buy",
-    "telugu": "కొను"
-  },
-  {
-    "english": "sell",
-    "telugu": "అమ్ము"
-  },
-  {
-    "english": "open",
-    "telugu": "తెరువు"
-  },
-  {
-    "english": "close",
-    "telugu": "మూసి వేయు"
-  },
-  {
-    "english": "wash",
-    "telugu": "కడుగు"
-  },
-  {
-    "english": "cook",
-    "telugu": "వండు"
-  },
-  {
-    "english": "drive",
-    "telugu": "డ్రైవ్ చెయ్"
-  },
-  {
-    "english": "fly",
-    "telugu": "ఎగురు"
-  },
-  {
-    "english": "swim",
-    "telugu": "ఈదు"
-  },
-  {
-    "english": "jump",
-    "telugu": "దూడు"
-  },
-  {
-    "english": "help",
-    "telugu": "సహాయం చెయ్"
-  },
-  {
-    "english": "love",
-    "telugu": "ప్రేమించు"
-  },
-  {
-    "english": "hate",
-    "telugu": "ద్వేషించు"
-  },
-  {
-    "english": "work",
-    "telugu": "పని చెయ్"
-  },
-  {
-    "english": "go",
-    "telugu": "వెళ్ళు"
-  },
-  {
-    "english": "eat",
-    "telugu": "తిను"
-  },
-  {
-    "english": "run",
-    "telugu": "పరిగెత్తు"
-  },
-  {
-    "english": "come",
-    "telugu": "రా"
-  },
-  {
-    "english": "read",
-    "telugu": "చదువు"
-  },
-  {
-    "english": "write",
-    "telugu": "రాయు"
-  },
-  {
-    "english": "speak",
-    "telugu": "మాట్లాడు"
-  },
-  {
-    "english": "drink",
-    "telugu": "తాగు"
-  },
-  {
-    "english": "sleep",
-    "telugu": "నిద్రపొ"
-  },
-  {
-    "english": "sit",
-    "telugu": "కూర్చో"
-  },
-  {
-    "english": "stand",
-    "telugu": "నిలు"
-  },
-  {
-    "english": "walk",
-    "telugu": "నడుచు"
-  },
-  {
-    "english": "see",
-    "telugu": "చూడు"
-  },
-  {
-    "english": "hear",
-    "telugu": "విను"
-  },
-  {
-    "english": "smile",
-    "telugu": "నవ్వు"
-  },
-  {
-    "english": "cry",
-    "telugu": "ఎడువు"
-  },
-  {
-    "english": "buy",
-    "telugu": "కొను"
-  },
-  {
-    "english": "sell",
-    "telugu": "అమ్ము"
-  },
-  {
-    "english": "open",
-    "telugu": "తెరువు"
-  },
-  {
-    "english": "close",
-    "telugu": "మూసి వేయు"
-  },
-  {
-    "english": "wash",
-    "telugu": "కడుగు"
-  },
-  {
-    "english": "cook",
-    "telugu": "వండు"
-  },
-  {
-    "english": "drive",
-    "telugu": "డ్రైవ్ చెయ్"
-  },
-  {
-    "english": "fly",
-    "telugu": "ఎగురు"
-  },
-  {
-    "english": "swim",
-    "telugu": "ఈదు"
-  },
-  {
-    "english": "jump",
-    "telugu": "దూడు"
-  },
-  {
-    "english": "help",
-    "telugu": "సహాయం చెయ్"
-  },
-  {
-    "english": "love",
-    "telugu": "ప్రేమించు"
-  },
-  {
-    "english": "hate",
-    "telugu": "ద్వేషించు"
-  },
-  {
-    "english": "work",
-    "telugu": "పని చెయ్"
-  },
-  {
-    "english": "go",
-    "telugu": "వెళ్ళు"
-  },
-  {
-    "english": "eat",
-    "telugu": "తిను"
-  },
-  {
-    "english": "run",
-    "telugu": "పరిగెత్తు"
-  },
-  {
-    "english": "come",
-    "telugu": "రా"
-  },
-  {
-    "english": "read",
-    "telugu": "చదువు"
-  },
-  {
-    "english": "write",
-    "telugu": "రాయు"
-  },
-  {
-    "english": "speak",
-    "telugu": "మాట్లాడు"
-  },
-  {
-    "english": "drink",
-    "telugu": "తాగు"
-  },
-  {
-    "english": "sleep",
-    "telugu": "నిద్రపొ"
-  },
-  {
-    "english": "sit",
-    "telugu": "కూర్చో"
-  },
-  {
-    "english": "stand",
-    "telugu": "నిలు"
-  },
-  {
-    "english": "walk",
-    "telugu": "నడుచు"
-  },
-  {
-    "english": "see",
-    "telugu": "చూడు"
-  },
-  {
-    "english": "hear",
-    "telugu": "విను"
-  },
-  {
-    "english": "smile",
-    "telugu": "నవ్వు"
-  },
-  {
-    "english": "cry",
-    "telugu": "ఎడువు"
-  },
-  {
-    "english": "buy",
-    "telugu": "కొను"
-  },
-  {
-    "english": "sell",
-    "telugu": "అమ్ము"
-  },
-  {
-    "english": "open",
-    "telugu": "తెరువు"
-  },
-  {
-    "english": "close",
-    "telugu": "మూసి వేయు"
-  },
-  {
-    "english": "wash",
-    "telugu": "కడుగు"
-  },
-  {
-    "english": "cook",
-    "telugu": "వండు"
-  },
-  {
-    "english": "drive",
-    "telugu": "డ్రైవ్ చెయ్"
-  },
-  {
-    "english": "fly",
-    "telugu": "ఎగురు"
-  },
-  {
-    "english": "swim",
-    "telugu": "ఈదు"
-  },
-  {
-    "english": "jump",
-    "telugu": "దూడు"
-  },
-  {
-    "english": "help",
-    "telugu": "సహాయం చెయ్"
-  },
-  {
-    "english": "love",
-    "telugu": "ప్రేమించు"
-  },
-  {
-    "english": "hate",
-    "telugu": "ద్వేషించు"
-  },
-  {
-    "english": "work",
-    "telugu": "పని చెయ్"
-  },
-  {
-    "english": "go",
-    "telugu": "వెళ్ళు"
-  },
-  {
-    "english": "eat",
-    "telugu": "తిను"
-  },
-  {
-    "english": "run",
-    "telugu": "పరిగెత్తు"
-  },
-  {
-    "english": "come",
-    "telugu": "రా"
-  },
-  {
-    "english": "read",
-    "telugu": "చదువు"
-  },
-  {
-    "english": "write",
-    "telugu": "రాయు"
-  },
-  {
-    "english": "speak",
-    "telugu": "మాట్లాడు"
-  },
-  {
-    "english": "drink",
-    "telugu": "తాగు"
-  },
-  {
-    "english": "sleep",
-    "telugu": "నిద్రపొ"
-  },
-  {
-    "english": "sit",
-    "telugu": "కూర్చో"
-  },
-  {
-    "english": "stand",
-    "telugu": "నిలు"
-  },
-  {
-    "english": "walk",
-    "telugu": "నడుచు"
-  },
-  {
-    "english": "see",
-    "telugu": "చూడు"
-  },
-  {
-    "english": "hear",
-    "telugu": "విను"
-  },
-  {
-    "english": "smile",
-    "telugu": "నవ్వు"
-  },
-  {
-    "english": "cry",
-    "telugu": "ఎడువు"
-  },
-  {
-    "english": "buy",
-    "telugu": "కొను"
-  },
-  {
-    "english": "sell",
-    "telugu": "అమ్ము"
-  },
-  {
-    "english": "open",
-    "telugu": "తెరువు"
-  },
-  {
-    "english": "close",
-    "telugu": "మూసి వేయు"
-  },
-  {
-    "english": "wash",
-    "telugu": "కడుగు"
-  },
-  {
-    "english": "cook",
-    "telugu": "వండు"
-  },
-  {
-    "english": "drive",
-    "telugu": "డ్రైవ్ చెయ్"
-  },
-  {
-    "english": "fly",
-    "telugu": "ఎగురు"
-  },
-  {
-    "english": "swim",
-    "telugu": "ఈదు"
-  },
-  {
-    "english": "jump",
-    "telugu": "దూడు"
-  },
-  {
-    "english": "help",
-    "telugu": "సహాయం చెయ్"
-  },
-  {
-    "english": "love",
-    "telugu": "ప్రేమించు"
-  },
-  {
-    "english": "hate",
-    "telugu": "ద్వేషించు"
-  },
-  {
-    "english": "work",
-    "telugu": "పని చెయ్"
-  },
-  {
-    "english": "go",
-    "telugu": "వెళ్ళు"
-  },
-  {
-    "english": "eat",
-    "telugu": "తిను"
-  },
-  {
-    "english": "run",
-    "telugu": "పరిగెత్తు"
-  },
-  {
-    "english": "come",
-    "telugu": "రా"
-  },
-  {
-    "english": "read",
-    "telugu": "చదువు"
-  },
-  {
-    "english": "write",
-    "telugu": "రాయు"
-  },
-  {
-    "english": "speak",
-    "telugu": "మాట్లాడు"
-  },
-  {
-    "english": "drink",
-    "telugu": "తాగు"
-  },
-  {
-    "english": "sleep",
-    "telugu": "నిద్రపొ"
-  },
-  {
-    "english": "sit",
-    "telugu": "కూర్చో"
-  },
-  {
-    "english": "stand",
-    "telugu": "నిలు"
-  },
-  {
-    "english": "walk",
-    "telugu": "నడుచు"
-  },
-  {
-    "english": "see",
-    "telugu": "చూడు"
-  },
-  {
-    "english": "hear",
-    "telugu": "విను"
-  },
-  {
-    "english": "smile",
-    "telugu": "నవ్వు"
-  },
-  {
-    "english": "cry",
-    "telugu": "ఎడువు"
-  },
-  {
-    "english": "buy",
-    "telugu": "కొను"
-  },
-  {
-    "english": "sell",
-    "telugu": "అమ్ము"
-  },
-  {
-    "english": "open",
-    "telugu": "తెరువు"
-  },
-  {
-    "english": "close",
-    "telugu": "మూసి వేయు"
-  },
-  {
-    "english": "wash",
-    "telugu": "కడుగు"
-  },
-  {
-    "english": "cook",
-    "telugu": "వండు"
-  },
-  {
-    "english": "drive",
-    "telugu": "డ్రైవ్ చెయ్"
-  },
-  {
-    "english": "fly",
-    "telugu": "ఎగురు"
-  },
-  {
-    "english": "swim",
-    "telugu": "ఈదు"
-  },
-  {
-    "english": "jump",
-    "telugu": "దూడు"
-  },
-  {
-    "english": "help",
-    "telugu": "సహాయం చెయ్"
-  },
-  {
-    "english": "love",
-    "telugu": "ప్రేమించు"
-  },
-  {
-    "english": "hate",
-    "telugu": "ద్వేషించు"
-  },
-  {
-    "english": "work",
-    "telugu": "పని చెయ్"
-  },
-  {
-    "english": "go",
-    "telugu": "వెళ్ళు"
-  },
-  {
-    "english": "eat",
-    "telugu": "తిను"
-  },
-  {
-    "english": "run",
-    "telugu": "పరిగెత్తు"
-  },
-  {
-    "english": "come",
-    "telugu": "రా"
-  },
-  {
-    "english": "read",
-    "telugu": "చదువు"
-  },
-  {
-    "english": "write",
-    "telugu": "రాయు"
-  },
-  {
-    "english": "speak",
-    "telugu": "మాట్లాడు"
-  },
-  {
-    "english": "drink",
-    "telugu": "తాగు"
-  },
-  {
-    "english": "sleep",
-    "telugu": "నిద్రపొ"
-  },
-  {
-    "english": "sit",
-    "telugu": "కూర్చో"
-  },
-  {
-    "english": "stand",
-    "telugu": "నిలు"
-  },
-  {
-    "english": "walk",
-    "telugu": "నడుచు"
-  },
-  {
-    "english": "see",
-    "telugu": "చూడు"
-  },
-  {
-    "english": "hear",
-    "telugu": "విను"
-  },
-  {
-    "english": "smile",
-    "telugu": "నవ్వు"
-  },
-  {
-    "english": "cry",
-    "telugu": "ఎడువు"
-  },
-  {
-    "english": "buy",
-    "telugu": "కొను"
-  },
-  {
-    "english": "sell",
-    "telugu": "అమ్ము"
-  },
-  {
-    "english": "open",
-    "telugu": "తెరువు"
-  },
-  {
-    "english": "close",
-    "telugu": "మూసి వేయు"
-  },
-  {
-    "english": "wash",
-    "telugu": "కడుగు"
-  },
-  {
-    "english": "cook",
-    "telugu": "వండు"
-  },
-  {
-    "english": "drive",
-    "telugu": "డ్రైవ్ చెయ్"
-  },
-  {
-    "english": "fly",
-    "telugu": "ఎగురు"
-  },
-  {
-    "english": "swim",
-    "telugu": "ఈదు"
-  },
-  {
-    "english": "jump",
-    "telugu": "దూడు"
-  },
-  {
-    "english": "help",
-    "telugu": "సహాయం చెయ్"
-  },
-  {
-    "english": "love",
-    "telugu": "ప్రేమించు"
-  },
-  {
-    "english": "hate",
-    "telugu": "ద్వేషించు"
-  },
-  {
-    "english": "work",
-    "telugu": "పని చెయ్"
-  },
-  {
-    "english": "go",
-    "telugu": "వెళ్ళు"
-  },
-  {
-    "english": "eat",
-    "telugu": "తిను"
-  },
-  {
-    "english": "run",
-    "telugu": "పరిగెత్తు"
-  },
-  {
-    "english": "come",
-    "telugu": "రా"
-  },
-  {
-    "english": "read",
-    "telugu": "చదువు"
-  },
-  {
-    "english": "write",
-    "telugu": "రాయు"
-  },
-  {
-    "english": "speak",
-    "telugu": "మాట్లాడు"
-  },
-  {
-    "english": "drink",
-    "telugu": "తాగు"
-  },
-  {
-    "english": "sleep",
-    "telugu": "నిద్రపొ"
-  },
-  {
-    "english": "sit",
-    "telugu": "కూర్చో"
-  },
-  {
-    "english": "stand",
-    "telugu": "నిలు"
-  },
-  {
-    "english": "walk",
-    "telugu": "నడుచు"
-  },
-  {
-    "english": "see",
-    "telugu": "చూడు"
-  },
-  {
-    "english": "hear",
-    "telugu": "విను"
-  },
-  {
-    "english": "smile",
-    "telugu": "నవ్వు"
-  },
-  {
-    "english": "cry",
-    "telugu": "ఎడువు"
-  },
-  {
-    "english": "buy",
-    "telugu": "కొను"
-  },
-  {
-    "english": "sell",
-    "telugu": "అమ్ము"
-  },
-  {
-    "english": "open",
-    "telugu": "తెరువు"
-  },
-  {
-    "english": "close",
-    "telugu": "మూసి వేయు"
-  },
-  {
-    "english": "wash",
-    "telugu": "కడుగు"
-  },
-  {
-    "english": "cook",
-    "telugu": "వండు"
-  },
-  {
-    "english": "drive",
-    "telugu": "డ్రైవ్ చెయ్"
-  },
-  {
-    "english": "fly",
-    "telugu": "ఎగురు"
-  },
-  {
-    "english": "swim",
-    "telugu": "ఈదు"
-  },
-  {
-    "english": "jump",
-    "telugu": "దూడు"
-  },
-  {
-    "english": "help",
-    "telugu": "సహాయం చెయ్"
-  },
-  {
-    "english": "love",
-    "telugu": "ప్రేమించు"
-  },
-  {
-    "english": "hate",
-    "telugu": "ద్వేషించు"
-  },
-  {
-    "english": "work",
-    "telugu": "పని చెయ్"
-  },
-  {
-    "english": "go",
-    "telugu": "వెళ్ళు"
-  },
-  {
-    "english": "eat",
-    "telugu": "తిను"
-  },
-  {
-    "english": "run",
-    "telugu": "పరిగెత్తు"
-  },
-  {
-    "english": "come",
-    "telugu": "రా"
-  },
-  {
-    "english": "read",
-    "telugu": "చదువు"
-  },
-  {
-    "english": "write",
-    "telugu": "రాయు"
-  },
-  {
-    "english": "speak",
-    "telugu": "మాట్లాడు"
-  },
-  {
-    "english": "drink",
-    "telugu": "తాగు"
-  },
-  {
-    "english": "sleep",
-    "telugu": "నిద్రపొ"
-  },
-  {
-    "english": "sit",
-    "telugu": "కూర్చో"
-  },
-  {
-    "english": "stand",
-    "telugu": "నిలు"
-  },
-  {
-    "english": "walk",
-    "telugu": "నడుచు"
-  },
-  {
-    "english": "see",
-    "telugu": "చూడు"
-  },
-  {
-    "english": "hear",
-    "telugu": "విను"
-  },
-  {
-    "english": "smile",
-    "telugu": "నవ్వు"
-  },
-  {
-    "english": "cry",
-    "telugu": "ఎడువు"
-  },
-  {
-    "english": "buy",
-    "telugu": "కొను"
-  },
-  {
-    "english": "sell",
-    "telugu": "అమ్ము"
-  },
-  {
-    "english": "open",
-    "telugu": "తెరువు"
-  },
-  {
-    "english": "close",
-    "telugu": "మూసి వేయు"
-  },
-  {
-    "english": "wash",
-    "telugu": "కడుగు"
-  },
-  {
-    "english": "cook",
-    "telugu": "వండు"
-  },
-  {
-    "english": "drive",
-    "telugu": "డ్రైవ్ చెయ్"
-  },
-  {
-    "english": "fly",
-    "telugu": "ఎగురు"
-  },
-  {
-    "english": "swim",
-    "telugu": "ఈదు"
-  },
-  {
-    "english": "jump",
-    "telugu": "దూడు"
-  },
-  {
-    "english": "help",
-    "telugu": "సహాయం చెయ్"
-  },
-  {
-    "english": "love",
-    "telugu": "ప్రేమించు"
-  },
-  {
-    "english": "hate",
-    "telugu": "ద్వేషించు"
-  },
-  {
-    "english": "work",
-    "telugu": "పని చెయ్"
+    "english": "anticipate",
+    "telugu": "అంచనా వేయు"
   }
 ]
 
