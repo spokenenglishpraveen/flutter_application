@@ -87,14 +87,14 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-
     return Scaffold(
+      backgroundColor: const Color(0xFFF5F9FF), // Light bright background
       appBar: AppBar(
         title: const Text('🗣️ Spoken English Practice'),
-        backgroundColor: theme.colorScheme.primary,
-        foregroundColor: theme.colorScheme.onPrimary,
+        backgroundColor: const Color(0xFF1976D2), // Bright blue
+        foregroundColor: Colors.white,
         centerTitle: true,
+        elevation: 4,
       ),
       body: SafeArea(
         child: Padding(
@@ -104,15 +104,20 @@ class _HomeScreenState extends State<HomeScreen> {
             children: [
               Text(
                 'Translate this Telugu verb:',
-                style: theme.textTheme.titleMedium?.copyWith(fontSize: 20),
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.w600,
+                  color: Colors.grey[800],
+                ),
               ),
               const SizedBox(height: 12),
               Center(
                 child: Text(
                   _teluguVerb,
-                  style: theme.textTheme.headlineMedium?.copyWith(
+                  style: const TextStyle(
+                    fontSize: 32,
                     fontWeight: FontWeight.bold,
-                    color: theme.colorScheme.primary,
+                    color: Color(0xFF0D47A1),
                   ),
                 ),
               ),
@@ -121,9 +126,13 @@ class _HomeScreenState extends State<HomeScreen> {
                 onChanged: (value) => _userAnswer = value,
                 decoration: InputDecoration(
                   labelText: 'Your English Translation',
+                  labelStyle: TextStyle(color: Colors.grey[700]),
                   filled: true,
-                  fillColor: theme.colorScheme.surfaceVariant.withOpacity(0.3),
-                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
+                  fillColor: Colors.white,
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12),
+                    borderSide: const BorderSide(color: Colors.blueAccent),
+                  ),
                 ),
               ),
               const SizedBox(height: 20),
@@ -137,26 +146,51 @@ class _HomeScreenState extends State<HomeScreen> {
                     icon: const Icon(Icons.arrow_back),
                     label: const Text('Previous'),
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: theme.colorScheme.secondary,
+                      backgroundColor: const Color(0xFF64B5F6),
+                      foregroundColor: Colors.white,
+                      elevation: 3,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
                     ),
                   ),
                   ElevatedButton.icon(
                     onPressed: _goNext,
                     icon: const Icon(Icons.arrow_forward),
                     label: const Text('Next'),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: const Color(0xFF42A5F5),
+                      foregroundColor: Colors.white,
+                      elevation: 3,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                    ),
                   ),
                   ElevatedButton.icon(
                     onPressed: _checkAnswer,
                     icon: const Icon(Icons.check),
                     label: const Text('Check'),
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: theme.colorScheme.tertiary,
+                      backgroundColor: const Color(0xFF66BB6A),
+                      foregroundColor: Colors.white,
+                      elevation: 3,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
                     ),
                   ),
                   OutlinedButton.icon(
                     onPressed: _revealAnswer,
                     icon: const Icon(Icons.visibility),
                     label: const Text('Reveal'),
+                    style: OutlinedButton.styleFrom(
+                      foregroundColor: const Color(0xFF1976D2),
+                      side: const BorderSide(color: Color(0xFF1976D2)),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                    ),
                   ),
                 ],
               ),
@@ -167,8 +201,8 @@ class _HomeScreenState extends State<HomeScreen> {
                     _feedbackMessage,
                     style: TextStyle(
                       color: _feedbackMessage.contains("Correct")
-                          ? Colors.green
-                          : Colors.red,
+                          ? Colors.green[700]
+                          : Colors.red[700],
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
                     ),
@@ -193,7 +227,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             style: const TextStyle(
                               fontSize: 22,
                               fontWeight: FontWeight.bold,
-                              color: Colors.blueAccent,
+                              color: Colors.deepPurple,
                             ),
                           ),
                         ),
