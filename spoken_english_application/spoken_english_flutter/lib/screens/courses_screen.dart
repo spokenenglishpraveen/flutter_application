@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 
-class DownloadsScreen extends StatelessWidget {
-  const DownloadsScreen({super.key});
+class CoursesScreen extends StatelessWidget {
+  const CoursesScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Downloads'),
-        backgroundColor: Colors.blue,
+        title: const Text('Courses'),
+        centerTitle: true,
       ),
       body: const Center(
         child: Text(
-          '📥 Your downloads will appear here.',
+          'Courses Content Goes Here',
           style: TextStyle(fontSize: 18),
         ),
       ),
