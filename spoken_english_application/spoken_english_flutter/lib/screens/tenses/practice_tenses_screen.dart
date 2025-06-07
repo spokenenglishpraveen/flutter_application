@@ -1,3 +1,4 @@
+// practice_tenses_screen.dart
 import 'package:flutter/material.dart';
 import '../../services/api_service.dart';
 
@@ -9,131 +10,99 @@ class PracticeTensesScreen extends StatefulWidget {
 }
 
 class _PracticeTensesScreenState extends State<PracticeTensesScreen> {
-  String selectedTense = 'present'; // Default tense
-  final List<String> tenses = ['present', 'past', 'future'];
-  List<Map<String, String>> sentenceList = [];
-  int currentIndex = 0;
-
-  String userInput = '';
+  final List<String> tenses = ['Simple Present', 'Simple Past', 'Simple Future'];
+  String selectedTense = 'Simple Present';
+  Map<String, String>? currentSentence;
+  final TextEditingController _controller = TextEditingController();
   String feedback = '';
-  bool showCorrectAnswer = false;
+  String correctAnswer = '';
 
   @override
   void initState() {
     super.initState();
-    loadSentences();
+    fetchTense();
   }
 
-  Future<void> loadSentences() async {
-    final sentence = await ApiService.getTense(selectedTense);
+  Future<void> fetchTense() async {
+    final tenseKey = selectedTense.toLowerCase().replaceAll('simple ', '');
+    final data = await ApiService.getTense(tenseKey);
     setState(() {
-      sentenceList = [sentence];
-      currentIndex = 0;
+      currentSentence = data;
       feedback = '';
-      userInput = '';
-      showCorrectAnswer = false;
+      correctAnswer = '';
+      _controller.clear();
     });
-  }
-
-  void nextSentence() async {
-    final newSentence = await ApiService.getTense(selectedTense);
-    setState(() {
-      sentenceList.add(newSentence);
-      currentIndex++;
-      userInput = '';
-      feedback = '';
-      showCorrectAnswer = false;
-    });
-  }
-
-  void previousSentence() {
-    if (currentIndex > 0) {
-      setState(() {
-        currentIndex--;
-        userInput = '';
-        feedback = '';
-        showCorrectAnswer = false;
-      });
-    }
   }
 
   Future<void> checkAnswer() async {
-    final telugu = sentenceList[currentIndex]['telugu'];
-    final correct = await ApiService.checkTenseAnswer(telugu!, userInput);
+    if (currentSentence == null) return;
+    final isCorrect = await ApiService.checkTenseAnswer(
+      currentSentence!.keys.first,
+      _controller.text.trim(),
+    );
     setState(() {
-      feedback = correct ? '✅ Correct!' : '❌ Wrong. Try again.';
+      feedback = isCorrect ? '✅ Correct!' : '❌ Try Again';
     });
   }
 
-  Future<void> revealAnswer() async {
-    final telugu = sentenceList[currentIndex]['telugu'];
-    final answer = await ApiService.getTenseAnswer(telugu!);
+  Future<void> showAnswer() async {
+    if (currentSentence == null) return;
+    final tenseKey = selectedTense.toLowerCase().replaceAll('simple ', '');
+    final data = await ApiService.getTenseAnswer(currentSentence!.keys.first, tenseKey);
     setState(() {
-      sentenceList[currentIndex] = answer;
-      showCorrectAnswer = true;
+      correctAnswer = data.values.first;
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    final currentSentence = sentenceList.isNotEmpty ? sentenceList[currentIndex] : null;
-
     return Scaffold(
       appBar: AppBar(title: const Text('Practice Tenses')),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             DropdownButton<String>(
               value: selectedTense,
-              items: tenses
-                  .map((tense) => DropdownMenuItem(
-                        value: tense,
-                        child: Text(tense.toUpperCase()),
-                      ))
-                  .toList(),
+              items: tenses.map((tense) {
+                return DropdownMenuItem(
+                  value: tense,
+                  child: Text(tense),
+                );
+              }).toList(),
               onChanged: (value) {
-                setState(() {
-                  selectedTense = value!;
-                });
-                loadSentences();
+                if (value != null) {
+                  setState(() => selectedTense = value);
+                  fetchTense();
+                }
               },
             ),
             const SizedBox(height: 20),
             if (currentSentence != null)
-              Text(
-                'Translate this Telugu sentence:',
-                style: const TextStyle(fontWeight: FontWeight.bold),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text('Translate this:', style: Theme.of(context).textTheme.titleMedium),
+                  const SizedBox(height: 8),
+                  Text(currentSentence!.keys.first, style: const TextStyle(fontSize: 20)),
+                  const SizedBox(height: 20),
+                  TextField(
+                    controller: _controller,
+                    decoration: const InputDecoration(
+                      border: OutlineInputBorder(),
+                      labelText: 'Your answer',
+                    ),
+                  ),
+                  const SizedBox(height: 12),
+                  ElevatedButton(onPressed: checkAnswer, child: const Text('Check')),
+                  if (feedback.isNotEmpty) Text(feedback, style: const TextStyle(fontSize: 16)),
+                  const SizedBox(height: 12),
+                  ElevatedButton(onPressed: showAnswer, child: const Text('Show Answer')),
+                  if (correctAnswer.isNotEmpty)
+                    Text('Answer: $correctAnswer', style: const TextStyle(fontSize: 16, color: Colors.blue))
+                ],
               ),
-            const SizedBox(height: 10),
-            if (currentSentence != null)
-              Text(
-                '"${currentSentence['telugu']}"',
-                style: const TextStyle(fontSize: 18),
-              ),
-            const SizedBox(height: 20),
-            TextField(
-              decoration: const InputDecoration(
-                labelText: 'Your English Translation',
-                border: OutlineInputBorder(),
-              ),
-              onChanged: (value) => userInput = value,
-            ),
-            const SizedBox(height: 10),
-            Text(feedback, style: const TextStyle(fontSize: 16)),
-            const SizedBox(height: 10),
-            if (showCorrectAnswer && currentSentence != null)
-              Text('Correct Answer: ${currentSentence['english']}', style: const TextStyle(color: Colors.green)),
-            const SizedBox(height: 20),
-            Wrap(
-              spacing: 10,
-              children: [
-                ElevatedButton(onPressed: checkAnswer, child: const Text('Check Answer')),
-                ElevatedButton(onPressed: revealAnswer, child: const Text('Show Answer')),
-                ElevatedButton(onPressed: previousSentence, child: const Text('Previous')),
-                ElevatedButton(onPressed: nextSentence, child: const Text('Next')),
-              ],
-            )
           ],
         ),
       ),

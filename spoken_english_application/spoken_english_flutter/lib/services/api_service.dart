@@ -1,3 +1,4 @@
+// api_service.dart
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
@@ -70,7 +71,6 @@ class ApiService {
   }
 
   static Future<Map<String, String>> getVocabularyAnswer(String teluguWord) async {
-    // Simulate by returning the word from the same endpoint
     final response = await http.get(Uri.parse('$baseUrl/vocabulary/practice'));
     if (response.statusCode == 200) {
       return Map<String, String>.from(json.decode(response.body));
@@ -107,9 +107,8 @@ class ApiService {
     }
   }
 
-  static Future<Map<String, String>> getTenseAnswer(String teluguSentence) async {
-    // Simulate by returning the sentence again from /tenses/practice (like in verbs)
-    final response = await http.get(Uri.parse('$baseUrl/tenses/practice?tense=present'));
+  static Future<Map<String, String>> getTenseAnswer(String teluguSentence, String tense) async {
+    final response = await http.get(Uri.parse('$baseUrl/tenses/practice?tense=$tense'));
     if (response.statusCode == 200) {
       return Map<String, String>.from(json.decode(response.body));
     } else {
