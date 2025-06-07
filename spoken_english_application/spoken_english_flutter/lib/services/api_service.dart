@@ -1,86 +1,20 @@
-// api_service.dart
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class ApiService {
   static const String baseUrl = 'https://flutter-application-2.onrender.com';
 
-  // VERBS
-  static Future<Map<String, String>> getVerb() async {
-    final response = await http.get(Uri.parse('$baseUrl/verb'));
+  // Get list of available tenses
+  static Future<List<String>> getTenseList() async {
+    final response = await http.get(Uri.parse('$baseUrl/tenses'));
     if (response.statusCode == 200) {
-      return Map<String, String>.from(json.decode(response.body));
+      return List<String>.from(json.decode(response.body));
     } else {
-      throw Exception('Failed to load verb');
+      throw Exception('Failed to load tenses list');
     }
   }
 
-  static Future<bool> checkAnswer(String teluguVerb, String englishAnswer) async {
-    final response = await http.post(
-      Uri.parse('$baseUrl/check'),
-      headers: {'Content-Type': 'application/json'},
-      body: json.encode({
-        'telugu_verb': teluguVerb,
-        'user_translation': englishAnswer,
-      }),
-    );
-
-    if (response.statusCode == 200) {
-      final result = json.decode(response.body);
-      return result['correct'] == true;
-    } else {
-      throw Exception('Failed to check answer');
-    }
-  }
-
-  static Future<Map<String, String>> getVerbAnswer(String teluguVerb) async {
-    final response = await http.get(Uri.parse('$baseUrl/verb_answer?telugu=$teluguVerb'));
-    if (response.statusCode == 200) {
-      return Map<String, String>.from(json.decode(response.body));
-    } else {
-      throw Exception('Failed to load answer');
-    }
-  }
-
-  // VOCABULARY
-  static Future<Map<String, String>> getVocabulary() async {
-    final response = await http.get(Uri.parse('$baseUrl/vocabulary/practice'));
-    if (response.statusCode == 200) {
-      return Map<String, String>.from(json.decode(response.body));
-    } else {
-      throw Exception('Failed to load vocabulary word');
-    }
-  }
-
-  static Future<bool> checkVocabularyAnswer(String teluguWord, String englishAnswer) async {
-    final response = await http.post(
-      Uri.parse('$baseUrl/vocabulary/check'),
-      headers: {'Content-Type': 'application/json'},
-      body: json.encode({
-        'telugu_word': teluguWord,
-        'user_translation': englishAnswer,
-      }),
-    );
-
-    if (response.statusCode == 200) {
-      final result = json.decode(response.body);
-      return result['correct'] == true;
-    } else {
-      throw Exception('Failed to check vocabulary answer');
-    }
-  }
-
-  static Future<Map<String, String>> getVocabularyAnswer(String teluguWord) async {
-    final response = await http.get(Uri.parse('$baseUrl/vocabulary/practice'));
-    if (response.statusCode == 200) {
-      return Map<String, String>.from(json.decode(response.body));
-    } else {
-      throw Exception('Failed to load vocabulary answer');
-    }
-  }
-
-  // TENSES
-  static Future<Map<String, String>> getTense(String tense) async {
+  static Future<Map<String, String>> getTenseSentence(String tense) async {
     final response = await http.get(Uri.parse('$baseUrl/tenses/practice?tense=$tense'));
     if (response.statusCode == 200) {
       return Map<String, String>.from(json.decode(response.body));
@@ -98,7 +32,6 @@ class ApiService {
         'user_translation': englishAnswer,
       }),
     );
-
     if (response.statusCode == 200) {
       final result = json.decode(response.body);
       return result['correct'] == true;
@@ -107,8 +40,8 @@ class ApiService {
     }
   }
 
-  static Future<Map<String, String>> getTenseAnswer(String teluguSentence, String tense) async {
-    final response = await http.get(Uri.parse('$baseUrl/tenses/practice?tense=$tense'));
+  static Future<Map<String, String>> getTenseAnswer(String teluguSentence) async {
+    final response = await http.get(Uri.parse('$baseUrl/tenses/answer?telugu=$teluguSentence'));
     if (response.statusCode == 200) {
       return Map<String, String>.from(json.decode(response.body));
     } else {
