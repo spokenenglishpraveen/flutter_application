@@ -1,163 +1,115 @@
-import 'package:flutter/material.dart';
-import '../../services/api_service.dart';
+from flask import Flask, jsonify, request, Blueprint
+from flask_cors import CORS
+import random
 
-class PracticeTensesScreen extends StatefulWidget {
-  const PracticeTensesScreen({super.key});
+# Import data from separate files
+from data.verbs_data import verbs
+from data.vocabulary_data import vocabulary
+from data.tenses_data import tenses
 
-  @override
-  State<PracticeTensesScreen> createState() => _PracticeTensesScreenState();
-}
+# Blueprint setup
+practice_bp = Blueprint('practice', __name__)
 
-class _PracticeTensesScreenState extends State<PracticeTensesScreen> {
-  List<String> availableTenses = [];
-  String selectedTense = '';
-  List<Map<String, String>> sentenceList = [];
-  int currentIndex = 0;
-  String userAnswer = '';
-  String feedback = '';
-  bool showCorrectAnswer = false;
+# --- Verb Routes ---
 
-  @override
-  void initState() {
-    super.initState();
-    loadTenses();
-  }
+@practice_bp.route('/verb', methods=['GET'])
+def get_random_verb():
+    verb = random.choice(verbs)
+    return jsonify(verb)
 
-  Future<void> loadTenses() async {
-    try {
-      final tenses = await ApiService.getTenseList();
-      setState(() {
-        availableTenses = tenses;
-        selectedTense = tenses.first;
-      });
-      loadSentence();
-    } catch (e) {
-      print('Failed to load tenses: $e');
-    }
-  }
+@practice_bp.route('/check', methods=['POST'])
+def check_verb_translation():
+    data = request.json
+    telugu = data.get('telugu_verb')
+    user_input = data.get('user_translation', '').strip().lower()
 
-  Future<void> loadSentence() async {
-    try {
-      final sentence = await ApiService.getTenseSentence(selectedTense);
-      setState(() {
-        sentenceList = [sentence];
-        currentIndex = 0;
-        feedback = '';
-        userAnswer = '';
-        showCorrectAnswer = false;
-      });
-    } catch (e) {
-      print('Failed to load sentence: $e');
-    }
-  }
+    match = next((v for v in verbs if v['telugu'] == telugu), None)
+    if not match:
+        return jsonify({"error": "Verb not found"}), 404
 
-  void nextSentence() {
-    loadSentence(); // Simulate getting a new one
-  }
+    return jsonify({"correct": user_input == match['english'].lower()})
 
-  void previousSentence() {
-    // You could implement history later
-  }
+@practice_bp.route('/verb_answer', methods=['GET'])
+def get_verb_answer():
+    telugu = request.args.get('telugu')
+    match = next((v for v in verbs if v['telugu'] == telugu), None)
+    if not match:
+        return jsonify({"error": "Verb not found"}), 404
+    return jsonify(match)
 
-  Future<void> checkAnswer() async {
-    try {
-      final telugu = sentenceList[currentIndex]['telugu'] ?? '';
-      final isCorrect = await ApiService.checkTenseAnswer(telugu, userAnswer);
-      setState(() {
-        feedback = isCorrect ? 'Correct!' : 'Incorrect';
-        showCorrectAnswer = !isCorrect;
-      });
-    } catch (e) {
-      print('Error checking answer: $e');
-    }
-  }
+# --- Vocabulary Routes ---
 
-  Future<void> showAnswer() async {
-    try {
-      final telugu = sentenceList[currentIndex]['telugu'] ?? '';
-      final result = await ApiService.getTenseAnswer(telugu);
-      setState(() {
-        feedback = 'Answer: ${result['english']}';
-      });
-    } catch (e) {
-      print('Error fetching answer: $e');
-    }
-  }
+@practice_bp.route('/vocabulary', methods=['GET'])
+def get_vocabulary_list():
+    return jsonify(vocabulary)
 
-  @override
-  Widget build(BuildContext context) {
-    final sentence = sentenceList.isNotEmpty ? sentenceList[currentIndex] : null;
+@practice_bp.route('/vocabulary/practice', methods=['GET'])
+def get_random_vocabulary():
+    return jsonify(random.choice(vocabulary))
 
-    return Scaffold(
-      appBar: AppBar(title: const Text('Practice Tenses')),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: availableTenses.isEmpty
-            ? const Center(child: CircularProgressIndicator())
-            : Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  DropdownButton<String>(
-                    value: selectedTense,
-                    items: availableTenses
-                        .map((tense) => DropdownMenuItem(
-                              value: tense,
-                              child: Text(tense[0].toUpperCase() + tense.substring(1)),
-                            ))
-                        .toList(),
-                    onChanged: (value) {
-                      if (value != null) {
-                        setState(() {
-                          selectedTense = value;
-                        });
-                        loadSentence();
-                      }
-                    },
-                  ),
-                  const SizedBox(height: 20),
-                  if (sentence != null) ...[
-                    Text(
-                      'Translate this Telugu sentence:',
-                      style: const TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                    const SizedBox(height: 10),
-                    Text(sentence['telugu'] ?? '', style: const TextStyle(fontSize: 18)),
-                    const SizedBox(height: 20),
-                    TextField(
-                      onChanged: (value) => userAnswer = value,
-                      decoration: const InputDecoration(
-                        border: OutlineInputBorder(),
-                        labelText: 'Your English translation',
-                      ),
-                    ),
-                    const SizedBox(height: 10),
-                    Text(feedback, style: const TextStyle(color: Colors.red)),
-                    const SizedBox(height: 20),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        ElevatedButton(
-                          onPressed: previousSentence,
-                          child: const Text('Previous'),
-                        ),
-                        ElevatedButton(
-                          onPressed: checkAnswer,
-                          child: const Text('Check'),
-                        ),
-                        ElevatedButton(
-                          onPressed: showAnswer,
-                          child: const Text('Show Answer'),
-                        ),
-                        ElevatedButton(
-                          onPressed: nextSentence,
-                          child: const Text('Next'),
-                        ),
-                      ],
-                    ),
-                  ]
-                ],
-              ),
-      ),
-    );
-  }
-}
+@practice_bp.route('/vocabulary/check', methods=['POST'])
+def check_vocabulary():
+    data = request.json
+    telugu = data.get('telugu_word')
+    user_input = data.get('user_translation', '').strip().lower()
+
+    match = next((w for w in vocabulary if w['telugu'] == telugu), None)
+    if not match:
+        return jsonify({"error": "Word not found"}), 404
+
+    return jsonify({"correct": user_input == match['english'].lower()})
+
+# --- Tenses Routes ---
+
+@practice_bp.route('/tenses/list', methods=['GET'])
+def get_tense_list():
+    return jsonify(list(tenses.keys()))
+
+@practice_bp.route('/tenses/<tense>', methods=['GET'])
+def get_tense_data(tense):
+    data = tenses.get(tense.lower())
+    if not data:
+        return jsonify({"error": "Tense not found"}), 404
+    return jsonify(data)
+
+@practice_bp.route('/tenses/practice', methods=['GET'])
+def get_random_tense_sentence():
+    tense = request.args.get('tense')
+    if not tense or tense.lower() not in tenses:
+        return jsonify({"error": "Tense not found"}), 404
+    return jsonify(random.choice(tenses[tense.lower()]))
+
+@practice_bp.route('/tenses/check', methods=['POST'])
+def check_tense_sentence():
+    data = request.json
+    telugu = data.get('telugu_sentence')
+    user_input = data.get('user_translation', '').strip().lower()
+
+    for sentence_list in tenses.values():
+        match = next((s for s in sentence_list if s['telugu'] == telugu), None)
+        if match:
+            return jsonify({"correct": user_input == match['english'].lower()})
+
+    return jsonify({"error": "Sentence not found"}), 404
+
+@practice_bp.route('/tenses/answer', methods=['GET'])
+def get_tense_answer():
+    telugu = request.args.get('telugu')
+    for sentence_list in tenses.values():
+        match = next((s for s in sentence_list if s['telugu'] == telugu), None)
+        if match:
+            return jsonify(match)
+    return jsonify({"error": "Sentence not found"}), 404
+
+# --- App Setup ---
+
+def create_app():
+    app = Flask(__name__)
+    CORS(app)
+    app.register_blueprint(practice_bp)
+    return app
+
+app = create_app()
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=10000)
