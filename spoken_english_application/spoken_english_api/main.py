@@ -2,9 +2,10 @@ from flask import Flask, jsonify, request, Blueprint
 from flask_cors import CORS
 import random
 
-from .data.verbs_data import verbs
-from .data.vocabulary_data import vocabulary
-from .data.tenses_data import tenses
+from data.verbs_data import verbs
+from data.vocabulary_data import vocabulary
+from data.tenses_data import tenses
+
 
 practice_bp = Blueprint('practice', __name__)
 
