@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: spoken-english-api
+    env: python
+    buildCommand: pip install -r spoken_english_api/requirements.txt
+    startCommand: gunicorn spoken_english_api.main:app
+    plan: free
