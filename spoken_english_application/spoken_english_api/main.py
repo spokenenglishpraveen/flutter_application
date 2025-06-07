@@ -2,9 +2,9 @@ from flask import Flask, jsonify, request, Blueprint
 from flask_cors import CORS
 import random
 
-from spoken_english_api.data.verbs_data import verbs_dict
-from spoken_english_api.data.vocabulary_data import vocabulary_dict
-from spoken_english_api.data.tenses_data import tenses_dict
+from data.verbs_data import verbs_dict  # ✅ Correct
+from data.vocabulary_data import vocabulary
+from data.tenses_data import tenses
 
 
 
