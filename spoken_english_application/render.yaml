@@ -7,4 +7,4 @@ services:
     plan: free
     envVars:
       - key: PYTHONPATH
-        value: .
+        value: spoken_english_application
