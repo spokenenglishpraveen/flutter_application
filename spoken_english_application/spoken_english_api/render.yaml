@@ -3,5 +3,5 @@ services:
     name: spoken-english-api
     env: python
     buildCommand: pip install -r requirements.txt
-    startCommand: gunicorn run:app
+    startCommand: gunicorn app:app
     plan: free
