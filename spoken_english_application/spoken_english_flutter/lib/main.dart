@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
       title: 'Spoken English App',
       theme: ThemeData(
         primarySwatch: Colors.blue,
-        scaffoldBackgroundColor: Colors.white,
+        scaffoldBackgroundColor: const Color.fromARGB(255, 249, 247, 247),
       ),
       debugShowCheckedModeBanner: false,
       home: const MainScreen(),
