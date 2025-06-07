@@ -5,7 +5,7 @@ class ApiService {
   static const String baseUrl = 'https://flutter-application-2.onrender.com';
 
   static Future<List<String>> getTenseList() async {
-    final response = await http.get(Uri.parse('$baseUrl/tenses/list'));
+    final response = await http.get(Uri.parse('$baseUrl/practice/tenses-list'));
     if (response.statusCode == 200) {
       return List<String>.from(json.decode(response.body));
     } else {
@@ -14,7 +14,9 @@ class ApiService {
   }
 
   static Future<Map<String, String>> getTenseSentence(String tense) async {
-    final response = await http.get(Uri.parse('$baseUrl/tenses/practice?tense=${Uri.encodeComponent(tense)}'));
+    final response = await http.get(Uri.parse(
+        '$baseUrl/practice/tenses/practice?tense=${Uri.encodeComponent(tense)}'));
+
     if (response.statusCode == 200) {
       final data = json.decode(response.body);
       return {
@@ -28,7 +30,7 @@ class ApiService {
 
   static Future<bool> checkTenseAnswer(String teluguSentence, String englishAnswer) async {
     final response = await http.post(
-      Uri.parse('$baseUrl/tenses/check'),
+      Uri.parse('$baseUrl/practice/tenses/check'),
       headers: {'Content-Type': 'application/json'},
       body: json.encode({
         'telugu_sentence': teluguSentence,
@@ -44,7 +46,9 @@ class ApiService {
   }
 
   static Future<Map<String, String>> getTenseAnswer(String teluguSentence) async {
-    final response = await http.get(Uri.parse('$baseUrl/tenses/answer?telugu=${Uri.encodeComponent(teluguSentence)}'));
+    final response = await http.get(Uri.parse(
+        '$baseUrl/practice/tenses/answer?telugu=${Uri.encodeComponent(teluguSentence)}'));
+
     if (response.statusCode == 200) {
       final data = json.decode(response.body);
       return {
