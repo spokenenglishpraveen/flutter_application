@@ -11,11 +11,10 @@ class PracticeTensesScreen extends StatefulWidget {
 class _PracticeTensesScreenState extends State<PracticeTensesScreen> {
   List<String> tenses = [];
   String? selectedTense;
-  List<Map<String, String>> currentSentences = [];
-  int currentSentenceIndex = 0;
-  final TextEditingController _controller = TextEditingController();
+  List<Map<String, String>> sentenceList = [];
+  int currentIndex = 0;
   String feedback = '';
-  bool showAnswer = false;
+  final TextEditingController _controller = TextEditingController();
 
   @override
   void initState() {
@@ -31,7 +30,7 @@ class _PracticeTensesScreenState extends State<PracticeTensesScreen> {
       });
     } catch (e) {
       setState(() {
-        feedback = 'Failed to load tenses: $e';
+        feedback = 'Error loading tenses: $e';
       });
     }
   }
@@ -40,44 +39,48 @@ class _PracticeTensesScreenState extends State<PracticeTensesScreen> {
     try {
       final sentence = await ApiService.getTenseSentence(tense);
       setState(() {
-        selectedTense = tense;
-        currentSentences = [sentence]; // Can extend this to multiple later
-        currentSentenceIndex = 0;
+        sentenceList = [sentence];
+        currentIndex = 0;
         feedback = '';
-        showAnswer = false;
         _controller.clear();
       });
     } catch (e) {
       setState(() {
-        feedback = 'Failed to load sentence: $e';
+        feedback = 'Error loading sentence: $e';
       });
     }
   }
 
-  Future<void> loadNewSentence(String tense) async {
-    try {
-      final newSentence = await ApiService.getTenseSentence(tense);
+  void onTenseSelected(String? tense) {
+    if (tense != null) {
       setState(() {
-        currentSentences.add(newSentence);
-        currentSentenceIndex = currentSentences.length - 1;
+        selectedTense = tense;
+        sentenceList = [];
         feedback = '';
-        showAnswer = false;
-        _controller.clear();
+        currentIndex = 0;
       });
-    } catch (e) {
-      setState(() {
-        feedback = 'Failed to load sentence: $e';
-      });
+      loadSentences(tense);
     }
+  }
+
+  void nextSentence() {
+    if (selectedTense == null) return;
+    loadSentences(selectedTense!); // Load a new random one
+  }
+
+  void previousSentence() {
+    // Optional: You could implement sentence history if needed
+    setState(() {
+      feedback = '⏮ Previous not supported yet.';
+    });
   }
 
   Future<void> checkAnswer() async {
-    if (currentSentences.isEmpty) return;
+    if (sentenceList.isEmpty) return;
     try {
-      final isCorrect = await ApiService.checkTenseAnswer(
-        currentSentences[currentSentenceIndex]['telugu']!,
-        _controller.text.trim(),
-      );
+      final telugu = sentenceList[currentIndex]["telugu"]!;
+      final english = _controller.text;
+      final isCorrect = await ApiService.checkTenseAnswer(telugu, english);
       setState(() {
         feedback = isCorrect ? '✅ Correct!' : '❌ Try again';
       });
@@ -88,103 +91,73 @@ class _PracticeTensesScreenState extends State<PracticeTensesScreen> {
     }
   }
 
-  Future<void> showCorrectAnswer() async {
-    if (currentSentences.isEmpty) return;
+  Future<void> revealAnswer() async {
+    if (sentenceList.isEmpty) return;
     try {
-      final answer = await ApiService.getTenseAnswer(
-        currentSentences[currentSentenceIndex]['telugu']!,
-      );
+      final telugu = sentenceList[currentIndex]["telugu"]!;
+      final result = await ApiService.getTenseAnswer(telugu);
       setState(() {
-        feedback = 'Answer: ${answer['english']}';
-        showAnswer = true;
+        feedback = '✅ Answer: ${result["english"]}';
       });
     } catch (e) {
       setState(() {
-        feedback = 'Error fetching answer: $e';
-      });
-    }
-  }
-
-  void goToNextSentence() async {
-    if (selectedTense == null) return;
-    // Load new if at last index
-    if (currentSentenceIndex == currentSentences.length - 1) {
-      await loadNewSentence(selectedTense!);
-    } else {
-      setState(() {
-        currentSentenceIndex++;
-        feedback = '';
-        showAnswer = false;
-        _controller.clear();
-      });
-    }
-  }
-
-  void goToPreviousSentence() {
-    if (currentSentenceIndex > 0) {
-      setState(() {
-        currentSentenceIndex--;
-        feedback = '';
-        showAnswer = false;
-        _controller.clear();
+        feedback = 'Error getting answer: $e';
       });
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    final telugu = currentSentences.isNotEmpty ? currentSentences[currentSentenceIndex]['telugu']! : '';
+    final currentTelugu = sentenceList.isNotEmpty ? sentenceList[currentIndex]["telugu"]! : "Select a tense to begin";
+
     return Scaffold(
       appBar: AppBar(title: const Text('Practice Tenses')),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            // Dropdown for tense selection
             DropdownButton<String>(
+              isExpanded: true,
               value: selectedTense,
-              hint: const Text("Select a Tense"),
-              onChanged: (value) {
-                if (value != null) {
-                  loadSentences(value);
-                }
-              },
+              hint: const Text('Select a tense'),
               items: tenses.map((tense) {
                 return DropdownMenuItem(
                   value: tense,
                   child: Text(tense),
                 );
               }).toList(),
+              onChanged: onTenseSelected,
             ),
             const SizedBox(height: 20),
-            if (currentSentences.isNotEmpty) ...[
-              const Text('Translate this Telugu sentence:', style: TextStyle(fontSize: 16)),
-              const SizedBox(height: 10),
-              Text(telugu, style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-              const SizedBox(height: 20),
-              TextField(
-                controller: _controller,
-                decoration: const InputDecoration(
-                  labelText: 'Your English Translation',
-                  border: OutlineInputBorder(),
-                ),
+
+            Text('Translate the following sentence:', style: const TextStyle(fontSize: 16)),
+            const SizedBox(height: 10),
+            Text(currentTelugu, style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+            const SizedBox(height: 20),
+
+            TextField(
+              controller: _controller,
+              decoration: const InputDecoration(
+                labelText: 'Your English Translation',
+                border: OutlineInputBorder(),
               ),
-              const SizedBox(height: 20),
-              Text(feedback, style: const TextStyle(fontSize: 16, color: Colors.blue)),
-              const SizedBox(height: 20),
-              Wrap(
-                spacing: 12,
-                runSpacing: 10,
-                children: [
-                  ElevatedButton(onPressed: checkAnswer, child: const Text('Check Answer')),
-                  ElevatedButton(onPressed: showCorrectAnswer, child: const Text('Reveal Answer')),
-                  ElevatedButton(
-                      onPressed: goToPreviousSentence,
-                      child: const Text('Previous Sentence')),
-                  ElevatedButton(onPressed: goToNextSentence, child: const Text('Next Sentence')),
-                ],
-              ),
-            ]
+            ),
+            const SizedBox(height: 20),
+
+            Text(feedback, style: const TextStyle(fontSize: 16, color: Colors.blue)),
+            const SizedBox(height: 20),
+
+            Wrap(
+              spacing: 10,
+              runSpacing: 10,
+              children: [
+                ElevatedButton(onPressed: checkAnswer, child: const Text('Check Answer')),
+                ElevatedButton(onPressed: revealAnswer, child: const Text('Reveal Answer')),
+                ElevatedButton(onPressed: previousSentence, child: const Text('Previous Sentence')),
+                ElevatedButton(onPressed: nextSentence, child: const Text('Next Sentence')),
+              ],
+            )
           ],
         ),
       ),
