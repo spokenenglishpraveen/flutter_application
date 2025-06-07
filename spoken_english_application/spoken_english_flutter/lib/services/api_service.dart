@@ -4,7 +4,6 @@ import 'package:http/http.dart' as http;
 class ApiService {
   static const String baseUrl = 'https://flutter-application-2.onrender.com';
 
-  // Get list of available tenses
   static Future<List<String>> getTenseList() async {
     final response = await http.get(Uri.parse('$baseUrl/tenses/list'));
     if (response.statusCode == 200) {
