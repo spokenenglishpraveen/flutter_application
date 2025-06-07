@@ -3,8 +3,9 @@ from flask_cors import CORS
 import random
 
 from data.verbs_data import verbs_dict as verbs
-from data.vocabulary_data import vocabulary
-from data.tenses_data import tenses
+from data.vocabulary_data import vocabulary_dict
+from data.tenses_data import tenses_dict
+
 
 
 
