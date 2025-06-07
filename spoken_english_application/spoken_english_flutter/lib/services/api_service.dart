@@ -4,6 +4,37 @@ import 'package:http/http.dart' as http;
 class ApiService {
   static const String baseUrl = 'https://flutter-application-2.onrender.com';
 
+  // --- VERBS ---
+
+  // Get all verbs as a list of maps (each with v1, v2, v3, ing, telugu_meaning, examples)
+  static Future<List<Map<String, dynamic>>> getAllVerbs() async {
+    final response = await http.get(Uri.parse('$baseUrl/practice/verbs'));
+    if (response.statusCode == 200) {
+      final data = json.decode(response.body);
+      // data is expected as a map where keys are v1 and value is details
+      return (data as Map<String, dynamic>)
+          .entries
+          .map((e) => {...e.value, 'v1': e.key})
+          .toList();
+    } else {
+      throw Exception('Failed to load verbs');
+    }
+  }
+
+  // Get a random verb from backend
+  static Future<Map<String, dynamic>> getRandomVerb() async {
+    final response = await http.get(Uri.parse('$baseUrl/practice/verbs/random'));
+    if (response.statusCode == 200) {
+      final data = json.decode(response.body);
+      return data;
+    } else {
+      throw Exception('Failed to load random verb');
+    }
+  }
+
+  // --- TENSES ---
+
+  // Get list of available tenses
   static Future<List<String>> getTenseList() async {
     final response = await http.get(Uri.parse('$baseUrl/practice/tenses-list'));
     if (response.statusCode == 200) {
@@ -13,6 +44,7 @@ class ApiService {
     }
   }
 
+  // Get Telugu-English sentence pair for practice of a given tense
   static Future<Map<String, String>> getTenseSentence(String tense) async {
     final response = await http.get(Uri.parse(
         '$baseUrl/practice/tenses/practice?tense=${Uri.encodeComponent(tense)}'));
@@ -28,6 +60,7 @@ class ApiService {
     }
   }
 
+  // Check user's translation answer for a Telugu sentence in a tense
   static Future<bool> checkTenseAnswer(String teluguSentence, String englishAnswer) async {
     final response = await http.post(
       Uri.parse('$baseUrl/practice/tenses/check'),
@@ -45,6 +78,7 @@ class ApiService {
     }
   }
 
+  // Get correct English translation answer for a Telugu sentence (tense practice)
   static Future<Map<String, String>> getTenseAnswer(String teluguSentence) async {
     final response = await http.get(Uri.parse(
         '$baseUrl/practice/tenses/answer?telugu=${Uri.encodeComponent(teluguSentence)}'));
