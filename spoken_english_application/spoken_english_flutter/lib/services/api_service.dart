@@ -14,9 +14,13 @@ class ApiService {
   }
 
   static Future<Map<String, String>> getTenseSentence(String tense) async {
-    final response = await http.get(Uri.parse('$baseUrl/tenses/practice?tense=$tense'));
+    final response = await http.get(Uri.parse('$baseUrl/tenses/practice?tense=${Uri.encodeComponent(tense)}'));
     if (response.statusCode == 200) {
-      return Map<String, String>.from(json.decode(response.body));
+      final data = json.decode(response.body);
+      return {
+        "telugu": data[0],
+        "english": data[1],
+      };
     } else {
       throw Exception('Failed to load tense sentence');
     }
@@ -40,9 +44,13 @@ class ApiService {
   }
 
   static Future<Map<String, String>> getTenseAnswer(String teluguSentence) async {
-    final response = await http.get(Uri.parse('$baseUrl/tenses/answer?telugu=$teluguSentence'));
+    final response = await http.get(Uri.parse('$baseUrl/tenses/answer?telugu=${Uri.encodeComponent(teluguSentence)}'));
     if (response.statusCode == 200) {
-      return Map<String, String>.from(json.decode(response.body));
+      final data = json.decode(response.body);
+      return {
+        "telugu": data['telugu'],
+        "english": data['english'],
+      };
     } else {
       throw Exception('Failed to load tense answer');
     }
