@@ -420,6 +420,107 @@ tenses = {
     ("నేను ఇప్పుడే ఎందుకు ఆఫీసుకు వెళ్ళలేదు?", "Why haven't I gone to office just now?")
     ],
 
+    "Past Perfect": [
+
+    # Subject: She
+    ("ఆమె నేను చేరేముందే ఆఫీసుకు చేరింది.", "She had reached the office before I arrived."),
+    ("ఆమె నిన్న రాత్రి 10కి ఆఫీసుకు చేరిందా?", "Had she reached the office by 10 PM yesterday?"),
+    ("ఆమె ఎప్పుడు ఆఫీసుకు చేరింది?", "When had she reached the office?"),
+    ("ఆమె నేను చేరేముందే ఆఫీసుకు చేరలేదు.", "She had not reached the office before I arrived."),
+    ("ఆమె నిన్న రాత్రి 10కి ఆఫీసుకు చేరలేదా?", "Hadn't she reached the office by 10 PM yesterday?"),
+    ("ఆమె నిన్న రాత్రి ఎందుకు ఆఫీసుకు చేరలేదు?", "Why hadn't she reached the office last night?"),
+
+    # Subject: Ramu
+    ("రాము నేను రావేముందే ఇంటికి వచ్చాడు.", "Ramu had come home before I arrived."),
+    ("రాము ఇంటికి వచ్చాడా?", "Had Ramu come home?"),
+    ("రాము ఎప్పుడు ఇంటికి వచ్చాడు?", "When had Ramu come home?"),
+    ("రాము నేను రావేముందే ఇంటికి రాలేదు.", "Ramu had not come home before I arrived."),
+    ("రాము ఇంటికి రాలేదా?", "Hadn't Ramu come home?"),
+    ("రాము ఇంటికి ఎందుకు రాలేదు?", "Why hadn't Ramu come home?"),
+
+    # Subject: They
+    ("వాళ్లు నేను వెళ్లేముందే ఆఫీసు వదిలారు.", "They had left the office before I went."),
+    ("వాళ్లు ఆఫీసు వదిలారా?", "Had they left the office?"),
+    ("వాళ్లు ఎప్పుడు ఆఫీసు వదిలారు?", "When had they left the office?"),
+    ("వాళ్లు నేను వెళ్లేముందే ఆఫీసు వదలలేదు.", "They had not left the office before I went."),
+    ("వాళ్లు ఆఫీసు వదలలేదా?", "Hadn't they left the office?"),
+    ("వాళ్లు ఆఫీసు ఎందుకు వదలలేదు?", "Why hadn't they left the office?"),
+
+    # Subject: I
+    ("నేను నీవు రాకముందే పనిని పూర్తిచేశాను.", "I had finished the work before you arrived."),
+    ("నేను పనిని పూర్తిచేశానా?", "Had I finished the work?"),
+    ("నేను ఎప్పుడు పనిని పూర్తిచేశాను?", "When had I finished the work?"),
+    ("నేను నీవు రాకముందే పనిని పూర్తిచేయలేదు.", "I had not finished the work before you arrived."),
+    ("నేను పనిని పూర్తిచేయలేదా?", "Hadn't I finished the work?"),
+    ("నేను పనిని ఎందుకు పూర్తిచేయలేదు?", "Why hadn't I finished the work?"),
+
+    # Subject: We
+    ("మేము వాళ్లు రాకముందే అక్కడికి చేరుకున్నాము.", "We had reached there before they arrived."),
+    ("మేము అక్కడికి చేరుకున్నామా?", "Had we reached there?"),
+    ("మేము ఎప్పుడు అక్కడికి చేరుకున్నాము?", "When had we reached there?"),
+    ("మేము వాళ్లు రాకముందే అక్కడికి చేరుకోలేదు.", "We had not reached there before they arrived."),
+    ("మేము అక్కడికి చేరుకోలేదా?", "Hadn't we reached there?"),
+    ("మేము అక్కడికి ఎందుకు చేరుకోలేదు?", "Why hadn't we reached there?"),
+
+    # Subject: He
+    ("అతను నేను బయలుదేరేముందే ఇంటి పని పూర్తి చేశాడు.", "He had completed the household work before I left."),
+    ("అతను ఇంటి పని పూర్తి చేశాడా?", "Had he completed the household work?"),
+    ("అతను ఎప్పుడు ఇంటి పని పూర్తి చేశాడు?", "When had he completed the household work?"),
+    ("అతను నేను బయలుదేరేముందే ఇంటి పని పూర్తి చేయలేదు.", "He had not completed the household work before I left."),
+    ("అతను ఇంటి పని పూర్తి చేయలేదా?", "Hadn't he completed the household work?"),
+    ("అతను ఇంటి పని ఎందుకు పూర్తి చేయలేదు?", "Why hadn't he completed the household work?"),
+    ],
+
+    "Future Perfect": [
+
+    # Subject: She
+    ("ఆమె రేపు ఉదయం 9 గంటలకి ఆఫీసుకు చేరి ఉంటుంది.", "She will have reached the office by 9 AM tomorrow."),
+    ("ఆమె రేపు ఉదయం 9కి ఆఫీసుకు చేరి ఉంటుందా?", "Will she have reached the office by 9 AM tomorrow?"),
+    ("ఆమె ఎప్పుడు ఆఫీసుకు చేరి ఉంటుంది?", "When will she have reached the office?"),
+    ("ఆమె రేపు ఉదయం 9కి ఆఫీసుకు చేరి ఉండదు.", "She will not have reached the office by 9 AM tomorrow."),
+    ("ఆమె రేపు ఉదయం 9కి ఆఫీసుకు చేరి ఉండదా?", "Won’t she have reached the office by 9 AM tomorrow?"),
+    ("ఆమె ఎందుకు ఆఫీసుకు చేరి ఉండదు?", "Why won't she have reached the office?"),
+
+    # Subject: Ramu
+    ("రాము సమీక్షకు ముందు నివేదికను సమర్పించి ఉంటాడు.", "Ramu will have submitted the report before the review."),
+    ("రాము సమీక్షకి ముందు నివేదికను సమర్పించి ఉంటాడా?", "Will Ramu have submitted the report before the review?"),
+    ("రాము ఎప్పుడు నివేదికను సమర్పించి ఉంటాడు?", "When will Ramu have submitted the report?"),
+    ("రాము సమీక్షకి ముందు నివేదికను సమర్పించి ఉండడు.", "Ramu will not have submitted the report before the review."),
+    ("రాము సమీక్షకి ముందు నివేదికను సమర్పించి ఉండడా?", "Won’t Ramu have submitted the report before the review?"),
+    ("రాము ఎందుకు సమర్పించి ఉండడు?", "Why won’t Ramu have submitted it?"),
+
+    # Subject: I
+    ("నేను రాత్రి కల్లా ఇంటికి వచ్చి ఉంటాను.", "I will have reached home by night."),
+    ("నేను రాత్రి కల్లా ఇంటికి వచ్చి ఉంటానా?", "Will I have reached home by night?"),
+    ("నేను ఎప్పుడు ఇంటికి వచ్చి ఉంటాను?", "When will I have reached home?"),
+    ("నేను రాత్రి కల్లా ఇంటికి వచ్చి ఉండను.", "I will not have reached home by night."),
+    ("నేను రాత్రి కల్లా ఇంటికి వచ్చి ఉండనా?", "Won’t I have reached home by night?"),
+    ("నేను ఎందుకు ఇంటికి వచ్చి ఉండను?", "Why won’t I have reached home?"),
+
+    # Subject: They
+    ("వాళ్లు లంచ్ టైమ్ కల్లా పని పూర్తి చేసి ఉంటారు.", "They will have finished the work by lunchtime."),
+    ("వాళ్లు లంచ్ టైమ్ కల్లా పని పూర్తి చేసి ఉంటారా?", "Will they have finished the work by lunchtime?"),
+    ("వాళ్లు ఎప్పుడు పని పూర్తి చేసి ఉంటారు?", "When will they have finished the work?"),
+    ("వాళ్లు లంచ్ టైమ్ కల్లా పని పూర్తి చేసి ఉండరు.", "They will not have finished the work by lunchtime."),
+    ("వాళ్లు లంచ్ టైమ్ కల్లా పని పూర్తి చేసి ఉండరా?", "Won’t they have finished the work by lunchtime?"),
+    ("వాళ్లు ఎందుకు పని పూర్తి చేసి ఉండరు?", "Why won’t they have finished the work?"),
+
+    # Subject: We
+    ("మేము పది గంటల కల్లా సమీక్షను పూర్తి చేసి ఉంటాము.", "We will have completed the review by 10 o'clock."),
+    ("మేము పది గంటల కల్లా సమీక్షను పూర్తి చేసి ఉంటామా?", "Will we have completed the review by 10 o'clock?"),
+    ("మేము ఎప్పుడు సమీక్షను పూర్తి చేసి ఉంటాము?", "When will we have completed the review?"),
+    ("మేము పది గంటల కల్లా సమీక్షను పూర్తి చేసి ఉండము.", "We will not have completed the review by 10 o'clock."),
+    ("మేము పది గంటల కల్లా సమీక్షను పూర్తి చేసి ఉండమా?", "Won’t we have completed the review by 10 o'clock?"),
+    ("మేము ఎందుకు సమీక్షను పూర్తి చేసి ఉండము?", "Why won’t we have completed the review?"),
+
+    # Subject: You
+    ("నీవు సమయం ముగిసేలోపు ఈ పని పూర్తి చేసి ఉంటావు.", "You will have finished this task before the deadline."),
+    ("నీవు సమయం ముగిసేలోపు ఈ పని పూర్తి చేసి ఉంటావా?", "Will you have finished this task before the deadline?"),
+    ("నీవు ఎప్పుడు పని పూర్తి చేసి ఉంటావు?", "When will you have finished the task?"),
+    ("నీవు సమయం ముగిసేలోపు ఈ పని పూర్తి చేసి ఉండవు.", "You will not have finished this task before the deadline."),
+    ("నీవు సమయం ముగిసేలోపు ఈ పని పూర్తి చేసి ఉండవా?", "Won’t you have finished this task before the deadline?"),
+    ("నీవు ఎందుకు పని పూర్తి చేసి ఉండవు?", "Why won’t you have finished the task?")
+    ],
     "Want to": [
     # You
     ("నీవు ఈ రోజు ఆఫీసుకు వెళ్లాలనుకుంటున్నావు.", "You want to go to office today."),
@@ -469,7 +570,57 @@ tenses = {
     ("నేను ఈ రోజు ఆఫీసుకు వెళ్లాలనుకోడంలేదా?", "Don't I want to go to office today?"),
     ("నేను ఈ రోజు ఆఫీసుకు ఎందుకు వెళ్లాలనుకోవడం లేదు?", "Why don't I want to go to office today?")
     ],
+     
+    "Present Perfect Continuous": [
 
+    # Subject: She
+    ("ఆమె రెండు గంటల నుండి పని చేస్తోంది.", "She has been working since 2 o'clock."),
+    ("ఆమె రెండు గంటల నుండి పని చేస్తోందా?", "Has she been working since 2 o'clock?"),
+    ("ఆమె ఎంతకాలంగా పని చేస్తోంది?", "How long has she been working?"),
+    ("ఆమె రెండు గంటల నుండి పని చేయడం లేదు.", "She has not been working since 2 o'clock."),
+    ("ఆమె రెండు గంటల నుండి పని చేయడంలేదా?", "Hasn't she been working since 2 o'clock?"),
+    ("ఆమె ఎందుకు పని చేయడం లేదు?", "Why hasn't she been working?"),
+
+    # Subject: Ramu
+    ("రాము ఉదయం నుండి చదువుతున్నాడు.", "Ramu has been studying since morning."),
+    ("రాము ఉదయం నుండి చదువుతున్నాడా?", "Has Ramu been studying since morning?"),
+    ("రాము ఎంతసేపు నుండి చదువుతున్నాడు?", "How long has Ramu been studying?"),
+    ("రాము ఉదయం నుండి చదవడం లేదు.", "Ramu has not been studying since morning."),
+    ("రాము ఉదయం నుండి చదవడం లేదా?", "Hasn't Ramu been studying since morning?"),
+    ("రాము ఎందుకు చదవడం లేదు?", "Why hasn't Ramu been studying?"),
+
+    # Subject: I
+    ("నేను మూడు రోజులుగా వర్క్ అవుట్ చేస్తున్నాను.", "I have been working out for three days."),
+    ("నేను మూడు రోజులుగా వర్క్ అవుట్ చేస్తున్నానా?", "Have I been working out for three days?"),
+    ("నేను ఎంతకాలంగా వర్క్ అవుట్ చేస్తున్నాను?", "How long have I been working out?"),
+    ("నేను మూడు రోజులుగా వర్క్ అవుట్ చేయడం లేదు.", "I have not been working out for three days."),
+    ("నేను మూడు రోజులుగా వర్క్ అవుట్ చేయడం లేదా?", "Haven't I been working out for three days?"),
+    ("నేను ఎందుకు వర్క్ అవుట్ చేయడం లేదు?", "Why haven't I been working out?"),
+
+    # Subject: They
+    ("వాళ్లు గంటలుగా సినిమా చూస్తున్నారు.", "They have been watching a movie for hours."),
+    ("వాళ్లు గంటలుగా సినిమా చూస్తున్నారా?", "Have they been watching a movie for hours?"),
+    ("వాళ్లు ఎంతకాలంగా సినిమా చూస్తున్నారు?", "How long have they been watching a movie?"),
+    ("వాళ్లు సినిమా చూడడం లేదు.", "They have not been watching the movie."),
+    ("వాళ్లు సినిమా చూడడం లేదా?", "Haven’t they been watching the movie?"),
+    ("వాళ్లు ఎందుకు సినిమా చూడడం లేదు?", "Why haven’t they been watching the movie?"),
+
+    # Subject: We
+    ("మేము రెండు రోజులుగా ప్రాజెక్ట్ మీద పని చేస్తున్నాము.", "We have been working on the project for two days."),
+    ("మేము రెండు రోజులుగా ప్రాజెక్ట్ మీద పని చేస్తున్నామా?", "Have we been working on the project for two days?"),
+    ("మేము ఎంతకాలంగా ప్రాజెక్ట్ మీద పని చేస్తున్నాము?", "How long have we been working on the project?"),
+    ("మేము రెండు రోజులుగా ప్రాజెక్ట్ మీద పని చేయడం లేదు.", "We have not been working on the project for two days."),
+    ("మేము రెండు రోజులుగా ప్రాజెక్ట్ మీద పని చేయడం లేదా?", "Haven’t we been working on the project for two days?"),
+    ("మేము ఎందుకు పని చేయడం లేదు?", "Why haven’t we been working on the project?"),
+
+    # Subject: You
+    ("నీవు పది నిమిషాలుగా నాకు ఫోన్ చేస్తున్నావు.", "You have been calling me for ten minutes."),
+    ("నీవు పది నిమిషాలుగా నాకు ఫోన్ చేస్తున్నావా?", "Have you been calling me for ten minutes?"),
+    ("నీవు ఎంతసేపు నాకు ఫోన్ చేస్తున్నావు?", "How long have you been calling me?"),
+    ("నీవు నాకు ఫోన్ చేయడం లేదు.", "You have not been calling me."),
+    ("నీవు నాకు ఫోన్ చేయడం లేదా?", "Haven’t you been calling me?"),
+    ("నీవు ఎందుకు ఫోన్ చేయడం లేదు?", "Why haven’t you been calling me?")
+   ],
     "Wanted to": [
     # You
     ("నీవు నిన్న ఆఫీసుకు వెళ్లాలని అనుకున్నావు.", "You wanted to go to office yesterday."),
@@ -519,7 +670,107 @@ tenses = {
     ("నేను నిన్న ఆఫీసుకు వెళ్లాలని అనుకోలేదా?", "Didn't I want to go to office yesterday?"),
     ("నేను నిన్న ఆఫీసుకు ఎందుకు వెళ్లాలని అనుకోలేదు?", "Why didn't I want to go to office yesterday?")
     ],
+    "Past Perfect Continuous": [
 
+    # Subject: She
+    ("ఆమె రెండు గంటలుగా పని చేస్తూ ఉండింది.", "She had been working for two hours."),
+    ("ఆమె రెండు గంటలుగా పని చేస్తూ ఉండిందా?", "Had she been working for two hours?"),
+    ("ఆమె ఎంతకాలంగా పని చేస్తూ ఉండింది?", "How long had she been working?"),
+    ("ఆమె రెండు గంటలుగా పని చేయడం లేదూ.", "She had not been working for two hours."),
+    ("ఆమె రెండు గంటలుగా పని చేయలేదా?", "Hadn't she been working for two hours?"),
+    ("ఆమె ఎందుకు పని చేయడం లేదు?", "Why hadn't she been working?"),
+
+    # Subject: Ramu
+    ("రాము ఉదయం నుండి చదువుతూ ఉండాడు.", "Ramu had been studying since morning."),
+    ("రాము ఉదయం నుండి చదువుతూ ఉండాడా?", "Had Ramu been studying since morning?"),
+    ("రాము ఎంతకాలంగా చదువుతూ ఉండాడు?", "How long had Ramu been studying?"),
+    ("రాము ఉదయం నుండి చదవడం లేదు.", "Ramu had not been studying since morning."),
+    ("రాము ఉదయం నుండి చదవలేదా?", "Hadn't Ramu been studying since morning?"),
+    ("రాము ఎందుకు చదవడం లేదు?", "Why hadn't Ramu been studying?"),
+
+    # Subject: I
+    ("నేను మూడు రోజులుగా వర్క్ అవుట్ చేస్తూ ఉండేవాణ్ని.", "I had been working out for three days."),
+    ("నేను మూడు రోజులుగా వర్క్ అవుట్ చేస్తూ ఉండేవాన్నా?", "Had I been working out for three days?"),
+    ("నేను ఎంతకాలంగా వర్క్ అవుట్ చేస్తూ ఉండేవాణ్ని?", "How long had I been working out?"),
+    ("నేను మూడు రోజులుగా వర్క్ అవుట్ చేయలేదు.", "I had not been working out for three days."),
+    ("నేను మూడు రోజులుగా వర్క్ అవుట్ చేయలేదా?", "Hadn't I been working out for three days?"),
+    ("నేను ఎందుకు వర్క్ అవుట్ చేయలేదు?", "Why hadn't I been working out?"),
+
+    # Subject: They
+    ("వాళ్లు గంటలుగా సినిమా చూస్తూ ఉన్నారు.", "They had been watching a movie for hours."),
+    ("వాళ్లు గంటలుగా సినిమా చూస్తూ ఉన్నారా?", "Had they been watching a movie for hours?"),
+    ("వాళ్లు ఎంతకాలంగా సినిమా చూస్తూ ఉన్నారు?", "How long had they been watching a movie?"),
+    ("వాళ్లు సినిమా చూడడం లేదు.", "They had not been watching a movie."),
+    ("వాళ్లు సినిమా చూడలేదా?", "Hadn't they been watching a movie?"),
+    ("వాళ్లు ఎందుకు సినిమా చూడలేదు?", "Why hadn't they been watching a movie?"),
+
+    # Subject: We
+    ("మేము రెండు రోజులుగా ప్రాజెక్ట్ మీద పని చేస్తూ ఉన్నాము.", "We had been working on the project for two days."),
+    ("మేము రెండు రోజులుగా ప్రాజెక్ట్ మీద పని చేస్తూ ఉన్నామా?", "Had we been working on the project for two days?"),
+    ("మేము ఎంతకాలంగా ప్రాజెక్ట్ మీద పని చేస్తూ ఉన్నాము?", "How long had we been working on the project?"),
+    ("మేము రెండు రోజులుగా ప్రాజెక్ట్ మీద పని చేయలేదు.", "We had not been working on the project for two days."),
+    ("మేము రెండు రోజులుగా ప్రాజెక్ట్ మీద పని చేయలేదా?", "Hadn't we been working on the project for two days?"),
+    ("మేము ఎందుకు పని చేయలేదు?", "Why hadn't we been working on the project?"),
+
+    # Subject: You
+    ("నీవు పది నిమిషాలుగా నాకు ఫోన్ చేస్తూ ఉన్నావు.", "You had been calling me for ten minutes."),
+    ("నీవు పది నిమిషాలుగా నాకు ఫోన్ చేస్తూ ఉన్నావా?", "Had you been calling me for ten minutes?"),
+    ("నీవు ఎంతకాలంగా నాకు ఫోన్ చేస్తూ ఉన్నావు?", "How long had you been calling me?"),
+    ("నీవు నాకు ఫోన్ చేయడం లేదు.", "You had not been calling me."),
+    ("నీవు నాకు ఫోన్ చేయలేదా?", "Hadn't you been calling me?"),
+    ("నీవు ఎందుకు ఫోన్ చేయలేదు?", "Why hadn't you been calling me?")
+    ],
+    "Future Perfect Continuous": [
+
+    # Subject: She
+    ("ఆమె రెండు గంటల పాటు పని చేస్తూ ఉండే ఉంటుంది.", "She will have been working for two hours."),
+    ("ఆమె రెండు గంటల పాటు పని చేస్తూ ఉండే ఉన్నదా?", "Will she have been working for two hours?"),
+    ("ఆమె ఎంతకాలంగా పని చేస్తూ ఉండే ఉంటుంది?", "How long will she have been working?"),
+    ("ఆమె రెండు గంటల పాటు పని చేయకుండా ఉండే ఉంటుంది.", "She will not have been working for two hours."),
+    ("ఆమె రెండు గంటల పాటు పని చేయకుండా ఉండే ఉన్నదా?", "Won't she have been working for two hours?"),
+    ("ఆమె ఎందుకు పని చేయకుండా ఉండే ఉంటుంది?", "Why won't she have been working?"),
+
+    # Subject: Ramu
+    ("రాము ఉదయం నుండి చదువుతూ ఉండే ఉంటాడు.", "Ramu will have been studying since morning."),
+    ("రాము ఉదయం నుండి చదువుతూ ఉండే ఉంటాడా?", "Will Ramu have been studying since morning?"),
+    ("రాము ఎంతకాలంగా చదువుతూ ఉండే ఉంటాడు?", "How long will Ramu have been studying?"),
+    ("రాము ఉదయం నుండి చదవకుండా ఉండే ఉంటాడు.", "Ramu will not have been studying since morning."),
+    ("రాము ఉదయం నుండి చదవకుండా ఉండే ఉంటాడా?", "Won't Ramu have been studying since morning?"),
+    ("రాము ఎందుకు చదవకుండా ఉండే ఉంటాడు?", "Why won't Ramu have been studying?"),
+
+    # Subject: I
+    ("నేను మూడు రోజులుగా వర్క్ అవుట్ చేస్తూ ఉండే ఉంటాను.", "I will have been working out for three days."),
+    ("నేను మూడు రోజులుగా వర్క్ అవుట్ చేస్తూ ఉండే ఉంటానా?", "Will I have been working out for three days?"),
+    ("నేను ఎంతకాలంగా వర్క్ అవుట్ చేస్తూ ఉండే ఉంటాను?", "How long will I have been working out?"),
+    ("నేను మూడు రోజులుగా వర్క్ అవుట్ చేయకుండా ఉండే ఉంటాను.", "I will not have been working out for three days."),
+    ("నేను మూడు రోజులుగా వర్క్ అవుట్ చేయకుండా ఉండే ఉంటానా?", "Won't I have been working out for three days?"),
+    ("నేను ఎందుకు వర్క్ అవుట్ చేయకుండా ఉండే ఉంటాను?", "Why won't I have been working out?"),
+
+    # Subject: They
+    ("వాళ్లు గంటలుగా సినిమా చూస్తూ ఉండే ఉంటారు.", "They will have been watching a movie for hours."),
+    ("వాళ్లు గంటలుగా సినిమా చూస్తూ ఉండే ఉంటారా?", "Will they have been watching a movie for hours?"),
+    ("వాళ్లు ఎంతకాలంగా సినిమా చూస్తూ ఉండే ఉంటారు?", "How long will they have been watching a movie?"),
+    ("వాళ్లు సినిమా చూడకుండా ఉండే ఉంటారు.", "They will not have been watching a movie."),
+    ("వాళ్లు సినిమా చూడకుండా ఉండే ఉంటారా?", "Won't they have been watching a movie?"),
+    ("వాళ్లు ఎందుకు సినిమా చూడకుండా ఉండే ఉంటారు?", "Why won't they have been watching a movie?"),
+
+    # Subject: We
+    ("మేము రెండు రోజులుగా ప్రాజెక్ట్ మీద పని చేస్తూ ఉండే ఉంటాము.", "We will have been working on the project for two days."),
+    ("మేము రెండు రోజులుగా ప్రాజెక్ట్ మీద పని చేస్తూ ఉండే ఉంటామా?", "Will we have been working on the project for two days?"),
+    ("మేము ఎంతకాలంగా ప్రాజెక్ట్ మీద పని చేస్తూ ఉండే ఉంటాము?", "How long will we have been working on the project?"),
+    ("మేము రెండు రోజులుగా ప్రాజెక్ట్ మీద పని చేయకుండా ఉండే ఉంటాము.", "We will not have been working on the project for two days."),
+    ("మేము రెండు రోజులుగా ప్రాజెక్ట్ మీద పని చేయకుండా ఉండే ఉంటామా?", "Won't we have been working on the project for two days?"),
+    ("మేము ఎందుకు పని చేయకుండా ఉండే ఉంటాము?", "Why won't we have been working on the project?"),
+
+    # Subject: You
+    ("నీవు పది నిమిషాలుగా నాకు ఫోన్ చేస్తూ ఉండే ఉంటావు.", "You will have been calling me for ten minutes."),
+    ("నీవు పది నిమిషాలుగా నాకు ఫోన్ చేస్తూ ఉండే ఉంటావా?", "Will you have been calling me for ten minutes?"),
+    ("నీవు ఎంతకాలంగా నాకు ఫోన్ చేస్తూ ఉండే ఉంటావు?", "How long will you have been calling me?"),
+    ("నీవు నాకు ఫోన్ చేయకుండా ఉండే ఉంటావు.", "You will not have been calling me."),
+    ("నీవు నాకు ఫోన్ చేయకుండా ఉండే ఉంటావా?", "Won't you have been calling me?"),
+    ("నీవు ఎందుకు ఫోన్ చేయకుండా ఉండే ఉంటావు?", "Why won't you have been calling me?")
+   ],
+    
     "Present Be Forms": [
     ("ఆమె ఈ రోజు చెన్నైలో ఉంది.", "She is in Chennai today."),
     ("ఆమె ఈ రోజు చెన్నైలో ఉందా?", "Is she in Chennai today?"),
