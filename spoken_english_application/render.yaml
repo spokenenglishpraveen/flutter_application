@@ -3,8 +3,8 @@ services:
     name: spoken-english-api
     env: python
     buildCommand: pip install -r spoken_english_api/requirements.txt
-    startCommand: gunicorn spoken_english_api.main:app
-    plan: free
+    startCommand: gunicorn main:app
+    workingDir: spoken_english_api
     envVars:
       - key: PYTHONPATH
-        value: spoken_english_application
+        value: .
