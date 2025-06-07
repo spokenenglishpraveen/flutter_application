@@ -6,7 +6,7 @@ class ApiService {
 
   // Get list of available tenses
   static Future<List<String>> getTenseList() async {
-    final response = await http.get(Uri.parse('$baseUrl/tenses'));
+    final response = await http.get(Uri.parse('$baseUrl/tenses/list'));
     if (response.statusCode == 200) {
       return List<String>.from(json.decode(response.body));
     } else {
