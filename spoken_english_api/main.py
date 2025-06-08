@@ -2,7 +2,8 @@ from flask import Flask, jsonify, request, Blueprint
 from flask_cors import CORS
 import random
 import os  # Needed for app.run() fallback
-from data.verbs_data import verbs
+
+from spoken_english_api.data.verbs_data import verbs_dict
 from data.vocabulary_data import vocabulary
 from data.tenses_data import tenses
 
