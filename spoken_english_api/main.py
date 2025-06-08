@@ -1,8 +1,9 @@
 from flask import Flask, jsonify, request, Blueprint
 from flask_cors import CORS
 import random
-import os  # Needed for app.run() fallback
+import os
 
+# Adjust these imports based on your directory structure
 from data.verbs_data import verbs_dict
 from data.vocabulary_data import vocabulary
 from data.tenses_data import tenses
@@ -10,6 +11,7 @@ from data.tenses_data import tenses
 # Blueprint setup
 practice_bp = Blueprint('practice', __name__)
 
+# TENSES ROUTES
 @practice_bp.route('/tenses-list', methods=['GET'])
 def get_tense_list():
     return jsonify(list(tenses.keys()))
@@ -28,7 +30,7 @@ def get_random_tense_sentence():
     if not data:
         return jsonify({"error": "Tense not found"}), 404
     sentence = random.choice(data)
-    return jsonify(sentence)
+    return jsonify({"telugu": sentence[0], "english": sentence[1]})
 
 @practice_bp.route('/tenses/check', methods=['POST'])
 def check_tense_sentence():
@@ -51,17 +53,27 @@ def get_tense_answer():
             return jsonify({"telugu": match[0], "english": match[1]})
     return jsonify({"error": "Sentence not found"}), 404
 
-# Flask app factory
+# VERBS ROUTE
+@practice_bp.route('/verbs', methods=['GET'])
+def get_verbs():
+    return jsonify(list(verbs_dict.values()))
+
+# VOCABULARY ROUTE
+@practice_bp.route('/vocabulary', methods=['GET'])
+def get_vocabulary():
+    return jsonify(vocabulary)
+
+# Create Flask app
 def create_app():
     app = Flask(__name__)
     CORS(app)
     app.register_blueprint(practice_bp, url_prefix='/practice')
     return app
 
-# This is what Gunicorn will look for:
+# WSGI entry point
 app = create_app()
 
-# Optional: for local development
+# Local development only
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port)
