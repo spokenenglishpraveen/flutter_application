@@ -2,7 +2,7 @@
   "build": {
     "builder": "nixpacks",
     "buildCommand": "pip install -r requirements.txt",
-    "startCommand": "python app.py"
+    "startCommand": "python main.py"
   },
   "deploy": {
     "root": "spoken_english_api"
