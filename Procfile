@@ -1,2 +1,3 @@
-web: gunicorn main:app
+web: gunicorn spoken_english_api.main:app
+
 
