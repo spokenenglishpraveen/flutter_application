@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class ApiService {
-  static const String baseUrl = 'flutterapplication-production.up.railway.app';
+  static const String baseUrl = 'https://flutterapplication-production.up.railway.app';
 
   // --- VERBS ---
 
@@ -10,11 +10,8 @@ class ApiService {
   static Future<List<Map<String, dynamic>>> getAllVerbs() async {
     final response = await http.get(Uri.parse('$baseUrl/practice/verbs'));
     if (response.statusCode == 200) {
-      final data = json.decode(response.body) as Map<String, dynamic>;
-      return data.entries.map((e) {
-        final mapValue = Map<String, dynamic>.from(e.value as Map);
-        return {...mapValue, 'v1': e.key};
-      }).toList();
+      final List<dynamic> data = json.decode(response.body);
+      return data.cast<Map<String, dynamic>>();
     } else {
       throw Exception('Failed to load verbs');
     }
@@ -51,8 +48,8 @@ class ApiService {
     if (response.statusCode == 200) {
       final data = json.decode(response.body);
       return {
-        "telugu": data[0],
-        "english": data[1],
+        "telugu": data["telugu"],
+        "english": data["english"],
       };
     } else {
       throw Exception('Failed to load tense sentence');
