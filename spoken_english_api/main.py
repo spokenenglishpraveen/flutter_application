@@ -4,9 +4,9 @@ import random
 import os
 
 # Adjust these imports based on your directory structure
-from spoken_english_api.data.verbs_data import verbs_dict
-from spoken_english_api.data.vocabulary_data import vocabulary
-from spoken_english_api.data.tenses_data import tenses
+from data.verbs_data import verbs_dict
+from data.vocabulary_data import vocabulary
+from data.tenses_data import tenses
 
 
 # Blueprint setup
