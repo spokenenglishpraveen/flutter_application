@@ -1,1 +1,2 @@
-web: python spoken_english_api/main.py
+web: gunicorn spoken_english_api.main:app
+
