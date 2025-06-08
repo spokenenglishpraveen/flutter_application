@@ -1,11 +1,12 @@
 from flask import Flask, jsonify, request, Blueprint
 from flask_cors import CORS
 import random
-
+import os  # Needed for app.run() fallback
 from spoken_english_api.data.verbs_data import verbs
 from spoken_english_api.data.vocabulary_data import vocabulary
 from spoken_english_api.data.tenses_data import tenses
 
+# Blueprint setup
 practice_bp = Blueprint('practice', __name__)
 
 @practice_bp.route('/tenses-list', methods=['GET'])
@@ -49,11 +50,17 @@ def get_tense_answer():
             return jsonify({"telugu": match[0], "english": match[1]})
     return jsonify({"error": "Sentence not found"}), 404
 
+# Flask app factory
 def create_app():
     app = Flask(__name__)
     CORS(app)
     app.register_blueprint(practice_bp, url_prefix='/practice')
     return app
 
-# This is the object Gunicorn will look for:
+# This is what Gunicorn will look for:
 app = create_app()
+
+# Optional: for local development
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
