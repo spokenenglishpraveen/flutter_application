@@ -3,20 +3,15 @@ from flask_cors import CORS
 import random
 import os
 
-# Adjust these imports based on your directory structure
-# ✅ Correct - relative to current folder (spoken_english_api)
+# Import data dictionaries
 from spoken_english_api.data.verbs_data import verbs_dict
-from spoken_english_api.data.vocabulary_data import vocabulary
+from spoken_english_api.data.vocabulary_data import vocab_dict
 from spoken_english_api.data.tenses_data import tenses
-
-
-
-
 
 # Blueprint setup
 practice_bp = Blueprint('practice', __name__)
 
-# TENSES ROUTES
+# --- TENSES ROUTES ---
 @practice_bp.route('/tenses-list', methods=['GET'])
 def get_tense_list():
     return jsonify(list(tenses.keys()))
@@ -58,27 +53,51 @@ def get_tense_answer():
             return jsonify({"telugu": match[0], "english": match[1]})
     return jsonify({"error": "Sentence not found"}), 404
 
-# VERBS ROUTE
+# --- VERBS ROUTE ---
 @practice_bp.route('/verbs', methods=['GET'])
 def get_verbs():
     return jsonify(list(verbs_dict.values()))
 
-# VOCABULARY ROUTE
+# --- VOCABULARY ROUTES ---
 @practice_bp.route('/vocabulary', methods=['GET'])
 def get_vocabulary():
     return jsonify(vocabulary)
 
-# Create Flask app
+@practice_bp.route('/vocabulary/random', methods=['GET'])
+def get_random_vocabulary_word():
+    if not vocabulary:
+        return jsonify({"error": "No vocabulary available"}), 404
+    word = random.choice(vocabulary)
+    return jsonify(word)
+
+@practice_bp.route('/vocabulary/answer', methods=['GET'])
+def get_vocabulary_answer():
+    telugu_word = request.args.get('telugu', '').strip()
+    if not telugu_word:
+        return jsonify({"error": "Missing 'telugu' parameter"}), 400
+
+    # ✅ Fixed key: "telugu_meaning" instead of "telugu"
+    match = next((word for word in vocabulary if word.get("telugu_meaning", "").strip() == telugu_word), None)
+    if match:
+        return jsonify(match)
+    return jsonify({"error": "Word not found"}), 404
+
+# --- HEALTH CHECK (optional) ---
+@practice_bp.route('/health', methods=['GET'])
+def health_check():
+    return jsonify({"status": "ok"})
+
+# --- APP SETUP ---
 def create_app():
     app = Flask(__name__)
     CORS(app)
     app.register_blueprint(practice_bp, url_prefix='/practice')
     return app
 
-# WSGI entry point
+# --- WSGI ENTRY POINT ---
 app = create_app()
 
-# # Local development only
+# Uncomment for local development
 # if __name__ == "__main__":
 #     port = int(os.environ.get("PORT", 5000))
 #     app.run(host="0.0.0.0", port=port)
