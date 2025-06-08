@@ -2,9 +2,9 @@ from flask import Flask, jsonify, request, Blueprint
 from flask_cors import CORS
 import random
 import os  # Needed for app.run() fallback
-from spoken_english_api.data.verbs_data import verbs
-from spoken_english_api.data.vocabulary_data import vocabulary
-from spoken_english_api.data.tenses_data import tenses
+from data.verbs_data import verbs
+from data.vocabulary_data import vocabulary
+from data.tenses_data import tenses
 
 # Blueprint setup
 practice_bp = Blueprint('practice', __name__)
