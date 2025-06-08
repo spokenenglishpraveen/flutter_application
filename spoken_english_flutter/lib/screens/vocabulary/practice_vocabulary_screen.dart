@@ -46,11 +46,11 @@ class _PracticeVocabularyScreenState extends State<PracticeVocabularyScreen> {
   Future<void> _checkAnswer() async {
     if (_currentWord == null) return;
 
-    final correct = _currentWord!['v1']?.toString().toLowerCase().trim() == _userInput.toLowerCase().trim();
+    final correct = _currentWord!['word']?.toString().toLowerCase().trim() == _userInput.toLowerCase().trim();
 
     setState(() {
       _isCorrect = correct;
-      _showAnswer = !correct;
+      _showAnswer = true; // Always show full answer after checking
     });
   }
 
@@ -95,10 +95,13 @@ class _PracticeVocabularyScreenState extends State<PracticeVocabularyScreen> {
               ),
             if (_showAnswer)
               Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const SizedBox(height: 10),
-                  Text('Correct Answer: ${_currentWord!['v1'] ?? ''}'),
-                  Text('Example: ${_currentWord!['example_english'] ?? ''}'),
+                  const Divider(height: 30),
+                  Text('📘 English: ${_currentWord!['word'] ?? ''}', style: const TextStyle(fontSize: 18)),
+                  const SizedBox(height: 8),
+                  Text('📙 ఉదాహరణ: ${_currentWord!['example_telugu'] ?? ''}', style: const TextStyle(fontSize: 16)),
+                  Text('📗 Example: ${_currentWord!['example_english'] ?? ''}', style: const TextStyle(fontSize: 16)),
                 ],
               ),
             const SizedBox(height: 20),

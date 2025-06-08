@@ -40,10 +40,10 @@ class _LearnVocabularyScreenState extends State<LearnVocabularyScreen> {
   void _onSearch(String value) {
     value = value.toLowerCase();
     final matches = _vocabulary.where((word) =>
-      (word['v1'] ?? '').toString().toLowerCase().contains(value)).toList();
+      (word['word'] ?? '').toString().toLowerCase().contains(value)).toList();
 
     if (matches.length == 1 &&
-        (matches.first['v1'] ?? '').toString().toLowerCase() == value) {
+        (matches.first['word'] ?? '').toString().toLowerCase() == value) {
       setState(() {
         _selectedWord = matches.first;
         _filteredVocabulary = [];
@@ -59,7 +59,7 @@ class _LearnVocabularyScreenState extends State<LearnVocabularyScreen> {
   void _onSelectWord(Map<String, dynamic> word) {
     setState(() {
       _selectedWord = word;
-      _searchController.text = (word['v1'] ?? '').toString();
+      _searchController.text = (word['word'] ?? '').toString();
     });
   }
 
@@ -71,7 +71,7 @@ class _LearnVocabularyScreenState extends State<LearnVocabularyScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text("🔤 English: ${word['v1'] ?? ''}", style: const TextStyle(fontSize: 18)),
+            Text("🔤 English: ${word['word'] ?? ''}", style: const TextStyle(fontSize: 18)),
             const SizedBox(height: 8),
             Text("🔠 Telugu: ${word['telugu_meaning'] ?? ''}", style: const TextStyle(fontSize: 18)),
             const SizedBox(height: 8),
@@ -91,7 +91,7 @@ class _LearnVocabularyScreenState extends State<LearnVocabularyScreen> {
         itemBuilder: (context, index) {
           final word = _filteredVocabulary[index];
           return ListTile(
-            title: Text(word['v1'] ?? ''),
+            title: Text(word['word'] ?? ''),
             subtitle: Text(word['telugu_meaning'] ?? ''),
             onTap: () => _onSelectWord(word),
           );
