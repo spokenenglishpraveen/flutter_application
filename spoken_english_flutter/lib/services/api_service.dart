@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class ApiService {
-  static const String baseUrl = 'https://flutter-application-2.onrender.com';
+  static const String baseUrl = 'flutterapplication-production.up.railway.app';
 
   // --- VERBS ---
 
