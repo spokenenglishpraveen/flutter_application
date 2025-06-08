@@ -5,6 +5,6 @@
     "startCommand": "python main.py"
   },
   "deploy": {
-    "root": "spoken_english_api"
+    "root": "SPOKEN_ENGLISH_APPLICATION/spoken_english_api"
   }
 }
