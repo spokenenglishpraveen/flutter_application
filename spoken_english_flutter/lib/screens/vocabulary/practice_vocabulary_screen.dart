@@ -46,11 +46,17 @@ class _PracticeVocabularyScreenState extends State<PracticeVocabularyScreen> {
   Future<void> _checkAnswer() async {
     if (_currentWord == null) return;
 
-    final correct = _currentWord!['word']?.toString().toLowerCase().trim() == _userInput.toLowerCase().trim();
+    final correct = _currentWord!['word']?.toString().toLowerCase().trim() ==
+        _userInput.toLowerCase().trim();
 
     setState(() {
       _isCorrect = correct;
-      _showAnswer = true; // Always show full answer after checking
+    });
+  }
+
+  void _revealAnswer() {
+    setState(() {
+      _showAnswer = true;
     });
   }
 
@@ -80,11 +86,30 @@ class _PracticeVocabularyScreenState extends State<PracticeVocabularyScreen> {
               onChanged: (value) => setState(() => _userInput = value),
             ),
             const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: _checkAnswer,
-              child: const Text('Check Answer'),
+
+            /// Buttons: Check Answer, Show Answer, Next Word
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                ElevatedButton(
+                  onPressed: _checkAnswer,
+                  child: const Text('Check Answer'),
+                ),
+                ElevatedButton(
+                  onPressed: _revealAnswer,
+                  child: const Text('Show Answer'),
+                ),
+                ElevatedButton.icon(
+                  onPressed: _loadRandomWord,
+                  icon: const Icon(Icons.refresh),
+                  label: const Text('Next Word'),
+                ),
+              ],
             ),
+
             const SizedBox(height: 20),
+
+            /// Result: Correct or Incorrect
             if (_isCorrect != null)
               Text(
                 _isCorrect! ? '✅ Correct!' : '❌ Incorrect',
@@ -93,6 +118,8 @@ class _PracticeVocabularyScreenState extends State<PracticeVocabularyScreen> {
                   color: _isCorrect! ? Colors.green : Colors.red,
                 ),
               ),
+
+            /// Answer Details
             if (_showAnswer)
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -104,12 +131,6 @@ class _PracticeVocabularyScreenState extends State<PracticeVocabularyScreen> {
                   Text('📗 Example: ${_currentWord!['example_english'] ?? ''}', style: const TextStyle(fontSize: 16)),
                 ],
               ),
-            const SizedBox(height: 20),
-            ElevatedButton.icon(
-              onPressed: _loadRandomWord,
-              icon: const Icon(Icons.refresh),
-              label: const Text('Try Another'),
-            ),
           ],
         ),
       ),
