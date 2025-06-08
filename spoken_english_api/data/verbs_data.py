@@ -255,7 +255,7 @@ raw_verbs = [
     ("eye", "eyed", "eyed", "eyeing", "చూడు", "👀", "He eyed the new gadget curiously.", "అతను కొత్త పరికరాన్ని ఆసక్తిగా చూశాడు.")
 ]
 
-]
+
 
 
 verbs_dict = { verb[0]: Verb(*verb).to_dict() for verb in raw_verbs }
