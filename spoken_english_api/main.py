@@ -8,6 +8,9 @@ from spoken_english_api.data.verbs_data import verbs_dict
 from spoken_english_api.data.vocabulary_data import vocab_dict
 from spoken_english_api.data.tenses_data import tenses
 
+# ✅ Convert vocab_dict to a list so random.choice works
+vocabulary = list(vocab_dict.values())
+
 # Blueprint setup
 practice_bp = Blueprint('practice', __name__)
 
@@ -76,13 +79,12 @@ def get_vocabulary_answer():
     if not telugu_word:
         return jsonify({"error": "Missing 'telugu' parameter"}), 400
 
-    # ✅ Fixed key: "telugu_meaning" instead of "telugu"
     match = next((word for word in vocabulary if word.get("telugu_meaning", "").strip() == telugu_word), None)
     if match:
         return jsonify(match)
     return jsonify({"error": "Word not found"}), 404
 
-# --- HEALTH CHECK (optional) ---
+# --- HEALTH CHECK ---
 @practice_bp.route('/health', methods=['GET'])
 def health_check():
     return jsonify({"status": "ok"})
