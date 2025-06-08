@@ -89,4 +89,40 @@ class ApiService {
       throw Exception('Failed to load tense answer');
     }
   }
+
+  // --- VOCABULARY ---
+
+  // Fetch the full vocabulary list
+  static Future<List<Map<String, String>>> getVocabularyList() async {
+    final response = await http.get(Uri.parse('$baseUrl/practice/vocabulary'));
+    if (response.statusCode == 200) {
+      final List<dynamic> data = json.decode(response.body);
+      return data.map((item) => Map<String, String>.from(item)).toList();
+    } else {
+      throw Exception('Failed to load vocabulary list');
+    }
+  }
+
+  // Fetch a random Telugu word for practice
+  static Future<Map<String, String>> getRandomVocabularyWord() async {
+    final response = await http.get(Uri.parse('$baseUrl/practice/vocabulary/random'));
+    if (response.statusCode == 200) {
+      return Map<String, String>.from(json.decode(response.body));
+    } else {
+      throw Exception('Failed to fetch random vocabulary word');
+    }
+  }
+
+  // Fetch full details of a Telugu word
+  static Future<Map<String, String>> getVocabularyAnswer(String teluguWord) async {
+    final response = await http.get(Uri.parse(
+      '$baseUrl/practice/vocabulary/answer?telugu=${Uri.encodeComponent(teluguWord)}',
+    ));
+
+    if (response.statusCode == 200) {
+      return Map<String, String>.from(json.decode(response.body));
+    } else {
+      throw Exception('Failed to fetch vocabulary answer');
+    }
+  }
 }
