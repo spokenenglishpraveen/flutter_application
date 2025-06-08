@@ -1,102 +1,125 @@
-// practice_vocabulary_screen.dart
-
 import 'package:flutter/material.dart';
 import '../../services/api_service.dart';
 
 class PracticeVocabularyScreen extends StatefulWidget {
-  const PracticeVocabularyScreen({Key? key}) : super(key: key);
+  const PracticeVocabularyScreen({super.key});
 
   @override
-  _PracticeVocabularyScreenState createState() => _PracticeVocabularyScreenState();
+  State<PracticeVocabularyScreen> createState() => _PracticeVocabularyScreenState();
 }
 
 class _PracticeVocabularyScreenState extends State<PracticeVocabularyScreen> {
-  String teluguWord = '';
-  String userAnswer = '';
-  String feedback = '';
-  Map<String, String> fullInfo = {};
-  bool isLoading = true;
+  Map<String, dynamic>? _currentWord;
+  String _userInput = '';
+  bool? _isCorrect;
+  bool _showAnswer = false;
+  bool _isLoading = true;
 
   @override
   void initState() {
     super.initState();
-    loadNextWord();
+    _loadRandomWord();
   }
 
-  Future<void> loadNextWord() async {
+  Future<void> _loadRandomWord() async {
     setState(() {
-      isLoading = true;
-      feedback = '';
-      userAnswer = '';
+      _isLoading = true;
+      _userInput = '';
+      _isCorrect = null;
+      _showAnswer = false;
     });
 
     try {
       final word = await ApiService.getRandomVocabularyWord();
       setState(() {
-        teluguWord = word['telugu'] ?? '';
-        fullInfo = word;
-        isLoading = false;
+        _currentWord = word;
+        _isLoading = false;
       });
     } catch (e) {
+      print('Error loading vocabulary word: $e');
       setState(() {
-        feedback = '⚠️ Failed to load word. Try again.';
-        isLoading = false;
+        _isLoading = false;
       });
     }
   }
 
-  void checkAnswer() {
-    final correct = fullInfo['english']?.toLowerCase().trim();
-    final user = userAnswer.toLowerCase().trim();
+  Future<void> _checkAnswer() async {
+    if (_currentWord == null) return;
+
+    final correct = _currentWord!['v1']?.toString().toLowerCase().trim() == _userInput.toLowerCase().trim();
 
     setState(() {
-      feedback = user == correct ? '✅ Correct!' : '❌ Incorrect. Try again or reveal the answer.';
+      _isCorrect = correct;
+      _showAnswer = !correct;
     });
   }
 
-  void revealAnswer() {
-    setState(() {
-      feedback = '''
-Answer: ${fullInfo['english'] ?? 'N/A'}
-Meaning: ${fullInfo['meaning'] ?? 'N/A'}
-Example: ${fullInfo['example_en'] ?? 'N/A'}
-''';
-    });
+  Widget _buildPracticeCard() {
+    if (_currentWord == null) {
+      return const Center(child: Text('No word loaded.'));
+    }
+
+    return Card(
+      margin: const EdgeInsets.all(16),
+      elevation: 4,
+      child: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text(
+              '📘 Telugu: ${_currentWord!['telugu_meaning'] ?? ''}',
+              style: const TextStyle(fontSize: 20),
+            ),
+            const SizedBox(height: 20),
+            TextField(
+              decoration: const InputDecoration(
+                labelText: 'Enter the English word',
+                border: OutlineInputBorder(),
+              ),
+              onChanged: (value) => setState(() => _userInput = value),
+            ),
+            const SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: _checkAnswer,
+              child: const Text('Check Answer'),
+            ),
+            const SizedBox(height: 20),
+            if (_isCorrect != null)
+              Text(
+                _isCorrect! ? '✅ Correct!' : '❌ Incorrect',
+                style: TextStyle(
+                  fontSize: 18,
+                  color: _isCorrect! ? Colors.green : Colors.red,
+                ),
+              ),
+            if (_showAnswer)
+              Column(
+                children: [
+                  const SizedBox(height: 10),
+                  Text('Correct Answer: ${_currentWord!['v1'] ?? ''}'),
+                  Text('Example: ${_currentWord!['example_english'] ?? ''}'),
+                ],
+              ),
+            const SizedBox(height: 20),
+            ElevatedButton.icon(
+              onPressed: _loadRandomWord,
+              icon: const Icon(Icons.refresh),
+              label: const Text('Try Another'),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Practice Vocabulary')),
-      body: isLoading
+      body: _isLoading
           ? const Center(child: CircularProgressIndicator())
-          : Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Text('Translate this Telugu word to English:', style: TextStyle(fontSize: 16)),
-                  const SizedBox(height: 8),
-                  Text(teluguWord, style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
-                  const SizedBox(height: 16),
-                  TextField(
-                    onChanged: (value) => userAnswer = value,
-                    decoration: const InputDecoration(labelText: 'Your Answer'),
-                  ),
-                  const SizedBox(height: 16),
-                  Wrap(
-                    spacing: 10,
-                    children: [
-                      ElevatedButton(onPressed: checkAnswer, child: const Text('Check Answer')),
-                      ElevatedButton(onPressed: revealAnswer, child: const Text('Reveal Answer')),
-                      ElevatedButton(onPressed: loadNextWord, child: const Text('Next Word')),
-                    ],
-                  ),
-                  const SizedBox(height: 16),
-                  Text(feedback, style: const TextStyle(fontSize: 16)),
-                ],
-              ),
-            ),
+          : SingleChildScrollView(child: _buildPracticeCard()),
     );
   }
 }

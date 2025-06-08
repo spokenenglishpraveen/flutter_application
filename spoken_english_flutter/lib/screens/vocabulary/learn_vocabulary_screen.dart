@@ -2,15 +2,18 @@ import 'package:flutter/material.dart';
 import '../../services/api_service.dart';
 
 class LearnVocabularyScreen extends StatefulWidget {
+  const LearnVocabularyScreen({super.key});
+
   @override
-  _LearnVocabularyScreenState createState() => _LearnVocabularyScreenState();
+  State<LearnVocabularyScreen> createState() => _LearnVocabularyScreenState();
 }
 
 class _LearnVocabularyScreenState extends State<LearnVocabularyScreen> {
-  TextEditingController _searchController = TextEditingController();
+  final TextEditingController _searchController = TextEditingController();
   List<Map<String, dynamic>> _vocabulary = [];
   List<Map<String, dynamic>> _filteredVocabulary = [];
   Map<String, dynamic>? _selectedWord;
+  bool _isLoading = true;
 
   @override
   void initState() {
@@ -20,22 +23,27 @@ class _LearnVocabularyScreenState extends State<LearnVocabularyScreen> {
 
   Future<void> _loadVocabulary() async {
     try {
-      final vocabList = await ApiService.getVocabularyList(); // should return List<Map<String, dynamic>>
+      final vocabList = await ApiService.getVocabularyList();
       setState(() {
         _vocabulary = vocabList;
         _filteredVocabulary = vocabList;
+        _isLoading = false;
       });
     } catch (e) {
-      print('Error fetching vocabulary: $e');
+      print("Error loading vocabulary: $e");
+      setState(() {
+        _isLoading = false;
+      });
     }
   }
 
   void _onSearch(String value) {
     value = value.toLowerCase();
     final matches = _vocabulary.where((word) =>
-      word['word']!.toLowerCase().contains(value)).toList();
+      (word['v1'] ?? '').toString().toLowerCase().contains(value)).toList();
 
-    if (matches.length == 1 && matches.first['word']!.toLowerCase() == value) {
+    if (matches.length == 1 &&
+        (matches.first['v1'] ?? '').toString().toLowerCase() == value) {
       setState(() {
         _selectedWord = matches.first;
         _filteredVocabulary = [];
@@ -51,7 +59,7 @@ class _LearnVocabularyScreenState extends State<LearnVocabularyScreen> {
   void _onSelectWord(Map<String, dynamic> word) {
     setState(() {
       _selectedWord = word;
-      _searchController.text = word['word']!;
+      _searchController.text = (word['v1'] ?? '').toString();
     });
   }
 
@@ -63,15 +71,31 @@ class _LearnVocabularyScreenState extends State<LearnVocabularyScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text("${word['vector_icon']} English: ${word['word']}", style: TextStyle(fontSize: 18)),
-            SizedBox(height: 8),
-            Text("🔠 Telugu: ${word['telugu_meaning']}", style: TextStyle(fontSize: 18)),
-            SizedBox(height: 8),
-            Text("📘 Example: ${word['example_english']}", style: TextStyle(fontSize: 16)),
-            SizedBox(height: 8),
-            Text("📙 ఉదాహరణ: ${word['example_telugu']}", style: TextStyle(fontSize: 16)),
+            Text("🔤 English: ${word['v1'] ?? ''}", style: const TextStyle(fontSize: 18)),
+            const SizedBox(height: 8),
+            Text("🔠 Telugu: ${word['telugu_meaning'] ?? ''}", style: const TextStyle(fontSize: 18)),
+            const SizedBox(height: 8),
+            Text("📘 Example: ${word['example_english'] ?? ''}", style: const TextStyle(fontSize: 16)),
+            const SizedBox(height: 8),
+            Text("📙 ఉదాహరణ: ${word['example_telugu'] ?? ''}", style: const TextStyle(fontSize: 16)),
           ],
         ),
+      ),
+    );
+  }
+
+  Widget _buildVocabularyList() {
+    return Expanded(
+      child: ListView.builder(
+        itemCount: _filteredVocabulary.length,
+        itemBuilder: (context, index) {
+          final word = _filteredVocabulary[index];
+          return ListTile(
+            title: Text(word['v1'] ?? ''),
+            subtitle: Text(word['telugu_meaning'] ?? ''),
+            onTap: () => _onSelectWord(word),
+          );
+        },
       ),
     );
   }
@@ -79,45 +103,30 @@ class _LearnVocabularyScreenState extends State<LearnVocabularyScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Learn Vocabulary")),
-      body: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(16),
-            child: TextField(
-              controller: _searchController,
-              decoration: InputDecoration(
-                labelText: 'Search Vocabulary',
-                border: OutlineInputBorder(),
-                suffixIcon: Icon(Icons.search),
+      appBar: AppBar(title: const Text('Learn Vocabulary')),
+      body: _isLoading
+          ? const Center(child: CircularProgressIndicator())
+          : Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
+                children: [
+                  TextField(
+                    controller: _searchController,
+                    onChanged: _onSearch,
+                    decoration: const InputDecoration(
+                      hintText: 'Search for a word...',
+                      border: OutlineInputBorder(),
+                      prefixIcon: Icon(Icons.search),
+                    ),
+                  ),
+                  const SizedBox(height: 20),
+                  if (_selectedWord != null)
+                    _buildWordDetails(_selectedWord!)
+                  else
+                    _buildVocabularyList(),
+                ],
               ),
-              onChanged: _onSearch,
             ),
-          ),
-          if (_selectedWord != null)
-            _buildWordDetails(_selectedWord!)
-          else if (_filteredVocabulary.isNotEmpty)
-            Expanded(
-              child: ListView.builder(
-                itemCount: _filteredVocabulary.length,
-                itemBuilder: (context, index) {
-                  final word = _filteredVocabulary[index];
-                  return ListTile(
-                    leading: Text(word['vector_icon'] ?? ''),
-                    title: Text(word['word'] ?? ''),
-                    subtitle: Text(word['telugu_meaning'] ?? ''),
-                    onTap: () => _onSelectWord(word),
-                  );
-                },
-              ),
-            )
-          else
-            Padding(
-              padding: const EdgeInsets.all(16),
-              child: Text("No matching vocabulary found."),
-            ),
-        ],
-      ),
     );
   }
 }
