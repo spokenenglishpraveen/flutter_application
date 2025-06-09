@@ -5,44 +5,62 @@ import 'practice_vocabulary_screen.dart';
 class VocabularyScreen extends StatelessWidget {
   const VocabularyScreen({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('Vocabulary')),
-      body: Padding(
+  void _openLevelOptions(BuildContext context, int level) {
+    showModalBottomSheet(
+      context: context,
+      builder: (_) => Padding(
         padding: const EdgeInsets.all(16.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+        child: Wrap(
           children: [
-            ElevatedButton.icon(
-              icon: const Icon(Icons.menu_book),
-              label: const Text('Learn Vocabulary'),
-              onPressed: () {
+            ListTile(
+              leading: const Icon(Icons.menu_book),
+              title: const Text('Learn Vocabulary'),
+              onTap: () {
+                Navigator.pop(context); // close bottom sheet
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (_) => LearnVocabularyScreen()),
+                  MaterialPageRoute(
+                    builder: (_) => LearnVocabularyScreen(level: level),
+                  ),
                 );
               },
-              style: ElevatedButton.styleFrom(
-                minimumSize: const Size(double.infinity, 50),
-              ),
             ),
-            const SizedBox(height: 20),
-            ElevatedButton.icon(
-              icon: const Icon(Icons.edit),
-              label: const Text('Practice Vocabulary'),
-              onPressed: () {
+            ListTile(
+              leading: const Icon(Icons.edit),
+              title: const Text('Practice Vocabulary'),
+              onTap: () {
+                Navigator.pop(context);
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (_) => PracticeVocabularyScreen()),
+                  MaterialPageRoute(
+                    builder: (_) => PracticeVocabularyScreen(level: level),
+                  ),
                 );
               },
-              style: ElevatedButton.styleFrom(
-                minimumSize: const Size(double.infinity, 50),
-              ),
             ),
           ],
         ),
+      ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('Vocabulary Levels')),
+      body: ListView.builder(
+        padding: const EdgeInsets.all(16),
+        itemCount: 10,
+        itemBuilder: (context, index) {
+          final level = index + 1;
+          return Card(
+            child: ListTile(
+              title: Text('Level $level'),
+              trailing: const Icon(Icons.arrow_forward_ios),
+              onTap: () => _openLevelOptions(context, level),
+            ),
+          );
+        },
       ),
     );
   }

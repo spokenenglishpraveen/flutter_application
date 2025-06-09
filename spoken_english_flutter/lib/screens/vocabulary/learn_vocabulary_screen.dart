@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import '../../services/api_service.dart';
 
 class LearnVocabularyScreen extends StatefulWidget {
-  const LearnVocabularyScreen({super.key});
+  final int level;
+  const LearnVocabularyScreen({super.key, required this.level});
 
   @override
   State<LearnVocabularyScreen> createState() => _LearnVocabularyScreenState();
@@ -23,7 +24,7 @@ class _LearnVocabularyScreenState extends State<LearnVocabularyScreen> {
 
   Future<void> _loadVocabulary() async {
     try {
-      final vocabList = await ApiService.getVocabularyList();
+      final vocabList = await ApiService.getVocabularyListByLevel(widget.level);
       setState(() {
         _vocabulary = vocabList;
         _filteredVocabulary = vocabList;
@@ -31,19 +32,17 @@ class _LearnVocabularyScreenState extends State<LearnVocabularyScreen> {
       });
     } catch (e) {
       print("Error loading vocabulary: $e");
-      setState(() {
-        _isLoading = false;
-      });
+      setState(() => _isLoading = false);
     }
   }
 
   void _onSearch(String value) {
     value = value.toLowerCase();
     final matches = _vocabulary.where((word) =>
-      (word['word'] ?? '').toString().toLowerCase().contains(value)).toList();
+        (word['word'] ?? '').toLowerCase().contains(value)).toList();
 
     if (matches.length == 1 &&
-        (matches.first['word'] ?? '').toString().toLowerCase() == value) {
+        (matches.first['word'] ?? '').toLowerCase() == value) {
       setState(() {
         _selectedWord = matches.first;
         _filteredVocabulary = [];
@@ -103,7 +102,7 @@ class _LearnVocabularyScreenState extends State<LearnVocabularyScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Learn Vocabulary')),
+      appBar: AppBar(title: Text('Learn Vocabulary - Level ${widget.level}')),
       body: _isLoading
           ? const Center(child: CircularProgressIndicator())
           : Padding(

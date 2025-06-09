@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import '../../services/api_service.dart';
 
 class PracticeVocabularyScreen extends StatefulWidget {
-  const PracticeVocabularyScreen({super.key});
+  final int level;
+  const PracticeVocabularyScreen({required this.level, super.key});
 
   @override
   State<PracticeVocabularyScreen> createState() => _PracticeVocabularyScreenState();
@@ -30,7 +31,7 @@ class _PracticeVocabularyScreenState extends State<PracticeVocabularyScreen> {
     });
 
     try {
-      final word = await ApiService.getRandomVocabularyWord();
+      final word = await ApiService.getRandomVocabularyWordByLevel(widget.level);
       setState(() {
         _currentWord = word;
         _isLoading = false;
@@ -86,19 +87,11 @@ class _PracticeVocabularyScreenState extends State<PracticeVocabularyScreen> {
               onChanged: (value) => setState(() => _userInput = value),
             ),
             const SizedBox(height: 20),
-
-            /// Buttons: Check Answer, Show Answer, Next Word
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                ElevatedButton(
-                  onPressed: _checkAnswer,
-                  child: const Text('Check Answer'),
-                ),
-                ElevatedButton(
-                  onPressed: _revealAnswer,
-                  child: const Text('Show Answer'),
-                ),
+                ElevatedButton(onPressed: _checkAnswer, child: const Text('Check Answer')),
+                ElevatedButton(onPressed: _revealAnswer, child: const Text('Show Answer')),
                 ElevatedButton.icon(
                   onPressed: _loadRandomWord,
                   icon: const Icon(Icons.refresh),
@@ -106,10 +99,7 @@ class _PracticeVocabularyScreenState extends State<PracticeVocabularyScreen> {
                 ),
               ],
             ),
-
             const SizedBox(height: 20),
-
-            /// Result: Correct or Incorrect
             if (_isCorrect != null)
               Text(
                 _isCorrect! ? '✅ Correct!' : '❌ Incorrect',
@@ -118,8 +108,6 @@ class _PracticeVocabularyScreenState extends State<PracticeVocabularyScreen> {
                   color: _isCorrect! ? Colors.green : Colors.red,
                 ),
               ),
-
-            /// Answer Details
             if (_showAnswer)
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -140,7 +128,7 @@ class _PracticeVocabularyScreenState extends State<PracticeVocabularyScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Practice Vocabulary')),
+      appBar: AppBar(title: Text('Practice Vocabulary - Level ${widget.level}')),
       body: _isLoading
           ? const Center(child: CircularProgressIndicator())
           : SingleChildScrollView(child: _buildPracticeCard()),
