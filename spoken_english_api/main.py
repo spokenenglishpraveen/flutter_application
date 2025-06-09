@@ -8,7 +8,7 @@ from spoken_english_api.data.verbs_data import verbs_dict
 from spoken_english_api.data.vocabulary_data import vocab_dict
 from spoken_english_api.data.tenses_data import tenses
 
-# ✅ Convert vocab_dict to a list so random.choice works
+# ✅ Convert vocab_dict to a list
 vocabulary = list(vocab_dict.values())
 
 # Blueprint setup
@@ -64,14 +64,31 @@ def get_verbs():
 # --- VOCABULARY ROUTES ---
 @practice_bp.route('/vocabulary', methods=['GET'])
 def get_vocabulary():
+    level_param = request.args.get('level')
+    if level_param:
+        try:
+            level = int(level_param)
+            filtered_vocab = [word for word in vocabulary if word.get('level') == level]
+            return jsonify(filtered_vocab)
+        except ValueError:
+            return jsonify({"error": "Invalid level parameter"}), 400
     return jsonify(vocabulary)
 
 @practice_bp.route('/vocabulary/random', methods=['GET'])
 def get_random_vocabulary_word():
-    if not vocabulary:
-        return jsonify({"error": "No vocabulary available"}), 404
-    word = random.choice(vocabulary)
-    return jsonify(word)
+    level_param = request.args.get('level')
+    try:
+        if level_param:
+            level = int(level_param)
+            filtered_vocab = [word for word in vocabulary if word.get('level') == level]
+            if not filtered_vocab:
+                return jsonify({"error": "No vocabulary found for this level"}), 404
+            word = random.choice(filtered_vocab)
+        else:
+            word = random.choice(vocabulary)
+        return jsonify(word)
+    except ValueError:
+        return jsonify({"error": "Invalid level parameter"}), 400
 
 @practice_bp.route('/vocabulary/answer', methods=['GET'])
 def get_vocabulary_answer():
