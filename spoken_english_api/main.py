@@ -1,3 +1,4 @@
+# --- main.py ---
 from flask import Flask, jsonify, request, Blueprint
 from flask_cors import CORS
 import random
@@ -8,10 +9,9 @@ from spoken_english_api.data.verbs_data import verbs_dict
 from spoken_english_api.data.vocabulary_data import vocab_dict
 from spoken_english_api.data.tenses_data import tenses
 
-
-
 # ✅ Convert vocab_dict to a list
 vocabulary = list(vocab_dict.values())
+print(f"[DEBUG] Loaded vocabulary words: {len(vocabulary)}")  # Debug
 
 # Blueprint setup
 practice_bp = Blueprint('practice', __name__)
@@ -70,6 +70,8 @@ def get_vocabulary():
     if level_param:
         try:
             level = int(level_param)
+            print(f"[DEBUG] Filtering vocabulary for level: {level}")
+            print(f"[DEBUG] Available levels: {[word.get('level') for word in vocabulary]}")
             filtered_vocab = [word for word in vocabulary if word.get('level') == level]
             return jsonify(filtered_vocab)
         except ValueError:
@@ -118,7 +120,7 @@ def create_app():
 # --- WSGI ENTRY POINT ---
 app = create_app()
 
-# Uncomment for local development
+# Uncomment below to test locally
 # if __name__ == "__main__":
 #     port = int(os.environ.get("PORT", 5000))
 #     app.run(host="0.0.0.0", port=port)
