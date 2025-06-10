@@ -11,7 +11,9 @@ from spoken_english_api.data.tenses_data import tenses
 
 # ✅ Convert vocab_dict to a list
 vocabulary = list(vocab_dict.values())
+verbs = list(verbs_dict.values())
 print(f"[DEBUG] Loaded vocabulary words: {len(vocabulary)}")  # Debug
+print(f"[DEBUG] Loaded verbs: {len(verbs)}")  # Debug
 
 # Blueprint setup
 practice_bp = Blueprint('practice', __name__)
@@ -58,10 +60,32 @@ def get_tense_answer():
             return jsonify({"telugu": match[0], "english": match[1]})
     return jsonify({"error": "Sentence not found"}), 404
 
-# --- VERBS ROUTE ---
+# --- VERBS ROUTES ---
 @practice_bp.route('/verbs', methods=['GET'])
 def get_verbs():
-    return jsonify(list(verbs_dict.values()))
+    level_param = request.args.get('level')
+    if level_param:
+        try:
+            level = int(level_param)
+            filtered_verbs = [verb for verb in verbs if verb.get('level') == level]
+            return jsonify(filtered_verbs)
+        except ValueError:
+            return jsonify({"error": "Invalid level parameter"}), 400
+    return jsonify(verbs)
+
+@practice_bp.route('/verbs/random', methods=['GET'])
+def get_random_verb():
+    level_param = request.args.get('level')
+    try:
+        if level_param:
+            level = int(level_param)
+            filtered_verbs = [verb for verb in verbs if verb.get('level') == level]
+            if not filtered_verbs:
+                return jsonify({"error": "No verbs found for this level"}), 404
+            return jsonify(random.choice(filtered_verbs))
+        return jsonify(random.choice(verbs))
+    except ValueError:
+        return jsonify({"error": "Invalid level parameter"}), 400
 
 # --- VOCABULARY ROUTES ---
 @practice_bp.route('/vocabulary', methods=['GET'])
