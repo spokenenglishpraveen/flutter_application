@@ -37,12 +37,12 @@ class _LearnVocabularyScreenState extends State<LearnVocabularyScreen> {
   }
 
   void _onSearch(String value) {
-    value = value.toLowerCase();
+    final lowerValue = value.toLowerCase();
     final matches = _vocabulary.where((word) =>
-        (word['word'] ?? '').toLowerCase().contains(value)).toList();
+        (word['word'] ?? '').toLowerCase().contains(lowerValue)).toList();
 
     if (matches.length == 1 &&
-        (matches.first['word'] ?? '').toLowerCase() == value) {
+        (matches.first['word'] ?? '').toLowerCase() == lowerValue) {
       setState(() {
         _selectedWord = matches.first;
         _filteredVocabulary = [];
@@ -58,13 +58,14 @@ class _LearnVocabularyScreenState extends State<LearnVocabularyScreen> {
   void _onSelectWord(Map<String, dynamic> word) {
     setState(() {
       _selectedWord = word;
-      _searchController.text = (word['word'] ?? '').toString();
+      _searchController.text = word['word'] ?? '';
     });
   }
 
   Widget _buildWordDetails(Map<String, dynamic> word) {
     return Card(
       margin: const EdgeInsets.all(16),
+      elevation: 4,
       child: Padding(
         padding: const EdgeInsets.all(16),
         child: Column(
@@ -85,17 +86,19 @@ class _LearnVocabularyScreenState extends State<LearnVocabularyScreen> {
 
   Widget _buildVocabularyList() {
     return Expanded(
-      child: ListView.builder(
-        itemCount: _filteredVocabulary.length,
-        itemBuilder: (context, index) {
-          final word = _filteredVocabulary[index];
-          return ListTile(
-            title: Text(word['word'] ?? ''),
-            subtitle: Text(word['telugu_meaning'] ?? ''),
-            onTap: () => _onSelectWord(word),
-          );
-        },
-      ),
+      child: _filteredVocabulary.isEmpty
+          ? const Center(child: Text('No matching words found.'))
+          : ListView.builder(
+              itemCount: _filteredVocabulary.length,
+              itemBuilder: (context, index) {
+                final word = _filteredVocabulary[index];
+                return ListTile(
+                  title: Text(word['word'] ?? ''),
+                  subtitle: Text(word['telugu_meaning'] ?? ''),
+                  onTap: () => _onSelectWord(word),
+                );
+              },
+            ),
     );
   }
 

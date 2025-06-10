@@ -44,10 +44,10 @@ class _PracticeVocabularyScreenState extends State<PracticeVocabularyScreen> {
     }
   }
 
-  Future<void> _checkAnswer() async {
+  void _checkAnswer() {
     if (_currentWord == null) return;
 
-    final correct = _currentWord!['word']?.toString().toLowerCase().trim() ==
+    final correct = (_currentWord!['word']?.toString().toLowerCase().trim() ?? '') ==
         _userInput.toLowerCase().trim();
 
     setState(() {

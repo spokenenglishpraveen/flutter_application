@@ -8,7 +8,6 @@ class ApiService {
   //           VERBS
   // ============================
 
-  // Get all verbs
   static Future<List<Map<String, dynamic>>> getAllVerbs() async {
     final response = await http.get(Uri.parse('$baseUrl/practice/verbs'));
     if (response.statusCode == 200) {
@@ -19,11 +18,10 @@ class ApiService {
     }
   }
 
-  // Get a random verb
   static Future<Map<String, dynamic>> getRandomVerb() async {
     final response = await http.get(Uri.parse('$baseUrl/practice/verbs/random'));
     if (response.statusCode == 200) {
-      return json.decode(response.body);
+      return Map<String, dynamic>.from(json.decode(response.body));
     } else {
       throw Exception('Failed to load random verb');
     }
@@ -91,54 +89,49 @@ class ApiService {
   //         VOCABULARY
   // ============================
 
-  // Get full vocabulary list (all levels)
-  static Future<List<Map<String, String>>> getVocabularyList() async {
+  static Future<List<Map<String, dynamic>>> getVocabularyList() async {
     final response = await http.get(Uri.parse('$baseUrl/practice/vocabulary'));
     if (response.statusCode == 200) {
       final List<dynamic> data = json.decode(response.body);
-      return data.map((item) => Map<String, String>.from(item)).toList();
+      return data.map((item) => Map<String, dynamic>.from(item)).toList();
     } else {
       throw Exception('Failed to load vocabulary list');
     }
   }
 
-  // Get vocabulary list by level
-  static Future<List<Map<String, String>>> getVocabularyListByLevel(int level) async {
+  static Future<List<Map<String, dynamic>>> getVocabularyListByLevel(int level) async {
     final response = await http.get(Uri.parse('$baseUrl/practice/vocabulary?level=$level'));
     if (response.statusCode == 200) {
       final List<dynamic> data = json.decode(response.body);
-      return data.map((item) => Map<String, String>.from(item)).toList();
+      return data.map((item) => Map<String, dynamic>.from(item)).toList();
     } else {
       throw Exception('Failed to load vocabulary for level $level');
     }
   }
 
-  // Get one random word (no level)
-  static Future<Map<String, String>> getRandomVocabularyWord() async {
+  static Future<Map<String, dynamic>> getRandomVocabularyWord() async {
     final response = await http.get(Uri.parse('$baseUrl/practice/vocabulary/random'));
     if (response.statusCode == 200) {
-      return Map<String, String>.from(json.decode(response.body));
+      return Map<String, dynamic>.from(json.decode(response.body));
     } else {
       throw Exception('Failed to fetch random vocabulary word');
     }
   }
 
-  // Get one random word by level
-  static Future<Map<String, String>> getRandomVocabularyWordByLevel(int level) async {
+  static Future<Map<String, dynamic>> getRandomVocabularyWordByLevel(int level) async {
     final response = await http.get(Uri.parse('$baseUrl/practice/vocabulary/random?level=$level'));
     if (response.statusCode == 200) {
-      return Map<String, String>.from(json.decode(response.body));
+      return Map<String, dynamic>.from(json.decode(response.body));
     } else {
       throw Exception('Failed to fetch random word for level $level');
     }
   }
 
-  // Get details for a specific Telugu word
-  static Future<Map<String, String>> getVocabularyAnswer(String teluguWord) async {
+  static Future<Map<String, dynamic>> getVocabularyAnswer(String teluguWord) async {
     final response = await http.get(Uri.parse(
       '$baseUrl/practice/vocabulary/answer?telugu=${Uri.encodeComponent(teluguWord)}'));
     if (response.statusCode == 200) {
-      return Map<String, String>.from(json.decode(response.body));
+      return Map<String, dynamic>.from(json.decode(response.body));
     } else {
       throw Exception('Failed to fetch vocabulary answer');
     }
