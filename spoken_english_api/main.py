@@ -4,7 +4,9 @@ from dotenv import load_dotenv
 import os
 import random
 from flask_jwt_extended import JWTManager, jwt_required, get_jwt_identity
-from spoken_english_api.app.models.user import User  # ✅ Ensure correct model path
+from spoken_english_api.app.models.user import User
+
+  # ✅ Ensure correct model pat
 
 # Load environment variables
 load_dotenv()
