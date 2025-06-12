@@ -4,7 +4,8 @@ from dotenv import load_dotenv
 import os
 import random
 from flask_jwt_extended import JWTManager, jwt_required, get_jwt_identity
-from app.models.user import User
+# from models.user import User
+
 
 
 
