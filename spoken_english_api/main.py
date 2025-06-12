@@ -9,12 +9,13 @@ from flask_jwt_extended import JWTManager, jwt_required, get_jwt_identity
 load_dotenv()
 
 # ✅ Correct absolute imports (use package name prefix)
-from spoken_english_api.extensions import db, bcrypt
-from spoken_english_api.data.verbs_data import verbs_dict
-from spoken_english_api.data.vocabulary_data import vocab_dict
-from spoken_english_api.data.tenses_data import tenses
-from spoken_english_api.app.routes.auth_bp import auth_bp
-from spoken_english_api.app.models.user import User
+from extensions import db, bcrypt
+from data.verbs_data import verbs_dict
+from data.vocabulary_data import vocab_dict
+from data.tenses_data import tenses
+from app.routes.auth_bp import auth_bp
+from app.models.user import User
+
 
 
 
