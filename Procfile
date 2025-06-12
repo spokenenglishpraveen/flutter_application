@@ -1,4 +1,5 @@
-web: PYTHONPATH=spoken_english_api gunicorn main:app
+web: PYTHONPATH=. gunicorn spoken_english_api.main:app
+
 
 
 
