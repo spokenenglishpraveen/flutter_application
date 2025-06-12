@@ -5,10 +5,10 @@ import os
 import random
 from flask_jwt_extended import JWTManager, jwt_required, get_jwt_identity
 
-# ✅ Load environment variables
+# Load environment variables
 load_dotenv()
 
-# ✅ Absolute imports — assuming PYTHONPATH includes `spoken_english_api`
+# ✅ ABSOLUTE imports from within `spoken_english_api`
 from extensions import db, bcrypt
 from data.verbs_data import verbs_dict
 from data.vocabulary_data import vocab_dict
