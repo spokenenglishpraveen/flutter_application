@@ -6,19 +6,20 @@ import random
 from flask_jwt_extended import JWTManager, jwt_required, get_jwt_identity
 
 # ✅ This is the correct path from the app root
-from app.models.user import User
+from spoken_english_api.app.models.user import User
+
 
 # ✅ Load environment variables
 load_dotenv()
 
 # ✅ Relative to spoken_english_api root
 from extensions import db, bcrypt
-from data.verbs_data import verbs_dict
-from data.vocabulary_data import vocab_dict
-from data.tenses_data import tenses
+from spoken_english_api.data.verbs_data import verbs_dict
+from spoken_english_api.data.vocabulary_data import vocab_dict
+from spoken_english_api.data.tenses_data import tenses
 
 # ✅ Relative to spoken_english_api root
-from app.routes.auth_bp import auth_bp
+from spoken_english_api.app.routes.auth_bp import auth_bp
 
 
 # Import auth blueprint
