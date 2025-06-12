@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class ApiService {
-  static const String baseUrl = 'https://flutterapplication-production.up.railway.app';
+  static const String baseUrl = 'http://localhost:5001'; // Update if needed
 
   // ============================
   //           VERBS
@@ -60,8 +60,9 @@ class ApiService {
   }
 
   static Future<Map<String, String>> getTenseSentence(String tense) async {
-    final response = await http.get(Uri.parse(
-        '$baseUrl/practice/tenses/practice?tense=${Uri.encodeComponent(tense)}'));
+    final response = await http.get(
+      Uri.parse('$baseUrl/practice/tenses/practice?tense=${Uri.encodeComponent(tense)}'),
+    );
     if (response.statusCode == 200) {
       final data = json.decode(response.body);
       return {
@@ -91,8 +92,9 @@ class ApiService {
   }
 
   static Future<Map<String, String>> getTenseAnswer(String teluguSentence) async {
-    final response = await http.get(Uri.parse(
-      '$baseUrl/practice/tenses/answer?telugu=${Uri.encodeComponent(teluguSentence)}'));
+    final response = await http.get(
+      Uri.parse('$baseUrl/practice/tenses/answer?telugu=${Uri.encodeComponent(teluguSentence)}'),
+    );
     if (response.statusCode == 200) {
       final data = json.decode(response.body);
       return {
@@ -147,12 +149,74 @@ class ApiService {
   }
 
   static Future<Map<String, dynamic>> getVocabularyAnswer(String teluguWord) async {
-    final response = await http.get(Uri.parse(
-      '$baseUrl/practice/vocabulary/answer?telugu=${Uri.encodeComponent(teluguWord)}'));
+    final response = await http.get(
+      Uri.parse('$baseUrl/practice/vocabulary/answer?telugu=${Uri.encodeComponent(teluguWord)}'),
+    );
     if (response.statusCode == 200) {
       return Map<String, dynamic>.from(json.decode(response.body));
     } else {
       throw Exception('Failed to fetch vocabulary answer');
+    }
+  }
+
+  // ============================
+  //           AUTH
+  // ============================
+
+  static Future<http.Response> signUp({
+    required String name,
+    required String password,
+    String? email,
+    String? phone,
+  }) async {
+    final url = Uri.parse('$baseUrl/auth/signup');
+    final response = await http.post(
+      url,
+      headers: {'Content-Type': 'application/json'},
+      body: json.encode({
+        'name': name,
+        'password': password,
+        if (email != null && email.isNotEmpty) 'email': email,
+        if (phone != null && phone.isNotEmpty) 'phone': phone,
+      }),
+    );
+    return response;
+  }
+
+  static Future<http.Response> login({
+    required String password,
+    String? email,
+    String? phone,
+  }) async {
+    final url = Uri.parse('$baseUrl/auth/login');
+    final response = await http.post(
+      url,
+      headers: {'Content-Type': 'application/json'},
+      body: json.encode({
+        'password': password,
+        if (email != null && email.isNotEmpty) 'email': email,
+        if (phone != null && phone.isNotEmpty) 'phone': phone,
+      }),
+    );
+    return response;
+  }
+
+  // ============================
+  //         USER PROFILE
+  // ============================
+
+  static Future<Map<String, dynamic>> getUserProfile(String jwt) async {
+    final response = await http.get(
+      Uri.parse('$baseUrl/auth/me'),
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer $jwt',
+      },
+    );
+    if (response.statusCode == 200) {
+      return Map<String, dynamic>.from(json.decode(response.body));
+    } else {
+      throw Exception('Failed to fetch user profile');
     }
   }
 }
