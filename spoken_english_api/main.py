@@ -9,12 +9,12 @@ from flask_jwt_extended import JWTManager, jwt_required, get_jwt_identity
 load_dotenv()
 
 # ✅ ABSOLUTE imports from within `spoken_english_api`
-from extensions import db, bcrypt
-from data.verbs_data import verbs_dict
-from data.vocabulary_data import vocab_dict
-from data.tenses_data import tenses
-from app.routes.auth_bp import auth_bp
-from app.models.user import User
+from .extensions import db, bcrypt
+from .data.verbs_data import verbs_dict
+from .data.vocabulary_data import vocab_dict
+from .data.tenses_data import tenses
+from .app.routes.auth_bp import auth_bp
+from .app.models.user import User
 
 
 
