@@ -37,7 +37,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
       final name = _nameController.text.trim();
       final password = _passwordController.text.trim();
 
-      final url = Uri.parse("http://localhost:5001/auth/signup");
+      final url = Uri.parse("flutterapplication-production.up.railway.app");
 
       try {
         final response = await http.post(

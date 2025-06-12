@@ -27,7 +27,7 @@ class _LoginScreenState extends State<LoginScreen> {
       return;
     }
 
-    final url = Uri.parse('http://localhost:5001/auth/login'); // ✅ Use localhost on Chrome
+    final url = Uri.parse('flutterapplication-production.up.railway.app'); // ✅ Use localhost on Chrome
 
     setState(() {
       _isLoading = true;
