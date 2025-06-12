@@ -6,7 +6,7 @@ import random
 from flask_jwt_extended import JWTManager, jwt_required, get_jwt_identity
 # from models.user import User
 
-from spoken_english_api.extensions import db, bcrypt
+
 from app.routes.auth_bp import auth_bp
 from app.models.user import User  # ✅ only if you're using it
 
@@ -19,7 +19,7 @@ from app.models.user import User  # ✅ only if you're using it
 load_dotenv()
 
 # Import extensions
-from spoken_english_api.extensions import db, bcrypt
+from extensions import db, bcrypt
 
 # Import data
 from data.verbs_data import verbs_dict
