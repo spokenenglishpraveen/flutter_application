@@ -1,0 +1,3 @@
+{
+  "python.analysis.extraPaths": ["./spoken_english_api"]
+}
