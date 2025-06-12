@@ -2,6 +2,6 @@
   "build": {
     "builder": "nixpacks",
     "buildCommand": "cd spoken_english_api && pip install -r ../requirements.txt",
-    "startCommand": "PYTHONPATH=spoken_english_api gunicorn main:app"
+    "startCommand": "gunicorn main:app"
   }
 }
