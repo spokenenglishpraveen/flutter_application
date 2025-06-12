@@ -1,24 +1,33 @@
-# --- main.py ---
 from flask import Flask, jsonify, request, Blueprint
 from flask_cors import CORS
-import random
+from dotenv import load_dotenv
 import os
+import random
+from flask_jwt_extended import JWTManager, jwt_required, get_jwt_identity
+from spoken_english_api.app.models.user import User  # ✅ Ensure correct model path
 
-# Import data dictionaries
+# Load environment variables
+load_dotenv()
+
+# Import extensions
+from spoken_english_api.extensions import db, bcrypt
+
+# Import data
 from spoken_english_api.data.verbs_data import verbs_dict
 from spoken_english_api.data.vocabulary_data import vocab_dict
 from spoken_english_api.data.tenses_data import tenses
 
-# ✅ Convert vocab_dict to a list
+# Import auth blueprint
+from spoken_english_api.app.routes.auth_bp import auth_bp
+
+# Prepare data lists
 vocabulary = list(vocab_dict.values())
 verbs = list(verbs_dict.values())
-print(f"[DEBUG] Loaded vocabulary words: {len(vocabulary)}")  # Debug
-print(f"[DEBUG] Loaded verbs: {len(verbs)}")  # Debug
 
-# Blueprint setup
+# Blueprint for practice-related routes
 practice_bp = Blueprint('practice', __name__)
 
-# --- TENSES ROUTES ---
+# ---------------- TENSES ----------------
 @practice_bp.route('/tenses-list', methods=['GET'])
 def get_tense_list():
     return jsonify(list(tenses.keys()))
@@ -44,7 +53,6 @@ def check_tense_sentence():
     data = request.json
     telugu = data.get('telugu_sentence')
     user_input = data.get('user_translation', '').strip().lower()
-
     for sentence_list in tenses.values():
         match = next((s for s in sentence_list if s[0] == telugu), None)
         if match:
@@ -60,7 +68,7 @@ def get_tense_answer():
             return jsonify({"telugu": match[0], "english": match[1]})
     return jsonify({"error": "Sentence not found"}), 404
 
-# --- VERBS ROUTES ---
+# ---------------- VERBS ----------------
 @practice_bp.route('/verbs', methods=['GET'])
 def get_verbs():
     level_param = request.args.get('level')
@@ -87,15 +95,13 @@ def get_random_verb():
     except ValueError:
         return jsonify({"error": "Invalid level parameter"}), 400
 
-# --- VOCABULARY ROUTES ---
+# ---------------- VOCABULARY ----------------
 @practice_bp.route('/vocabulary', methods=['GET'])
 def get_vocabulary():
     level_param = request.args.get('level')
     if level_param:
         try:
             level = int(level_param)
-            print(f"[DEBUG] Filtering vocabulary for level: {level}")
-            print(f"[DEBUG] Available levels: {[word.get('level') for word in vocabulary]}")
             filtered_vocab = [word for word in vocabulary if word.get('level') == level]
             return jsonify(filtered_vocab)
         except ValueError:
@@ -123,28 +129,64 @@ def get_vocabulary_answer():
     telugu_word = request.args.get('telugu', '').strip()
     if not telugu_word:
         return jsonify({"error": "Missing 'telugu' parameter"}), 400
-
     match = next((word for word in vocabulary if word.get("telugu_meaning", "").strip() == telugu_word), None)
     if match:
         return jsonify(match)
     return jsonify({"error": "Word not found"}), 404
 
-# --- HEALTH CHECK ---
+# ---------------- HEALTH ----------------
 @practice_bp.route('/health', methods=['GET'])
 def health_check():
     return jsonify({"status": "ok"})
 
-# --- APP SETUP ---
+# ---------------- APP FACTORY ----------------
 def create_app():
     app = Flask(__name__)
-    CORS(app)
+
+    # Config setup
+    app.config['SECRET_KEY'] = os.getenv("SECRET_KEY")
+    app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("DATABASE_URL")
+    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+    app.config['JWT_SECRET_KEY'] = os.getenv("JWT_SECRET_KEY", "super-secret")
+
+    # Enable CORS
+    CORS(app, resources={r"/*": {
+    "origins": ["https://spokenenglishpraveen.github.io"]}}, supports_credentials=True)
+
+
+    # Init extensions
+    db.init_app(app)
+    bcrypt.init_app(app)
+    jwt = JWTManager(app)
+
+    # ✅ Add protected profile route
+    @app.route('/auth/me', methods=['GET'])
+    @jwt_required()
+    def get_current_user():
+        user_id = get_jwt_identity()
+        user = User.query.get(user_id)
+        if not user:
+            return jsonify({'error': 'User not found'}), 404
+        return jsonify({
+            'id': user.id,
+            'name': user.name,
+            'email': user.email,
+            'phone': user.phone
+        })
+
+    # Register blueprints
     app.register_blueprint(practice_bp, url_prefix='/practice')
+    app.register_blueprint(auth_bp, url_prefix='/auth')
+
+    # Create DB tables
+    with app.app_context():
+        db.create_all()
+
     return app
 
-# --- WSGI ENTRY POINT ---
+# ---------------- WSGI ENTRY POINT ----------------
 app = create_app()
 
-# Uncomment below to test locally
 # if __name__ == "__main__":
-#     port = int(os.environ.get("PORT", 5000))
+#     port = int(os.environ.get("PORT", 5001))
 #     app.run(host="0.0.0.0", port=port)
