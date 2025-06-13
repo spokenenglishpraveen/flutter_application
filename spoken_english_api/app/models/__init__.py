@@ -1,1 +1,2 @@
-# Init for models
+from .user import User
+
